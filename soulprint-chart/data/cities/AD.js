@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["AD"]=[["Andorra la Vella","",0,"",42.51,1.52],["les Escaldes","",0,"",42.51,1.53],["Encamp","",0,"",42.53,1.58],["Sant Julià de Lòria","",0,"",42.46,1.49],["la Massana","",0,"",42.54,1.51]];

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["GY"]=[["Georgetown","",0,"",6.8,-58.16],["Linden","",0,"",6.01,-58.31],["New Amsterdam","",0,"",6.25,-57.52],["Anna Regina","",0,"",7.26,-58.51],["Bartica","",0,"",6.41,-58.62],["Skeldon","",0,"",5.88,-57.13],["Rosignol","",0,"",6.27,-57.54]];

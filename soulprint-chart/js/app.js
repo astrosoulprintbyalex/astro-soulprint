@@ -1,4 +1,5 @@
-/* Page logic: form, validation, city suggestions and drawing the results. */
+/* Page logic: choosing a chart, the birth details form, city suggestions and the Human Design results.
+   The Birth Chart results are drawn by birth-chart.js. */
 (function () {
   'use strict';
 
@@ -18,7 +19,14 @@
   var countryByCode = {};
   countries.forEach(function (c) { countryByCode[c.c] = c; });
 
-  var state = { cityList: [], selectedCity: null, activeIndex: -1 };
+  var state = { cityList: [], selectedCity: null, activeIndex: -1, type: null, lastInputs: null };
+
+  var TYPES = {
+    hd: { name: 'Human Design Chart', submitEn: 'Show my Human Design Chart', submitMy: 'ကိုယ့် Human Design Chart ကို ကြည့်မယ်',
+          switchEn: 'Switch to Birth Chart (Astrology)', switchMy: 'Birth Chart သို့ ပြောင်းမယ်', other: 'birth' },
+    birth: { name: 'Birth Chart (Astrology)', submitEn: 'Show my Birth Chart', submitMy: 'ကိုယ့် Birth Chart ကို ကြည့်မယ်',
+             switchEn: 'Switch to Human Design Chart', switchMy: 'Human Design Chart သို့ ပြောင်းမယ်', other: 'hd' }
+  };
 
   /* ---------- small helpers ---------- */
 
@@ -28,6 +36,8 @@
   function fold(s) {
     var t = String(s).toLowerCase();
     if (t.normalize) t = t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    // letters that do not split into a letter plus an accent (so "Tromso" finds "Tromsø")
+    t = t.replace(/[øðđłıßæœþ]/g, function (ch) { return { 'ø': 'o', 'ð': 'd', 'đ': 'd', 'ł': 'l', 'ı': 'i', 'ß': 'ss', 'æ': 'ae', 'œ': 'oe', 'þ': 'th' }[ch]; });
     return t.replace(/[’'`.]/g, '').replace(/\s+/g, ' ').trim();
   }
   function option(value, label, extra) {
@@ -100,7 +110,7 @@
     function ready() {
       var raw = (S.cityData || {})[code] || [];
       if ($('country').value !== code) return; // user already picked another country
-      state.cityList = raw.map(function (e) { return { name: e[0], admin: e[1], tz: e[2], f: fold(e[0]), alt: fold(e[3] || '') }; });
+      state.cityList = raw.map(function (e) { return { name: e[0], admin: e[1], tz: e[2], f: fold(e[0]), alt: fold(e[3] || ''), lat: e[4], lon: e[5] }; });
     }
     if (S.cityData && S.cityData[code]) { ready(); return; }
     var s = document.createElement('script');
@@ -257,7 +267,9 @@
 
     return {
       name: name, year: year, month: month, day: day, hour: hour, minute: minute, h12: h12, ampm: ampm,
-      city: city ? city.name : cityText, countryName: countryName(info), timeZone: usable
+      city: city ? city.name : cityText, countryName: countryName(info), timeZone: usable,
+      lat: city && typeof city.lat === 'number' ? city.lat : null, lon: city && typeof city.lon === 'number' ? city.lon : null,
+      hasCityList: !!info.k
     };
   }
 
@@ -378,6 +390,8 @@
     renderChannels(chart);
     renderGates(chart, inputs.timeZone);
 
+    $('birthResults').hidden = true;
+    showCross('hd');
     var res = $('results');
     res.hidden = false;
     var title = $('resultsTitle');
@@ -386,11 +400,10 @@
     title.focus({ preventScroll: true });
   }
 
-  function onSubmit(e) {
-    e.preventDefault();
-    $('formError').hidden = true;
-    var inputs = readForm();
-    if (inputs.error) { showError(inputs.error, inputs.el); return; }
+  var NO_COORDS = 'Please choose your birth city from the suggestions (type the first letters, then tap your city) so we can place the Ascendant and houses. If your town is not listed, choose the nearest bigger town.\nမွေးဖွားရာ မြို့ကို အကြံပြုစာရင်းထဲက ရွေးပေးပါ (စာလုံးအနည်းငယ်ရိုက်ပြီး မြို့ကို နှိပ်ပါ)။ မရှိရင် အနီးဆုံး မြို့ကြီးကို ရွေးပါ။';
+  var NO_LIST = 'Sorry, we do not have a city list for this country yet, so we cannot place a Birth Chart. You can still see your Human Design Chart, or message Alex.\nတောင်းပန်ပါတယ်၊ ဒီနိုင်ငံအတွက် မြို့စာရင်း မရှိသေးလို့ Birth Chart ကို မတွက်နိုင်ပါဘူး။ Human Design Chart ကိုတော့ ကြည့်နိုင်ပါတယ်။';
+
+  function runHD(inputs) {
     var chart;
     try {
       chart = C.calculateChart({ year: inputs.year, month: inputs.month, day: inputs.day, hour: inputs.hour, minute: inputs.minute, timeZone: inputs.timeZone });
@@ -402,10 +415,78 @@
     showResults(inputs, chart);
   }
 
+  function runBirth(inputs) {
+    if (inputs.lat === null || inputs.lon === null) { showError(inputs.hasCityList ? NO_COORDS : NO_LIST, $('city')); return; }
+    var conv;
+    try { conv = C.localToUtc(inputs.year, inputs.month, inputs.day, inputs.hour, inputs.minute, inputs.timeZone); }
+    catch (err) { showError('Sorry, something went wrong while calculating. Please check your details and try again.'); if (window.console) console.error(err); return; }
+    $('results').hidden = true;
+    showCross('birth');
+    S.birth.show({
+      name: inputs.name, city: inputs.city, countryName: inputs.countryName, lat: inputs.lat, lon: inputs.lon,
+      utcMs: conv.ms, offsetLabel: C.offsetLabel(conv.offset), ambiguous: conv.ambiguous, nonexistent: conv.nonexistent,
+      fmtDate: fmtDate(inputs.year, inputs.month, inputs.day), fmtTime: fmtTimeParts(inputs.h12, inputs.minute, inputs.ampm)
+    });
+  }
+
+  function run(inputs) {
+    state.lastInputs = inputs;
+    if (state.type === 'birth') runBirth(inputs); else runHD(inputs);
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    $('formError').hidden = true;
+    var inputs = readForm();
+    if (inputs.error) { showError(inputs.error, inputs.el); return; }
+    run(inputs);
+  }
+
+  /* ---------- choosing a chart ---------- */
+
+  function setType(type) {
+    state.type = type;
+    var t = TYPES[type];
+    $('typeName').textContent = t.name;
+    $('submitEn').textContent = t.submitEn;
+    $('submitMy').textContent = t.submitMy;
+    $('switchEn').textContent = t.switchEn;
+    $('switchMy').textContent = t.switchMy;
+    $('formError').hidden = true;
+    if (type === 'birth' && S.birth) S.birth.preload(); // start fetching the engine while they fill in the form
+  }
+
+  function chooseType(type) {
+    setType(type);
+    $('stepChoose').hidden = true;
+    $('stepDetails').hidden = false;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $('stepDetails').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(function () { $('name').focus({ preventScroll: true }); }, 350);
+  }
+
+  // The "see the other chart too" row under the results. Kept outside both result sections.
+  function showCross(shown) {
+    var other = TYPES[shown].other;
+    $('cross').hidden = false;
+    if (other === 'birth') {
+      $('crossEn').textContent = 'Want to see your Birth Chart too? Your details are already filled in.';
+      $('crossMy').textContent = 'Birth Chart ကိုပါ ကြည့်ချင်ပါသလား? အချက်အလက်တွေ ဖြည့်ပြီးသားပါ။';
+      $('crossBtnEn').textContent = 'See my Birth Chart too';
+      $('crossBtnMy').textContent = 'Birth Chart ကိုပါ ကြည့်မယ်';
+    } else {
+      $('crossEn').textContent = 'Want to see your Human Design Chart too? Your details are already filled in.';
+      $('crossMy').textContent = 'Human Design Chart ကိုပါ ကြည့်ချင်ပါသလား? အချက်အလက်တွေ ဖြည့်ပြီးသားပါ။';
+      $('crossBtnEn').textContent = 'See my Human Design Chart too';
+      $('crossBtnMy').textContent = 'Human Design Chart ကိုပါ ကြည့်မယ်';
+    }
+    $('crossBtn').setAttribute('data-show', other);
+  }
+
   /* ---------- enlarge the chart ---------- */
 
-  function openZoom() {
-    var svg = $('bodygraph').querySelector('svg');
+  function zoomSvg(container) {
+    var svg = container && container.querySelector('svg');
     if (!svg) return;
     $('bgZoomBody').innerHTML = '';
     $('bgZoomBody').appendChild(svg.cloneNode(true));
@@ -413,6 +494,7 @@
     document.body.style.overflow = 'hidden';
     $('bgZoomClose').focus();
   }
+  function openZoom() { zoomSvg($('bodygraph')); }
   function closeZoom() {
     $('bgZoom').hidden = true;
     document.body.style.overflow = '';
@@ -425,8 +507,19 @@
     initCityBox();
     $('chartForm').addEventListener('submit', onSubmit);
     $('againBtn').addEventListener('click', function () { setTimeout(function () { $('name').focus(); }, 400); });
+    $('againBtnBirth').addEventListener('click', function () { setTimeout(function () { $('name').focus(); }, 400); });
+    Array.prototype.forEach.call(document.querySelectorAll('.choice'), function (b) {
+      b.addEventListener('click', function () { chooseType(b.getAttribute('data-chart')); });
+    });
+    $('switchType').addEventListener('click', function () { setType(TYPES[state.type].other); });
+    $('crossBtn').addEventListener('click', function () {
+      if (!state.lastInputs) return;
+      setType($('crossBtn').getAttribute('data-show'));
+      run(state.lastInputs);
+    });
     $('year').addEventListener('input', function () { this.value = this.value.replace(/\D/g, '').slice(0, 4); });
     $('bodygraph').addEventListener('click', openZoom);
+    S.ui = { zoomSvg: zoomSvg };
     $('bgZoomClose').addEventListener('click', closeZoom);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('bgZoom').hidden) closeZoom(); });
     $('footMessenger').href = CFG.messengerUrl || $('footMessenger').href;
@@ -436,6 +529,8 @@
       $('inviteHD').href = CFG.messengerUrl;
     }
     if (CFG.readingsUrl) $('inviteReadings').href = CFG.readingsUrl;
+    if (CFG.messengerUrl) { $('inviteBirthMessenger').href = CFG.messengerUrl; $('inviteBirthHD').href = CFG.messengerUrl; }
+    if (CFG.birthReadingUrl) $('inviteBirthReading').href = CFG.birthReadingUrl;
     $('footYear').textContent = new Date().getFullYear();
   }
 

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["SR"]=[["Paramaribo","",0,"",5.87,-55.17],["Lelydorp","",0,"",5.7,-55.23],["Brokopondo","",0,"",5.06,-54.98],["Nieuw Nickerie","",0,"",5.93,-56.97],["Moengo","",0,"",5.61,-54.4]];

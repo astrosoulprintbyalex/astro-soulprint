@@ -18,7 +18,7 @@ Every reading page is a folder with an `index.html` inside, so the link has no `
 | 2027 Lord of the Year (free annual profection tool) | `2027-lord-of-the-year/` | `/2027-lord-of-the-year/` |
 | Which reading is right for me? (quiz) | `find-my-reading/` | `/find-my-reading/` |
 | 2027 Cosmic Roadmap | `roadmap.html` | `/roadmap.html` |
-| Free Human Design Chart calculator | `soulprint-chart/` | `/soulprint-chart/` |
+| Free Charts (Human Design + Birth Chart) | `soulprint-chart/` | `/soulprint-chart/` |
 
 The old `.html` addresses (for example `aligned-love.html`) still work: they send visitors to the new link.
 

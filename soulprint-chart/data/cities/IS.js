@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["IS"]=[["Reykjavík","",0,"",64.14,-21.9],["Kópavogur","",0,"",64.11,-21.91],["Hafnarfjörður","",0,"",64.07,-21.94],["Akureyri","",0,"",65.68,-18.09],["Garðabær","",0,"",64.09,-21.92],["Mosfellsbær","",0,"",64.17,-21.7],["Akranes","",0,"",64.32,-22.07],["Selfoss","",0,"",63.93,-21]];

@@ -8,6 +8,9 @@ window.Soulprint.config = {
   // The "A reading shows you how to live it" card under the results. "See Human Design Readings" opens this page of your main site.
   readingsUrl: '../human-design/',
 
+  // The card under a Birth Chart: "See the Birth Chart Reading" opens this page of your main site.
+  birthReadingUrl: '../soulprint-core/',
+
   // The "Your 4 Arrows" card. Change the label/link to your 4 Arrows package.
   arrowsLink: { label: 'Get my HD 4 Arrows reading', href: '../human-design/' },
 

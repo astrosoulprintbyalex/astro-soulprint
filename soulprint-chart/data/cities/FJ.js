@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["FJ"]=[["Suva","",0,"",-18.14,178.44],["Lautoka","",0,"",-17.62,177.45],["Nadi","",0,"",-17.8,177.42],["Labasa","",0,"",-16.43,179.36],["Ba","",0,"",-17.53,177.67],["Levuka","",0,"",-18.07,179.32]];

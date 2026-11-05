@@ -301,17 +301,22 @@ a.card:hover, a.card:focus-visible { transform: translateY(-3px); box-shadow: 0 
   .cards.three { grid-template-columns: repeat(3, 1fr); }
   .float-cta { display: none; }
   .footer { padding-bottom: 40px; }
+}
 
+/* The full menu fits from 1100px wide; below that the hamburger menu is used. */
+@media (min-width: 1100px) {
   .nav-toggle, .js .nav-toggle { display: none; }
   .site-nav, .js .site-nav { position: static; display: block; background: none; border: 0; box-shadow: none; padding: 0; }
   .site-nav > ul { display: flex; align-items: center; gap: 6px; }
   .site-nav > ul > li { border: 0; position: relative; }
-  .site-nav > ul > li > a, .has-sub > a { padding: 10px 14px; border-radius: 999px; }
+  .site-nav > ul > li > a, .has-sub > a { padding: 10px 11px; border-radius: 999px; font-size: 0.96rem; }
   .site-nav > ul > li > a:hover, .has-sub > a:hover { background: var(--emerald-soft); }
   .has-sub { flex-wrap: nowrap; }
   .sub-toggle { width: 26px; margin-left: -10px; }
   .sub, .js .sub { display: none; position: absolute; left: 0; top: 100%; min-width: 280px; background: var(--white); border: 1px solid var(--gold-line); border-radius: 18px; box-shadow: var(--shadow); padding: 10px 14px; }
   .has-sub:hover .sub, .has-sub:focus-within .sub, .js .has-sub.open .sub { display: block; }
+
+  .site-nav a, .brand-link { white-space: nowrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["BS"]=[["Nassau","",0,"",25.06,-77.34],["Lucaya","",0,"",26.53,-78.67],["Freeport","",0,"",26.53,-78.7],["West End","",0,"",26.69,-78.98],["Cooper’s Town","",0,"",26.87,-77.51],["San Andros","",0,"",25.07,-78.05],["George Town","",0,"",23.52,-75.79],["Marsh Harbour","",0,"",26.54,-77.06]];

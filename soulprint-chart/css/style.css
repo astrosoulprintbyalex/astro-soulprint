@@ -278,6 +278,116 @@ html { scroll-padding-top: 76px; }
 .faq-body p:last-child { margin-bottom: 4px; }
 .faq-body p[lang="my"] { color: var(--ink); }
 
+
+/* ---------- Chart symbols (small font, only the astrology glyphs) ---------- */
+@font-face { font-family: "AstroGlyphs"; src: url("../fonts/astro-glyphs.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: block; }
+.gl-txt { font-family: "AstroGlyphs", serif; font-style: normal; font-weight: 400; line-height: 1; }
+.gl-ico { display: inline-block; vertical-align: -0.28em; }
+
+/* ---------- Step 1: choose ---------- */
+.step-label { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; justify-content: center; margin: 0 0 14px; font-weight: 600; color: var(--emerald-deep); }
+.step-label small { flex-basis: 100%; text-align: center; font-weight: 400; font-size: 0.84rem; color: var(--ink-soft); line-height: 1.7; }
+.step-num { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--gold-soft); color: var(--emerald-deep); font-size: 0.85rem; font-weight: 600; }
+.choices { display: grid; gap: 16px; grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+.choice {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; cursor: pointer; font: inherit; color: var(--ink);
+  background: var(--white); border: 1.5px solid var(--gold); border-radius: 26px; padding: 26px 20px 22px;
+  box-shadow: 0 8px 24px rgba(52, 55, 36, 0.08); transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.choice:hover, .choice:focus-visible { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(52, 55, 36, 0.14); background: #fffefb; }
+.choice-ico { width: 62px; height: 62px; color: var(--emerald-deep); background: var(--emerald-tint); border-radius: 50%; padding: 13px; margin-bottom: 4px; }
+.choice-title { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; line-height: 1.15; color: var(--emerald-deep); }
+.choice-line { font-size: 0.95rem; color: var(--ink); }
+.choice-my { font-size: 0.88rem; color: var(--ink-soft); }
+.choice-go { margin-top: 8px; font-weight: 600; font-size: 0.92rem; color: var(--emerald-deep); border-bottom: 1.5px solid var(--gold); padding-bottom: 1px; }
+
+/* ---------- Step 2: details ---------- */
+.typebar { margin: 0 0 22px; padding-bottom: 16px; border-bottom: 1px dashed var(--linen); text-align: center; }
+.typebar .step-label { margin-bottom: 8px; }
+.typebar-line { margin: 0; font-size: 0.92rem; color: var(--ink-soft); display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.typebar-line strong { color: var(--emerald-deep); }
+.linklike { background: none; border: 0; padding: 4px 6px; cursor: pointer; font: inherit; font-size: 0.92rem; font-weight: 600; color: var(--emerald); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.linklike small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); text-decoration: none; }
+.linklike:hover, .linklike:focus-visible { color: var(--emerald-deep); }
+.form-error { white-space: pre-line; }
+
+/* ---------- Cross link under the results ---------- */
+.cross { padding: 8px 0 34px; background: var(--cream-deep); }
+.cross-text { margin-bottom: 14px; color: var(--ink); }
+.cross-text span { display: block; }
+.cross-text [lang="my"] { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* ---------- Birth Chart results ---------- */
+.seg-wrap { margin: 0 auto 22px; }
+.seg-label { font-weight: 600; font-size: 0.92rem; color: var(--emerald-deep); margin-bottom: 8px; }
+.seg-label span, .house-note span, .tap-hint span, .fine-my { display: block; font-weight: 400; font-size: 0.82rem; color: var(--ink-soft); }
+.seg { display: inline-flex; background: var(--white); border: 1.5px solid var(--gold); border-radius: 999px; padding: 4px; gap: 4px; }
+.seg button { font: inherit; font-weight: 600; font-size: 0.95rem; padding: 10px 22px; border-radius: 999px; border: 0; background: transparent; color: var(--emerald-deep); cursor: pointer; min-height: 44px; }
+.seg button[aria-pressed="true"] { background: var(--emerald); color: var(--cream); }
+.seg button:disabled { opacity: 0.45; cursor: not-allowed; }
+.house-note { color: var(--ink-soft); font-size: 0.86rem; max-width: 34em; margin: 10px auto 0; }
+.birth-status { max-width: 520px; margin: 0 auto 20px; color: var(--ink); }
+.birth-status [lang="my"] { color: var(--ink-soft); font-size: 0.92rem; }
+
+.wheel-card { max-width: 660px; margin: 0 auto 22px; padding: 14px 6px 18px; }
+.wheel-wrap { max-width: 640px; margin: 0 auto; cursor: zoom-in; }
+.astro-wheel { display: block; width: 100%; height: auto; }
+.legend-aspects { justify-content: center; display: flex; gap: 6px 22px; flex-wrap: wrap; }
+.sw-trine { background: #5f7a4a; border-radius: 4px; height: 4px; width: 20px; }
+.sw-hard { background: #b4532f; border-radius: 4px; height: 4px; width: 20px; }
+
+.cards-three { grid-template-columns: 1fr; }
+.big3 h3 { font-size: 1.6rem; }
+.b3-glyph { font-family: "AstroGlyphs", serif; color: var(--gold-deep); }
+.b3-my { color: var(--ink) !important; }
+
+.h-my { display: block; font-family: var(--sans); font-weight: 400; font-size: 0.85rem; color: var(--ink-soft); margin-top: 4px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px -4px 0; padding: 0 4px; }
+table.points, table.aspects { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+table.points th, table.points td, table.aspects th, table.aspects td { padding: 9px 5px; text-align: left; border-bottom: 1px dashed var(--linen); vertical-align: middle; }
+table.points thead th, table.aspects thead th { font-weight: 600; font-size: 0.8rem; color: var(--emerald-deep); border-bottom: 1px solid var(--linen); line-height: 1.4; }
+table.points thead th span, table.aspects thead th span { display: block; font-weight: 400; color: var(--ink-soft); font-size: 0.74rem; line-height: 1.6; }
+table.points tbody tr:last-child th, table.points tbody tr:last-child td, table.aspects tbody tr:last-child td { border-bottom: 0; }
+table.points .pt { font-weight: 500; }
+.pt-ico { display: inline-block; width: 1.5em; text-align: center; color: var(--emerald-deep); }
+.pt-ico, .pt-name { vertical-align: top; }
+.pt-name { display: inline-block; max-width: calc(100% - 1.8em); }
+.angle { font-weight: 600; letter-spacing: 0.02em; }
+.pt-name small { display: block; font-weight: 400; font-size: 0.74rem; color: var(--ink-soft); margin-left: 1.5em; line-height: 1.3; }
+table.points .sg { white-space: nowrap; }
+.sg-main { display: block; }
+.dg-m { display: block; font-size: 0.78rem; color: var(--ink-soft); margin-left: 1.45em; font-variant-numeric: tabular-nums; line-height: 1.35; }
+.sg-ico { color: var(--gold-deep); display: inline-block; width: 1.2em; text-align: center; }
+table.points .dg, table.points thead th:nth-child(3) { display: none; }
+table.points .dg { white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.points .hs, table.points .rt { text-align: center; }
+table.points thead th:nth-child(4), table.points thead th:nth-child(5) { text-align: center; }
+table.points th, table.points td, table.aspects th, table.aspects td { font-size: 0.86rem; }
+table.points .pt, table.aspects .ap-pt { line-height: 1.35; }
+.rx { display: inline-block; min-width: 1.6em; text-align: center; font-weight: 700; color: #b4532f; background: #f7e4dc; border-radius: 999px; padding: 0 6px; font-size: 0.82rem; }
+.dash { color: #b9b19a; }
+table.aspects .ap-pt { white-space: nowrap; }
+table.aspects .ap-type { white-space: nowrap; font-weight: 500; }
+.asp-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; background: #b9b19a; }
+.asp-trine .asp-dot, .asp-sextile .asp-dot { background: #5f7a4a; }
+.asp-square .asp-dot, .asp-opposition .asp-dot { background: #b4532f; }
+.asp-conjunction .asp-dot { background: var(--gold-deep); }
+table.aspects .ap-orb { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+.foot-note { font-size: 0.8rem; margin: 12px 0 0; }
+.fine-my { margin-top: 4px; }
+
+@media (min-width: 700px) {
+  .choices { grid-template-columns: repeat(2, 1fr); }
+  .typebar-line { flex-direction: row; justify-content: center; gap: 14px; align-items: baseline; }
+  table.points, table.aspects { font-size: 0.98rem; }
+  table.points th, table.points td, table.aspects th, table.aspects td { font-size: 0.95rem; }
+  table.points .dg, table.points thead th:nth-child(3) { display: table-cell; }
+  .dg-m { display: none; }
+}
+@media (min-width: 960px) {
+  .cards-three { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* ---------- Larger screens ---------- */
 @media (min-width: 700px) {
   :root { --gutter: 32px; }
@@ -292,16 +402,22 @@ html { scroll-padding-top: 76px; }
   .footer-actions .btn { width: auto; }
 }
 @media (min-width: 960px) {
+}
+
+/* The full menu fits from 1100px wide; below that the hamburger menu is used. */
+@media (min-width: 1100px) {
   .nav-toggle, .js .nav-toggle { display: none; }
   .site-nav, .js .site-nav { position: static; display: block; background: none; border: 0; box-shadow: none; padding: 0; }
   .site-nav > ul { display: flex; align-items: center; gap: 6px; }
   .site-nav > ul > li { border: 0; position: relative; }
-  .site-nav > ul > li > a, .has-sub > a { padding: 10px 14px; border-radius: 999px; }
+  .site-nav > ul > li > a, .has-sub > a { padding: 10px 11px; border-radius: 999px; font-size: 0.96rem; }
   .site-nav > ul > li > a:hover, .has-sub > a:hover { background: var(--emerald-tint); }
   .has-sub { flex-wrap: nowrap; }
   .sub-toggle { width: 26px; margin-left: -10px; }
   .site-header .sub, .js .site-header .sub { display: none; position: absolute; left: 0; top: 100%; min-width: 280px; background: var(--white); border: 1px solid var(--linen); border-radius: 18px; box-shadow: 0 10px 30px rgba(52, 55, 36, 0.12); padding: 10px 14px; }
   .has-sub:hover .sub, .has-sub:focus-within .sub, .js .has-sub.open .sub { display: block; }
+
+  .site-nav a, .brand-link { white-space: nowrap; }
 }
 @media (max-width: 360px) {
   .row3 { gap: 6px; }

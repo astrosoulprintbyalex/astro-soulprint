@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["SX"]=[["Cul de Sac","",0,"",18.05,-63.07],["Lower Prince’s Quarter","",0,"",18.05,-63.04],["Koolbaai","",0,"",18.04,-63.08]];

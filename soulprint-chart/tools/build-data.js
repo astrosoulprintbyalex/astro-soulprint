@@ -1,4 +1,6 @@
 /* Builds the small data files used by the city / time zone picker.
+   Every city carries its latitude and longitude (2 decimals, about 1 km) so the Birth Chart can work out the
+   Ascendant and houses. Entry format: [name, admin, timeZoneIndex, otherSpellings, latitude, longitude].
    Run with:  npm install && npm run build:data
    Sources (all open): GeoNames city list via "all-the-cities" (CC BY 4.0),
    IANA time zone data via "countries-and-timezones" (MIT), "tz-lookup" (CC0). */
@@ -10,7 +12,8 @@ const ct = require('countries-and-timezones');
 const { offsetSeconds } = require('../js/hd-calc.js');
 
 const OUT = path.join(__dirname, '..', 'data');
-const MIN_POP = 5000; // shipped city list, only for countries that have more than one time zone
+const MIN_POP = 5000;   // smallest city shipped
+const MAX_SINGLE = 2500; // single-zone countries: at most this many cities per country (largest first)
 
 const countries = ct.getAllCountries();
 const byCountry = {};
@@ -33,7 +36,38 @@ const MM = [
   ['Hpakant', ''], ['Putao', ''], ['Kale', 'Kalay'], ['Tamu', ''], ['Kyaukpyu', ''],
   ['Thandwe', 'Sandoway'], ['Nyaungshwe', 'Inle'], ['Hsipaw', ''], ['Kyaikkami', ''],
   ['Paungde', ''], ['Thongwa', ''], ['Kyauktan', ''], ['Dala', ''], ['Insein', ''], ['Hlaingthaya', '']
-].map(([n, a]) => [n, '', 0, a]);
+];
+
+// Coordinates for the Myanmar names GeoNames does not list (checked by hand, good to about 0.05 degrees).
+const MM_EXTRA = {
+  'Insein': [16.89, 96.10], 'Hlaingthaya': [16.87, 96.04], 'Dala': [16.76, 96.15], 'Kyauktan': [16.58, 96.30],
+  'Thanlyin': [16.77, 96.25], 'Mottama': [16.48, 97.61], 'Letpadan': [17.78, 95.75], 'Tachileik': [20.45, 99.88],
+  'Kengtung': [21.29, 99.60], 'Hpakant': [25.62, 96.31], 'Putao': [27.33, 97.41], 'Kale': [23.19, 94.05],
+  'Tamu': [24.22, 94.30], 'Kyaukpyu': [19.43, 93.55], 'Thandwe': [18.46, 94.37], 'Hsipaw': [22.62, 97.30]
+};
+const foldName = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z ]/g, '');
+function buildMM() {
+  const geo = (byCountry.MM || []).slice();
+  const used = new Set();
+  const out = [];
+  for (const [name, alt] of MM) {
+    const keys = [name].concat(alt.split(' ').filter(Boolean)).map(foldName);
+    const hit = geo.find((g) => {
+      const gk = [g.name].concat((g.altName || '').split(',')).map(foldName);
+      return gk.some((k) => k && keys.includes(k));
+    });
+    let lat, lon;
+    if (hit) { used.add(hit); lon = hit.loc.coordinates[0]; lat = hit.loc.coordinates[1]; }
+    else if (MM_EXTRA[name]) { lat = MM_EXTRA[name][0]; lon = MM_EXTRA[name][1]; }
+    else throw new Error('Myanmar city without coordinates: ' + name);
+    out.push([name, '', 0, alt, +lat.toFixed(2), +lon.toFixed(2)]);
+  }
+  // GeoNames towns that are not on the hand list, biggest first
+  geo.filter((g) => !used.has(g) && g.population >= 3000 && !/Township$/.test(g.name))
+    .sort((a, b) => b.population - a.population)
+    .forEach((g) => out.push([g.name, '', 0, g.altName || '', +g.loc.coordinates[1].toFixed(2), +g.loc.coordinates[0].toFixed(2)]));
+  return out;
+}
 
 // Two zone names can be the same clock (for example the old name "Europe/Kiev" and the new "Europe/Kyiv").
 // Compare their real UTC offsets (including daylight saving) from 1970 to 2025 to tell.
@@ -78,8 +112,13 @@ for (const code of Object.keys(countries).sort()) {
   const entry = { c: code, n: info.name, tz: allowed };
   countryOut.push(entry);
 
-  if (code === 'MM') { entry.k = 1; write(code, allowed, MM); continue; }
-  if (!multi) continue;
+  if (code === 'MM') { entry.k = 1; write(code, allowed, buildMM()); continue; }
+  if (!multi) {
+    const list = everyCity.filter((c) => c.population >= MIN_POP).sort((a, b) => b.population - a.population).slice(0, MAX_SINGLE)
+      .map((c) => [c.name, /^[A-Z]{2,3}$/.test(c.adminCode) ? c.adminCode : '', 0, c.altName ? c.altName.split(',').slice(0, 3).join(' ') : '', +c.loc.coordinates[1].toFixed(2), +c.loc.coordinates[0].toFixed(2)]);
+    if (list.length) { entry.k = 1; write(code, allowed, list); }
+    continue;
+  }
 
   const good = lookedUp.filter((r) => r.match && allowed.includes(r.match));
   const nearest = (r) => {
@@ -100,7 +139,7 @@ for (const code of Object.keys(countries).sort()) {
       if (!tz) { tz = nearest(r); fallbacks++; }
       (zoneCities[tz] = zoneCities[tz] || []).push([r.c.name, r.c.population]);
       const admin = /^[A-Z]{2,3}$/.test(r.c.adminCode) ? r.c.adminCode : '';
-      return [r.c.name, admin, allowed.indexOf(tz), ''];
+      return [r.c.name, admin, allowed.indexOf(tz), '', +r.c.loc.coordinates[1].toFixed(2), +r.c.loc.coordinates[0].toFixed(2)];
     });
   entry.k = 1; // k = this country has a city file to load
   if (fallbacks) console.log(code + ': ' + fallbacks + ' of ' + entries.length + ' cities needed nearest-neighbour zone');

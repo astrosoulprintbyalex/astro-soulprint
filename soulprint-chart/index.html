@@ -1,36 +1,37 @@
 ---
+active: chart
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Human Design Chart · Free · Astro Soulprint by Alex</title>
-  <meta name="description" content="Free Human Design Chart calculator. Enter your birth details to see your Type, Strategy, Authority, Profile and energy map.">
+  <title>Free Charts · Human Design &amp; Birth Chart · Astro Soulprint by Alex</title>
+  <meta name="description" content="Free and private chart tool: your Human Design Chart (Type, Strategy, Authority, Profile) or your Birth Chart with a chart wheel, houses and aspects. Takes about 1 minute.">
   <meta name="theme-color" content="#faf6ee">
 
-  <!-- Facebook / Messenger link preview. The picture is images/share/human-design-chart.png (1200 x 630). -->
+  <!-- Facebook / Messenger link preview. The picture is images/share/free-charts.png (1200 x 630). -->
   <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Astro Soulprint by Alex">
-  <meta property="og:title" content="Free Human Design Chart · Astro Soulprint by Alex">
-  <meta property="og:description" content="Free and private. In 1 minute, see your Type, Strategy, Authority and Profile.">
+  <meta property="og:title" content="Free Human Design &amp; Birth Chart · Astro Soulprint by Alex">
+  <meta property="og:description" content="Free and private. Choose your Human Design Chart or your Birth Chart and see it in about 1 minute.">
   <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/share/human-design-chart.png">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/share/free-charts.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Free Human Design Chart by Astro Soulprint by Alex">
+  <meta property="og:image:alt" content="Free Human Design and Birth Chart by Astro Soulprint by Alex">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Human Design Chart · Astro Soulprint by Alex">
-  <meta name="twitter:description" content="Free and private. In 1 minute, see your Type, Strategy, Authority and Profile.">
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/images/share/human-design-chart.png">
+  <meta name="twitter:title" content="Free Human Design &amp; Birth Chart · Astro Soulprint by Alex">
+  <meta name="twitter:description" content="Free and private. Choose your Human Design Chart or your Birth Chart and see it in about 1 minute.">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/images/share/free-charts.png">
 
   <link rel="icon" type="image/png" href="../images/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&family=Noto+Serif+Myanmar:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
 </head>
 <body>
 
@@ -43,19 +44,45 @@
     <!-- 1. INTRO + FORM -->
     <section class="hero" id="top">
       <div class="wrap narrow center">
-        <p class="eyebrow">Free Chart Calculator <span class="handle">(@astrosoulprintbyalex)</span></p>
-        <h1>Your Human Design Chart</h1>
+        <p class="eyebrow">Free Chart Tool <span class="handle">(@astrosoulprintbyalex)</span></p>
+        <h1>Your Free Chart</h1>
         <div class="welcome">
-          <p class="welcome-en">Welcome, love. Add your birth details and meet your own energy map.</p>
-          <p class="welcome-my" lang="my">ကြိုဆိုပါတယ်ရှင် 🤎 မွေးသက္ကရာဇ်အချက်အလက်လေး ဖြည့်ပြီး ကိုယ့်ရဲ့ Energy Map ကို ကြည့်လိုက်ပါ။</p>
-          <p class="teaser">In 1 minute, see your <strong>Type</strong>, <strong>Strategy</strong>, <strong>Authority</strong> and <strong>Profile</strong>.</p>
-          <p class="teaser-my" lang="my">၁ မိနစ်အတွင်း ကိုယ့်ရဲ့ Type, Strategy, Authority နဲ့ Profile ကို ကြည့်နိုင်ပါပြီ။</p>
+          <p class="welcome-en">Welcome, love. Pick a chart and meet your own map in about 1 minute.</p>
+          <p class="welcome-my" lang="my">ကြိုဆိုပါတယ်ရှင် 🤎 ကြည့်ချင်တဲ့ Chart ကို ရွေးပြီး ၁ မိနစ်လောက်နဲ့ ကိုယ့်ရဲ့ Map ကို ကြည့်လိုက်ပါ။</p>
           <p class="free-note" lang="my"><span class="nowrap">Site က အခမဲ့ဖြစ်ပြီး</span> <span class="nowrap">data တွေက Privacy Private ဖြစ်ပါတယ်</span></p>
         </div>
       </div>
 
-      <div class="wrap narrow">
+      <!-- STEP 1: CHOOSE -->
+      <div class="wrap" id="stepChoose">
+        <p class="step-label"><span class="step-num">1</span><span class="en">Choose your chart</span><small lang="my">ကြည့်ချင်တဲ့ Chart ကို ရွေးပါ</small></p>
+        <div class="choices">
+          <button type="button" class="choice" data-chart="hd">
+            <svg class="choice-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M32 6l9 10H23z"/><path d="M32 18l8 8-8 8-8-8z"/><path d="M22 36h20v12H22z"/><path d="M12 38l8 6-8 6z"/><path d="M52 38l-8 6 8 6z"/><circle cx="32" cy="55" r="5"/></g></svg>
+            <span class="choice-title">Human Design Chart</span>
+            <span class="choice-line">See your Type, Strategy, Authority and Profile.</span>
+            <span class="choice-line choice-my" lang="my">ကိုယ့်ရဲ့ Type, Strategy, Authority နဲ့ Profile ကို ကြည့်ပါ။</span>
+            <span class="choice-go">Choose <span aria-hidden="true">&rarr;</span></span>
+          </button>
+          <button type="button" class="choice" data-chart="birth">
+            <svg class="choice-ico" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="32" cy="32" r="26"/><circle cx="32" cy="32" r="17"/><circle cx="32" cy="32" r="6"/><path d="M32 6v11M32 47v11M6 32h11M47 32h11M13.6 13.6l7.8 7.8M42.6 42.6l7.8 7.8M13.6 50.4l7.8-7.8M42.6 21.4l7.8-7.8" stroke-linecap="round"/></g></svg>
+            <span class="choice-title">Birth Chart (Astrology)</span>
+            <span class="choice-line">See your Sun, Moon and Rising, your planets and houses on a chart wheel.</span>
+            <span class="choice-line choice-my" lang="my">ကိုယ့်ရဲ့ Sun, Moon, Rising၊ ဂြိုဟ်တွေနဲ့ အိမ်တွေကို Chart wheel နဲ့ ကြည့်ပါ။</span>
+            <span class="choice-go">Choose <span aria-hidden="true">&rarr;</span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: DETAILS -->
+      <div class="wrap narrow" id="stepDetails" hidden>
         <form class="card form-card" id="chartForm" novalidate autocomplete="off">
+          <div class="typebar">
+            <p class="step-label"><span class="step-num">2</span><span class="en">Your birth details</span><small lang="my">မွေးဖွားမှု အချက်အလက်</small></p>
+            <p class="typebar-line"><span class="typebar-now">Chart: <strong id="typeName">Human Design Chart</strong></span>
+              <button type="button" class="linklike" id="switchType"><span id="switchEn">Switch to Birth Chart (Astrology)</span><small id="switchMy" lang="my">Birth Chart သို့ ပြောင်းမယ်</small></button></p>
+          </div>
+
           <div class="field">
             <label for="name"><span class="en">Your name</span><span class="my" lang="my">ကိုယ့်နာမည်</span></label>
             <input id="name" name="name" type="text" maxlength="60" placeholder="Your first name · နာမည်" autocapitalize="words" required>
@@ -103,7 +130,7 @@
 
           <p class="form-error" id="formError" role="alert" hidden></p>
 
-          <button class="btn btn-block btn-bi" type="submit" id="submitBtn"><span>Show my Human Design Chart</span><small lang="my">ကိုယ့် Human Design Chart ကို ကြည့်မယ်</small></button>
+          <button class="btn btn-block btn-bi" type="submit" id="submitBtn"><span id="submitEn">Show my Human Design Chart</span><small id="submitMy" lang="my">ကိုယ့် Human Design Chart ကို ကြည့်မယ်</small></button>
           <p class="privacy">&#10022; Calculated privately on your phone. Your details are never saved or sent anywhere.</p>
           <p class="privacy privacy-my" lang="my">ကိုယ့်ဖုန်းထဲမှာပဲ သီးသန့်တွက်ချက်တာဖြစ်ပြီး ကိုယ့်အချက်အလက်တွေကို ဘယ်နေရာမှာမှ သိမ်းဆည်းခြင်း၊ ပို့ခြင်း မလုပ်ပါဘူး။</p>
         </form>
@@ -162,6 +189,82 @@
       </div>
     </section>
 
+    <!-- CROSS LINK: the other chart with the same details (outside both result sections so they stay unchanged) -->
+    <section class="cross" id="cross" hidden>
+      <div class="wrap narrow center">
+        <p class="cross-text"><span id="crossEn">Want to see your Birth Chart too? Your details are already filled in.</span><span id="crossMy" lang="my">Birth Chart ကိုပါ ကြည့်ချင်ပါသလား? အချက်အလက်တွေ ဖြည့်ပြီးသားပါ။</span></p>
+        <button type="button" class="btn btn-bi" id="crossBtn"><span id="crossBtnEn">See my Birth Chart too</span><small id="crossBtnMy" lang="my">Birth Chart ကိုပါ ကြည့်မယ်</small></button>
+      </div>
+    </section>
+
+    <!-- 3. BIRTH CHART RESULTS (hidden until the form is sent for a Birth Chart) -->
+    <section class="results" id="birthResults" hidden aria-live="polite">
+      <div class="wrap">
+        <div class="results-head center">
+          <p class="eyebrow">Your sky at birth</p>
+          <h2 id="birthTitle" tabindex="-1">Your Birth Chart</h2>
+          <p class="sub" id="birthSub"></p>
+          <p class="notice" id="birthNotice" hidden></p>
+        </div>
+
+        <div class="birth-status card center" id="birthStatus" hidden role="status"></div>
+
+        <div id="birthBody">
+          <div class="seg-wrap center">
+            <p class="seg-label">House system<span lang="my">အိမ်စနစ်</span></p>
+            <div class="seg" id="houseToggle" role="group" aria-label="House system">
+              <button type="button" data-hs="P" aria-pressed="true">Placidus</button>
+              <button type="button" data-hs="W" aria-pressed="false">Whole Sign</button>
+            </div>
+            <p class="house-note" id="houseNote"></p>
+            <p class="house-note" id="placidusNote" hidden>Placidus cannot be worked out this close to the poles, so Whole Sign is shown.<span lang="my">ဝင်ရိုးစွန်းနဲ့ နီးလွန်းလို့ Placidus ကို မတွက်နိုင်ပါဘူး၊ Whole Sign နဲ့ ပြထားပါတယ်။</span></p>
+          </div>
+
+          <div class="card wheel-card">
+            <div id="wheel" class="wheel-wrap"></div>
+            <p class="tap-hint">&#10022; Tap the chart to enlarge<span lang="my">Chart ကို ထိပြီး ချဲ့ကြည့်ပါ</span></p>
+            <ul class="legend legend-aspects" aria-label="Aspect lines">
+              <li><span class="swatch sw-trine"></span>Trine, sextile</li>
+              <li><span class="swatch sw-hard"></span>Square, opposition</li>
+            </ul>
+          </div>
+
+          <div class="cards cards-three" id="bigThree"></div>
+
+          <div class="card" id="pointsCard">
+            <h3>Your planets and points<span class="h-my" lang="my">ကိုယ့်ရဲ့ ဂြိုဟ်တွေနဲ့ အချက်တွေ</span></h3>
+            <div class="table-scroll"><table class="points" id="pointsTable"></table></div>
+            <p class="muted foot-note">Lilith is the mean Black Moon Lilith and the North Node is the mean node. Part of Fortune uses ASC + Moon &minus; Sun in a day chart and ASC + Sun &minus; Moon in a night chart. R means retrograde.</p>
+            <p class="muted foot-note" lang="my">Lilith က Mean Black Moon Lilith ဖြစ်ပြီး North Node က Mean Node ပါ။ Part of Fortune ကို နေ့မွေး Chart မှာ ASC + Moon &minus; Sun၊ ညမွေး Chart မှာ ASC + Sun &minus; Moon နဲ့ တွက်ပါတယ်။ R ဆိုတာ Retrograde (နောက်ပြန်) ပါ။</p>
+          </div>
+
+          <div class="card" id="aspectsCard">
+            <h3>Main aspects<span class="h-my" lang="my">အဓိက Aspects တွေ</span></h3>
+            <div id="aspectsList" class="table-scroll"></div>
+            <p class="muted foot-note">Conjunction and opposition up to 8&deg;, square and trine up to 7&deg;, sextile up to 5&deg;. Aspects to the Ascendant and Midheaven up to 5&deg;.</p>
+          </div>
+
+          <p class="fine center">Small changes in birth time can move your Rising sign, your houses and your Moon. If you gave an estimate, treat this as a lovely first look.<span class="fine-my" lang="my">မွေးချိန် မိနစ်အနည်းငယ် ကွာသွားရင်တောင် Rising၊ အိမ်တွေနဲ့ Moon ပြောင်းနိုင်ပါတယ်။ ခန့်မှန်းချိန်နဲ့ ထည့်ထားရင် ပထမဆုံး အကြည့်အဖြစ် သဘောထားပါ။</span></p>
+
+          <div class="invite" id="inviteBirth">
+            <p class="eyebrow">Next step</p>
+            <h2>Your birth chart shows your sky map. A reading shows you what it means for your life.</h2>
+            <p class="invite-my" lang="my">ကိုယ့် Birth Chart က မွေးချိန်က ကောင်းကင်ပြင်ကို ပြပေးပါတယ်။ Reading ကတော့ ကိုယ့်ဘဝအတွက် ဘာကိုဆိုလိုလဲဆိုတာ ရှင်းပြပေးပါတယ်။</p>
+            <div class="invite-note" lang="my">
+              <p>Birth Chart Reading ယူချင်ပါက <a href="https://m.me/astrosoulprintbyalex" id="inviteBirthMessenger" target="_blank" rel="noopener">Page Messenger</a> ကို " <strong>BIRTH CHART</strong> " လို့ စာလေးပို့လိုက်ပါရှင်</p>
+              <p class="signoff">Love, Alex 🌹</p>
+            </div>
+            <div class="invite-actions">
+              <a class="btn btn-bi" id="inviteBirthReading" href="../soulprint-core/"><span>See the Birth Chart Reading</span><small lang="my">Birth Chart Reading ကြည့်ရန်</small></a>
+              <a class="btn btn-ghost btn-bi" id="inviteBirthHD" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener"><span>Message &ldquo;BIRTH CHART&rdquo; on Messenger</span><small lang="my">Messenger မှာ &ldquo;BIRTH CHART&rdquo; လို့ စာပို့ရန်</small></a>
+            </div>
+          </div>
+
+          <p class="center"><a class="btn btn-ghost btn-bi" href="#top" id="againBtnBirth"><span>Calculate another chart</span><small lang="my">Chart တစ်ခု ထပ်တွက်မယ်</small></a></p>
+        </div>
+      </div>
+    </section>
+
     <!-- 2b. FAQ -->
     <section class="faq" id="faq">
       <div class="wrap narrow">
@@ -177,18 +280,26 @@
         </details>
 
         <details class="faq-item">
+          <summary><span class="en">What is a Birth Chart?</span><span class="my" lang="my">Birth Chart ဆိုတာ ဘာလဲ?</span></summary>
+          <div class="faq-body">
+            <p>A Birth Chart is a map of the sky at the moment and place you were born. It shows which sign each planet was in, which part of your life each one touches (the houses), and how the planets speak to each other (the aspects). Your Sun, Moon and Rising sign are the best place to start.</p>
+            <p lang="my">Birth Chart ဆိုတာ ကိုယ်မွေးတဲ့ အချိန်၊ နေရာက ကောင်းကင်ပြင်ရဲ့ မြေပုံပါ။ ဂြိုဟ်တစ်ခုချင်းစီက ဘယ် Sign ထဲမှာရှိလဲ၊ ကိုယ့်ဘဝရဲ့ ဘယ်အပိုင်း (အိမ်) ကို ထိတွေ့လဲ၊ ဂြိုဟ်တွေက တစ်ခုနဲ့တစ်ခု ဘယ်လို ဆက်စပ်နေလဲ (Aspects) ဆိုတာ ပြပေးပါတယ်။ Sun, Moon နဲ့ Rising Sign ကနေ စကြည့်တာ အကောင်းဆုံးပါ။</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
           <summary><span class="en">I don&rsquo;t know my birth time. What do I do?</span><span class="my" lang="my">မွေးချိန် မသိရင် ဘယ်လိုလုပ်မလဲ?</span></summary>
           <div class="faq-body">
-            <p>Use your best guess for now and treat the result as a first look. Even a few minutes&rsquo; difference can change fine details, mostly your Moon, your lines, your Profile and your 4 Arrows. If you can, check your birth certificate or ask someone who was there. Still stuck? Feel free to message Alex.</p>
-            <p lang="my">ခန့်မှန်းချိန်လေးနဲ့ အရင်ကြည့်ကြည့်ပြီး ပထမဆုံး အကြည့်အဖြစ် သဘောထားလိုက်ပါ။ မိနစ်အနည်းငယ် ကွာသွားရင်တောင် အသေးစိတ်တချို့ ပြောင်းနိုင်ပါတယ်၊ အထူးသဖြင့် Moon၊ Lines၊ Profile နဲ့ 4 Arrows တွေပါ။ ဖြစ်နိုင်ရင် မွေးစာရင်း/မွေးစာချုပ်ကို ပြန်ကြည့်ပါ၊ ဒါမှမဟုတ် မွေးတုန်းက ရှိခဲ့သူကို မေးကြည့်ပါ။ ဆက်ရှာမတွေ့ရင် Alex ကို စာပို့မေးနိုင်ပါတယ်။</p>
+            <p>Use your best guess for now and treat the result as a first look. Even a few minutes&rsquo; difference can change fine details. In a Human Design Chart that is mostly your Moon, your lines, your Profile and your 4 Arrows. In a Birth Chart your Rising sign and houses move fastest, about one degree every four minutes. If you can, check your birth certificate or ask someone who was there. Still stuck? Feel free to message Alex.</p>
+            <p lang="my">ခန့်မှန်းချိန်လေးနဲ့ အရင်ကြည့်ကြည့်ပြီး ပထမဆုံး အကြည့်အဖြစ် သဘောထားလိုက်ပါ။ မိနစ်အနည်းငယ် ကွာသွားရင်တောင် အသေးစိတ်တချို့ ပြောင်းနိုင်ပါတယ်။ Human Design Chart မှာ အဓိကအားဖြင့် Moon၊ Lines၊ Profile နဲ့ 4 Arrows တွေပါ။ Birth Chart မှာတော့ Rising Sign နဲ့ အိမ်တွေက အမြန်ဆုံး ပြောင်းပြီး ၄ မိနစ်ကို တစ်ဒီဂရီလောက် ရွေ့ပါတယ်။ ဖြစ်နိုင်ရင် မွေးစာရင်း/မွေးစာချုပ်ကို ပြန်ကြည့်ပါ၊ ဒါမှမဟုတ် မွေးတုန်းက ရှိခဲ့သူကို မေးကြည့်ပါ။ ဆက်ရှာမတွေ့ရင် Alex ကို စာပို့မေးနိုင်ပါတယ်။</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary><span class="en">Is it accurate?</span><span class="my" lang="my">တိကျပါသလား?</span></summary>
           <div class="faq-body">
-            <p>The planet positions are worked out with an open-source astronomy library, so the sky maths is solid. How exact your chart is depends on the birth details you enter, especially the time. Human Design is a system for reflection, so take what resonates and use it gently. Everything is calculated on your own phone, and nothing you type is saved or sent anywhere.</p>
-            <p lang="my">Planet တွေရဲ့ တည်နေရာကို Astronomy Library (Open-source) နဲ့ တွက်ထားတာဖြစ်လို့ တွက်ချက်မှုပိုင်းမှာ စိတ်ချနိုင်ပါတယ်။ Chart ဘယ်လောက်တိကျလဲဆိုတာကတော့ ထည့်လိုက်တဲ့ မွေးချိန်စတဲ့ အချက်အလက်တွေပေါ် မူတည်ပါတယ်။ Human Design က ကိုယ့်ကိုယ်ကို ပြန်ကြည့်ဖို့ စနစ်တစ်ခုဖြစ်လို့ ကိုယ်နဲ့ကိုက်ညီတာကို ယူပြီး နူးညံ့စွာ သုံးပါ။ တွက်ချက်မှုအားလုံးကို ကိုယ့်ဖုန်းထဲမှာပဲ လုပ်တာဖြစ်ပြီး ထည့်လိုက်တာတွေကို ဘယ်နေရာမှာမှ သိမ်းဆည်းခြင်း၊ ပို့ခြင်း မလုပ်ပါဘူး။</p>
+            <p>The planet positions are worked out with professional astronomy software: the Swiss Ephemeris for the Birth Chart and an open-source astronomy library for the Human Design Chart. So the sky maths is solid. How exact your chart is depends on the birth details you enter, especially the time. Both systems are for reflection, so take what resonates and use it gently. Everything is calculated on your own phone, and nothing you type is saved or sent anywhere.</p>
+            <p lang="my">ဂြိုဟ်တွေရဲ့ တည်နေရာကို ပရော်ဖက်ရှင်နယ် Astronomy Software နဲ့ တွက်ထားပါတယ် (Birth Chart အတွက် Swiss Ephemeris၊ Human Design Chart အတွက် Open-source Astronomy Library)။ ဒါကြောင့် တွက်ချက်မှုပိုင်းမှာ စိတ်ချနိုင်ပါတယ်။ Chart ဘယ်လောက်တိကျလဲဆိုတာကတော့ ထည့်လိုက်တဲ့ မွေးချိန်စတဲ့ အချက်အလက်တွေပေါ် မူတည်ပါတယ်။ စနစ်နှစ်ခုလုံးက ကိုယ့်ကိုယ်ကို ပြန်ကြည့်ဖို့ ဖြစ်လို့ ကိုယ်နဲ့ကိုက်ညီတာကို ယူပြီး နူးညံ့စွာ သုံးပါ။ တွက်ချက်မှုအားလုံးကို ကိုယ့်ဖုန်းထဲမှာပဲ လုပ်တာဖြစ်ပြီး ထည့်လိုက်တာတွေကို ဘယ်နေရာမှာမှ သိမ်းဆည်းခြင်း၊ ပို့ခြင်း မလုပ်ပါဘူး။</p>
           </div>
         </details>
       </div>
@@ -211,7 +322,8 @@
         <a class="btn btn-outline-light btn-bi" id="footFacebook" href="https://www.facebook.com/profile.php?id=61561494154512" target="_blank" rel="noopener"><span>Facebook Page</span><small lang="my">Facebook Page ကို ကြည့်မယ်</small></a>
       </div>
       <p class="small">The Human Design system was originated by Ra Uru Hu.</p>
-      <p class="tiny">&copy; <span id="footYear">2026</span> Astro Soulprint by Alex &middot; Planet positions by astronomy-engine (MIT) &middot; City data from GeoNames (CC BY 4.0)</p>
+      <p class="tiny">&copy; <span id="footYear">2026</span> Astro Soulprint by Alex &middot; Human Design planet positions by astronomy-engine (MIT) &middot; City data from GeoNames (CC BY 4.0)</p>
+      <p class="tiny">Birth Chart calculations by the <a href="https://www.astro.com/swisseph/" target="_blank" rel="noopener">Swiss Ephemeris</a> &copy; Astrodienst AG, used under the GNU AGPL-3.0 &middot; <a href="https://github.com/astrosoulprintbyalex/astro-soulprint/tree/main/soulprint-chart" target="_blank" rel="noopener">Source code</a> &middot; Chart symbols: Noto Sans Symbols (SIL OFL)</p>
     </div>
   </footer>
 
@@ -237,13 +349,17 @@
       });
     }());
   </script>
-  <script src="js/config.js?v=18"></script>
-  <script src="data/countries.js?v=18"></script>
-  <script src="js/vendor/astronomy.browser.min.js?v=18"></script>
-  <script src="js/hd-data.js?v=18"></script>
-  <script src="js/hd-calc.js?v=18"></script>
-  <script src="js/content.js?v=18"></script>
-  <script src="js/bodygraph.js?v=18"></script>
-  <script src="js/app.js?v=18"></script>
+  <script src="js/config.js?v=19"></script>
+  <script src="data/countries.js?v=19"></script>
+  <script src="js/vendor/astronomy.browser.min.js?v=19"></script>
+  <script src="js/hd-data.js?v=19"></script>
+  <script src="js/hd-calc.js?v=19"></script>
+  <script src="js/content.js?v=19"></script>
+  <script src="js/bodygraph.js?v=19"></script>
+  <script src="js/app.js?v=19"></script>
+  <script src="js/astro-calc.js?v=19"></script>
+  <script src="js/astro-content.js?v=19"></script>
+  <script src="js/astro-wheel.js?v=19"></script>
+  <script src="js/birth-chart.js?v=19"></script>
 </body>
 </html>

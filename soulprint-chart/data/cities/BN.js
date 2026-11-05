@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["BN"]=[["Bandar Seri Begawan","",0,"",4.89,114.94],["Kuala Belait","",0,"",4.58,114.23],["Seria","",0,"",4.61,114.32],["Tutong","",0,"",4.8,114.65]];

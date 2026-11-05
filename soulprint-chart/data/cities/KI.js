@@ -1,1 +1,1 @@
-window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["KI"]=[["Tarawa","",1,""],["Betio Village","",1,""],["Bikenibeu Village","",1,""]];
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["KI"]=[["Tarawa","",1,"",1.33,172.98],["Betio Village","",1,"",1.36,172.92],["Bikenibeu Village","",1,"",1.37,173.12]];

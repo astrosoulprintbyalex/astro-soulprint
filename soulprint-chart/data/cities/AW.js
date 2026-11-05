@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["AW"]=[["Oranjestad","",0,"",12.52,-70.03],["Tanki Leendert","",0,"",12.54,-70.02],["San Nicolas","",0,"",12.44,-69.91],["Santa Cruz","",0,"",12.51,-69.98],["Paradera","",0,"",12.54,-70.01],["Savaneta","",0,"",12.45,-69.94]];

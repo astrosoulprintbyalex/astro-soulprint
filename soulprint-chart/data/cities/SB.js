@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["SB"]=[["Honiara","",0,"",-9.43,159.95],["Malango","",0,"",-9.7,159.72],["Auki","",0,"",-8.77,160.7],["Gizo","",0,"",-8.1,156.84]];

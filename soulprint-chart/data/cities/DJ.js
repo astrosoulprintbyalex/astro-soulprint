@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["DJ"]=[["Djibouti","",0,"",11.59,43.15],["'Ali Sabieh","",0,"",11.16,42.71],["Tadjourah","",0,"",11.79,42.88],["Obock","",0,"",11.97,43.29],["Dikhil","",0,"",11.1,42.37],["Arta","",0,"",11.53,42.85]];

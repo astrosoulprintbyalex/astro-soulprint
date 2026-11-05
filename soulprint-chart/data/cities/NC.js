@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["NC"]=[["Nouméa","",0,"",-22.27,166.45],["Mont-Dore","",0,"",-22.26,166.57],["Dumbéa","",0,"",-22.16,166.46],["Païta","",0,"",-22.13,166.36],["Wé","",0,"",-20.92,167.26],["Tadine","",0,"",-21.55,167.88]];

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["MV"]=[["Male","",0,"",4.18,73.51],["Fuvahmulah","",0,"",-0.3,73.42],["Hithadhoo","",0,"",-0.6,73.08],["Kulhudhuffushi","",0,"",6.62,73.07],["Thinadhoo","",0,"",0.53,73],["Naifaru","",0,"",5.44,73.37],["Hulhumale","",0,"",4.21,73.54]];

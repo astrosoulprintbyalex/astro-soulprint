@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["GF"]=[["Cayenne","GF",0,"",4.93,-52.33],["Matoury","GF",0,"",4.85,-52.32],["Saint-Laurent-du-Maroni","GF",0,"",5.5,-54.03],["Kourou","GF",0,"",5.16,-52.64],["Rémire-Montjoly","GF",0,"",4.92,-52.27],["Macouria","GF",0,"",4.91,-52.37],["Mana","GF",0,"",5.67,-53.78]];

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["EH"]=[["Laayoune","",0,"MA",27.14,-13.19],["Dakhla","CE",0,"MA",23.68,-15.96],["Laayoune Plage","",0,"",27.1,-13.42]];

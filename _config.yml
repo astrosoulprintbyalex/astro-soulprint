@@ -6,5 +6,6 @@ url: "https://astrosoulprintbyalex.github.io"
 baseurl: "/astro-soulprint"
 
 exclude:
+  - soulprint-chart/node_modules
   - README.md
   - tests

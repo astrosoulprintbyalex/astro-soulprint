@@ -1,1 +1,1 @@
-window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["FM"]=[["Weno","",2,""],["Tofol","",1,""],["Colonia","",2,""],["Kolonia","",0,""],["Kolonia Town","",0,""]];
+window.Soulprint=window.Soulprint||{};(Soulprint.cityData=Soulprint.cityData||{})["FM"]=[["Weno","",2,"",7.45,151.84],["Tofol","",1,"",5.32,163.01],["Colonia","",2,"",9.52,138.12],["Kolonia","",0,"",6.96,158.21],["Kolonia Town","",0,"",6.96,158.21]];
