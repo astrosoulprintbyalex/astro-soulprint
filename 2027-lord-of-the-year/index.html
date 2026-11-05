@@ -1,0 +1,75 @@
+---
+layout: default
+title: "2027 Lord of the Year — Astro Soulprint by Alex"
+description: "Find your 2027 Lord of the Year: the house activated in your birthday year and the planet that leads it. Free, in Burmese and English."
+active: lord
+root: "../"
+share_image: 2027-lord-of-the-year
+---
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="../">Home</a> &rsaquo; 2027 Lord of the Year</p>
+        <p class="label">Free tool &middot; Annual profections</p>
+        <h1>2027 Lord of the Year</h1>
+        <p class="note">Discover which area of your life is in the spotlight in your 2027 birthday year, and which planet leads it.</p>
+        <p class="note" lang="my">ဒီနှစ်မှာ ကိုယ့်ဘဝရဲ့ ဘယ် House ကို အလင်းပေးထားလဲ၊ ဘယ် Planet က ဦးဆောင်လဲဆိုတာ ကြည့်လိုက်ရအောင်။</p>
+      </div>
+    </section>
+
+    <section class="section lord-section">
+      <div class="wrap narrow">
+
+        <form class="card lord-form" id="lordForm" novalidate autocomplete="off">
+          <fieldset class="lord-field">
+            <legend>Birth date <small lang="my">မွေးသက္ကရာဇ်</small></legend>
+            <div class="lord-row3">
+              <select id="lordDay" aria-label="Day" required></select>
+              <select id="lordMonth" aria-label="Month" required></select>
+              <input id="lordYear" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="Year" aria-label="Year" required>
+            </div>
+          </fieldset>
+
+          <div class="lord-field">
+            <label for="lordRising">Rising sign (Ascendant) <small lang="my">Rising Sign (Ascendant)</small></label>
+            <select id="lordRising" required></select>
+            <p class="lord-hint">Don&rsquo;t know your rising? <a href="../soulprint-chart/">Use my free chart page</a></p>
+            <p class="lord-hint" lang="my">Rising မသိဘူးလား? ကျွန်မရဲ့ <a href="../soulprint-chart/">Free Chart Page</a> ကို သုံးကြည့်နိုင်ပါတယ်။</p>
+          </div>
+
+          <p class="lord-error" id="lordError" role="alert" hidden></p>
+
+          <button class="btn btn-block" type="submit">Show my Lord of the Year<small lang="my">ကိုယ့်ရဲ့ Lord of the Year ကို ကြည့်မယ်</small></button>
+          <p class="lord-privacy">&#10022; Calculated on your device. Nothing is saved.</p>
+          <p class="lord-privacy" lang="my">သင့်ဖုန်းထဲမှာပဲ တွက်ချက်တာဖြစ်ပြီး ဘာမှ သိမ်းထားမှာ မဟုတ်ပါဘူး။</p>
+
+          <details class="more-info lord-how">
+            <summary>How it works<small lang="my">ဘယ်လိုတွက်လဲ</small></summary>
+            <p>Each birthday moves you to the next house of your chart, starting with the 1st house at birth. The planet that rules the sign of that house is your Lord of the Year. We use whole-sign houses and traditional rulers.</p>
+            <p lang="my">မွေးနေ့တစ်ခုပြည့်တိုင်း ကိုယ့်ဇာတာရဲ့ နောက်ထပ် House တစ်ခုကို ရွေ့သွားပါတယ်။ မွေးဖွားချိန်မှာ ၁ ခုမြောက် House ကနေ စပါတယ်။ အဲဒီ House ရဲ့ Sign ကို အုပ်စိုးတဲ့ Planet က ကိုယ့်ရဲ့ Lord of the Year ပါ။ Whole Sign Houses နဲ့ Traditional Rulers တွေကို သုံးထားပါတယ်။</p>
+          </details>
+        </form>
+
+        <div id="lordResult" class="lord-result" hidden></div>
+
+        <div class="featured lord-promo" id="roadmapPromo">
+          <p class="label">Next step</p>
+          <h2>2027 Cosmic Roadmap</h2>
+          <p class="season-range">November 2026 – April 2027 &nbsp;·&nbsp; 6 months of Major Transits</p>
+          <p>Your Lord of the Year shows the theme of your year. The 2027 Cosmic Roadmap shows the timing: when the major transits touch it, when to act and when to pause.</p>
+          <p lang="my" class="lead-my">ကိုယ့်ရဲ့ Lord of the Year က ဒီနှစ်ရဲ့ အဓိကအကြောင်းအရာကို ပြောပြပါတယ်။ 2027 Cosmic Roadmap ကတော့ အဲဒီအကြောင်းအရာကို Major Transits တွေ ဘယ်အချိန်မှာ ထိတွေ့မလဲ၊ ဘယ်အချိန်မှာ Action ယူသင့်လဲ၊ ဘယ်အချိန်မှာ ခဏရပ်သင့်လဲဆိုတာ ဖတ်ပေးပါတယ်။ 🤎</p>
+          <ul class="sparkles">
+            <li lang="my">Recorded Reading + Personalized Transit Analysis</li>
+            <li class="pdf" lang="my">ကိုယ့်အတွက် အရေးကြီးတဲ့ Dates နဲ့ Focus Points တွေကို ပြန်ကြည့်လို့ရမယ့် Personal Transit Calendar PDF</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="https://m.me/astrosoulprintbyalex?ref=2027" target="_blank" rel="noopener">Message Alex “2027”<small lang="my">Messenger ကို “2027” လို့ စာပို့ပါ</small></a>
+            <a class="btn btn-ghost" href="../roadmap.html">See the 2027 Cosmic Roadmap<small lang="my">အသေးစိတ်ကို ဆက်ဖတ်ရန်</small></a>
+            <a class="btn btn-ghost" href="../#packages">See all packages<small lang="my">Package အားလုံးကို ကြည့်ရန်</small></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script src="lord.js"></script>
+    <script src="page.js"></script>

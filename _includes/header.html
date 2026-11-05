@@ -8,6 +8,7 @@
           <li class="has-sub"><a href="{{ home }}#packages">Packages</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show package categories"></button>
             <ul class="sub">{% for c in site.data.categories %}<li><a href="{{ root }}{{ c.url }}"{% if page.active == c.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ul>
           </li>
+          <li><a href="{{ root }}2027-lord-of-the-year/"{% if page.active == 'lord' %} aria-current="page"{% endif %}>2027 Lord of the Year</a></li>
           <li><a href="{{ home }}#about">About</a></li>
           <li><a href="{{ home }}#contact">Contact</a></li>
         </ul>

@@ -7,3 +7,4 @@ baseurl: "/astro-soulprint"
 
 exclude:
   - README.md
+  - tests
