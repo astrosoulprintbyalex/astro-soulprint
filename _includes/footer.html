@@ -7,9 +7,9 @@
         <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=61561494154512" target="_blank" rel="noopener">Facebook Page</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        {% for c in site.data.categories %}<a href="{{ c.url }}">{{ c.title }}</a>
-        {% endfor %}        <a href="roadmap.html">2027 Cosmic Roadmap</a>
+        <a href="{{ home }}">Home</a>
+        {% for c in site.data.categories %}<a href="{{ root }}{{ c.url }}">{{ c.title }}</a>
+        {% endfor %}        <a href="{{ root }}roadmap.html">2027 Cosmic Roadmap</a>
       </nav>
       <p class="small">&copy; <span id="year">2026</span> Astro Soulprint by Alex</p>
     </div>

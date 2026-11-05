@@ -20,13 +20,13 @@ Click the file on github.com, click the pencil icon, edit, then **Commit changes
 
 | What | File | Notes |
 |------|------|-------|
-| Package buttons, Messenger and Facebook links | `js/config.js` | Only change the text between the quote marks. `../soulprint-core.html` means "the Soulprint Core page of the main site". |
+| Package buttons, Messenger and Facebook links | `js/config.js` | Only change the text between the quote marks. `../human-design/` means "the Human Design Readings page of the main site". |
 | Burmese text | `js/content.js` | Under each English paragraph is a line `my: ''`. Type Burmese between the quotes. It appears automatically. |
 | Colours | `css/style.css` (top, the `:root` block) | Already set to your logo olive green `#343724`. |
 | Logo | replace `soulprint-chart/assets/logo.png` (a square or round picture) | It shows in the top bar and as the browser tab icon. |
 | Incarnation Cross names | `js/content.js`, `CROSS_NAMES` | The page shows the cross type and its four gates. Add names there if you want them. |
 
-**If a change doesn't show on your phone:** your phone may keep an old copy. Open `index.html`, and change `?v=16` to `?v=17` (every place it appears), then save. That forces a fresh copy.
+**If a change doesn't show on your phone:** your phone may keep an old copy. Open `index.html`, and change `?v=17` to `?v=18` (every place it appears), then save. That forces a fresh copy.
 
 ## The 4 Arrows (Variables)
 

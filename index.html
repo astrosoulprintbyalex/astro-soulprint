@@ -2,6 +2,7 @@
 layout: default
 title: "Astro Soulprint by Alex"
 description: "Western Astrology and Human Design readings for love, career, healing and timing. More than a prediction. A map back to who you are."
+share_image: home
 active: home
 ---
     <section class="hero">
@@ -116,36 +117,14 @@ active: home
         <h2 class="center">Choose your reading</h2>
         <p class="sub center" lang="my">ကိုယ့်လိုအပ်ချက်အလိုက် ရွေးချယ်နိုင်အောင် Category လေးတွေနဲ့ ခွဲထားပါတယ် 🤎</p>
         <div class="cards three">
-        <a class="card card-link" href="aligned-love.html">
-          <span class="pill">3 readings</span>
-          <h4>Aligned Love</h4>
-          <p class="desc" lang="my">အချစ် Relationship, အိမ်ထောင်ရေးနဲ့ ပတ်သက်တဲ့ Reading များ</p>
+        {% for c in site.data.categories %}
+        <a class="card card-link" href="{{ c.url }}">
+          <span class="pill">{{ c.count }} readings</span>
+          <h4>{{ c.title }}</h4>
+          <p class="desc" lang="my">{{ c.desc }}</p>
           <span class="more">View readings</span>
         </a>
-        <a class="card card-link" href="aligned-wealth-career.html">
-          <span class="pill">2 readings</span>
-          <h4>Aligned Wealth &amp; Career</h4>
-          <p class="desc" lang="my">ငွေကြေး၊ အလုပ်အကိုင်နဲ့ပတ်သက်တဲ့ Reading များ</p>
-          <span class="more">View readings</span>
-        </a>
-        <a class="card card-link" href="karmic-healing.html">
-          <span class="pill">2 readings</span>
-          <h4>Karmic Healing &amp; Aura Protection</h4>
-          <p class="desc" lang="my">Healing ပိုင်း၊ Karmic ပိုင်းနဲ့ ပတ်သက်တဲ့ Reading များ</p>
-          <span class="more">View readings</span>
-        </a>
-        <a class="card card-link" href="cosmic-timing.html">
-          <span class="pill">3 readings</span>
-          <h4>Cosmic Timing</h4>
-          <p class="desc" lang="my">Transits တွေနဲ့ Prediction အပိုင်း Reading များ</p>
-          <span class="more">View readings</span>
-        </a>
-        <a class="card card-link" href="soulprint-core.html">
-          <span class="pill">3 readings</span>
-          <h4>Soulprint Core</h4>
-          <p class="desc" lang="my">Premium Full Chart Reading များ</p>
-          <span class="more">View readings</span>
-        </a>
+        {% endfor %}
         </div>
       </div>
     </section>

@@ -1,0 +1,49 @@
+---
+layout: default
+title: "Aligned Wealth & Career — Astro Soulprint by Alex"
+description: "Wealth & career readings by Astro Soulprint by Alex: Aligned Wealth & Career Mini and HD Wealth & Career. Find the work and money path that fits your nature."
+active: wealth
+root: "../"
+share_image: aligned-wealth-career
+---
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="../">Home</a> &rsaquo; <a href="../#packages">Packages</a></p>
+        <p class="label">Reading category</p>
+        <h1>Aligned Wealth &amp; Career</h1>
+        <p class="note" lang="my">ငွေကြေး၊ အလုပ်အကိုင်နဲ့ပတ်သက်တဲ့ Reading များ</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-bottom:0">
+      <div class="wrap narrow">
+        <div class="about-card" style="text-align:left">
+          <p lang="my">အလုပ်မှာ ဘာကြောင့် ကြိုးစားသလောက် Result မရသေးတာလဲ?<br>ငွေရှာတဲ့နည်းလမ်းက ကိုယ့် Energy နဲ့ တကယ်ကိုက်ညီရဲ့လား?<br>Career Direction မှာ ဘယ်လမ်းကို ရွေးသင့်လဲဆိုတာကို နားလည်ချင်သူတွေအတွက် ဒီ Reading လေးကို ပြင်ဆင်ထားပါတယ်။ 🤎</p>
+          <p lang="my">Astrology နဲ့ Human Design ကို ပေါင်းစပ်ပြီး ကိုယ့်ရဲ့ Natural Talents၊ Wealth Potential နဲ့ Career Alignment ကို နားလည်လာနိုင်မှာဖြစ်ပြီး ကိုယ့် Energy နဲ့ အလိုက်ဖက်ဆုံး Success Path ကို ရှာဖွေတွေ့ရှိနိုင်မှာပါ။ ✨</p>
+          <p class="quote" style="margin-bottom:0">When your career aligns with your energy, wealth flows with greater ease. ✨</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cards">
+        <article class="card">
+          <span class="pill">Mini Reading</span>
+          <h4>Aligned Wealth &amp; Career — Mini</h4>
+          <p class="chips"><span class="chip">Voice message</span><span class="chip">Delivered within 3 working days</span></p>
+          <p class="desc" lang="my">Jupiter, 2nd &amp; 8th House, Midheaven နဲ့ Energy Type &amp; Profile Lines ကို ကြည့်ပြီး ကိုယ့်အတွက် သဘာဝကျတဲ့ လမ်းကြောင်းကို ရှင်းပြပေးပါတယ်။</p>
+          <ul class="sparkles"><li>Jupiter, 2nd &amp; 8th House</li><li>Midheaven</li><li>Energy Type &amp; Profile Lines</li></ul>
+          <details class="more-info">
+            <summary>What’s inside<small lang="my">အသေးစိတ်ကို ဆက်ဖတ်ရန်</small></summary>
+            <ul class="sparkles" lang="my"><li><strong>Jupiter</strong> က ပြောပြမယ့် Abundance, Growth နဲ့ Opportunity တွေ</li><li><strong>2nd House</strong> က ကိုယ့်ရဲ့ Income Style၊ Money Mindset နဲ့ Personal Resources</li><li><strong>8th House</strong> က Wealth Expansion, Investments, Shared Resources နဲ့ Hidden Financial Potential</li><li><strong>Midheaven (MC)</strong> က Career Direction, Public Image နဲ့ Long-term Success Path</li><li><strong>Human Design Energy Type</strong> အရ ကိုယ်အောင်မြင်ဖို့ အကောင်းဆုံး Working Style</li><li><strong>Profile Lines</strong> က ကိုယ့်ရဲ့ Natural Strengths၊ Career Role နဲ့ Opportunities တွေကို ဘယ်လိုဆွဲဆောင်နိုင်မလဲ</li><li>Wealth &amp; Career Alignment အတွက် ဘယ်နေရာကို အရင် Focus လုပ်သင့်လဲ၊ ဘယ် Pattern တွေကို Release လုပ်ရမလဲဆိုတာတွေကို နားလည်သွားပါလိမ့်မယ်။</li></ul>
+          </details>
+          <p class="price"><span class="mmk">66,666 MMK</span> <span class="alt">444 THB · 28 SGD</span></p>
+          <a class="btn btn-block" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message Alex to book</a>
+        </article>
+        {% include packages/hd-wealth-career.html %}
+        </div>
+        <p class="center sub" style="margin-top:34px">Not sure which one is right for you? <a href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message Alex</a> and we’ll find it together.</p>
+        <div class="actions" style="flex-wrap:wrap">{% for c in site.data.categories %}{% unless c.id == page.active %}<a class="btn btn-ghost btn-sm" href="../{{ c.url }}">{{ c.title }}</a>{% endunless %}{% endfor %}</div>
+      </div>
+    </section>

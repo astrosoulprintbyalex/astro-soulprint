@@ -1,15 +1,15 @@
 <header class="site-header">
     <div class="wrap bar">
-      <a class="brand-link" href="index.html"><img src="images/logo.jpg" alt="" width="38" height="38">Astro Soulprint</a>
+      <a class="brand-link" href="{{ home }}"><img src="{{ root }}images/logo.jpg" alt="" width="38" height="38">Astro Soulprint</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
       <nav class="site-nav" id="site-nav" aria-label="Main menu">
         <ul>
-          <li><a href="index.html"{% if page.active == 'home' %} aria-current="page"{% endif %}>Home</a></li>
-          <li class="has-sub"><a href="index.html#packages">Packages</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show package categories"></button>
-            <ul class="sub">{% for c in site.data.categories %}<li><a href="{{ c.url }}"{% if page.active == c.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ul>
+          <li><a href="{{ home }}"{% if page.active == 'home' %} aria-current="page"{% endif %}>Home</a></li>
+          <li class="has-sub"><a href="{{ home }}#packages">Packages</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show package categories"></button>
+            <ul class="sub">{% for c in site.data.categories %}<li><a href="{{ root }}{{ c.url }}"{% if page.active == c.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ul>
           </li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="{{ home }}#about">About</a></li>
+          <li><a href="{{ home }}#contact">Contact</a></li>
         </ul>
       </nav>
     </div>

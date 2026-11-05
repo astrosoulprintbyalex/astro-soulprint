@@ -1,16 +1,33 @@
-# The five reading categories. Used by the menu, footer and home page order.
+# The reading pages. Used by the menu, footer and the cards on the home page (in this order).
+# url = the folder of the page (each page is a folder with an index.html, so links have no ".html").
+# count = the number shown on the home page card. desc = the Burmese line on the home page card.
 - id: love
-  url: aligned-love.html
+  url: aligned-love/
   title: "Aligned Love"
+  count: 3
+  desc: "အချစ် Relationship, အိမ်ထောင်ရေးနဲ့ ပတ်သက်တဲ့ Reading များ"
 - id: wealth
-  url: aligned-wealth-career.html
+  url: aligned-wealth-career/
   title: "Aligned Wealth &amp; Career"
+  count: 2
+  desc: "ငွေကြေး၊ အလုပ်အကိုင်နဲ့ပတ်သက်တဲ့ Reading များ"
 - id: karmic
-  url: karmic-healing.html
+  url: karmic-healing/
   title: "Karmic Healing &amp; Aura Protection"
+  count: 2
+  desc: "Healing ပိုင်း၊ Karmic ပိုင်းနဲ့ ပတ်သက်တဲ့ Reading များ"
 - id: timing
-  url: cosmic-timing.html
+  url: cosmic-timing/
   title: "Cosmic Timing"
+  count: 3
+  desc: "Transits တွေနဲ့ Prediction အပိုင်း Reading များ"
 - id: core
-  url: soulprint-core.html
+  url: soulprint-core/
   title: "Soulprint Core"
+  count: 3
+  desc: "Premium Full Chart Reading များ"
+- id: hd
+  url: human-design/
+  title: "Human Design Readings"
+  count: 5
+  desc: "Human Design တစ်ခုတည်းနဲ့ ကြည့်တဲ့ Reading များ အားလုံးကို တစ်နေရာတည်းမှာ"
