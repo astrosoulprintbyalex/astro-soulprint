@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#245f4a">
+  <title>Transit Card Studio (private)</title>
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --emerald: #2f7a5f; --emerald-deep: #245f4a; --emerald-soft: #e3efe8; --emerald-mist: #f0f6f2;
+      --cream: #faf7f0; --cream-deep: #f3efe4; --white: #fffefb; --gold: #b8975a; --gold-line: rgba(184,151,90,.38);
+      --gold-text: #8a6b2f; --ink: #26352e; --muted: #5d6e65;
+      --sans: "DM Sans", "Noto Sans Myanmar", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Cormorant Garamond", "Noto Serif Myanmar", Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+    :lang(my), textarea { line-height: 1.9; }
+    .top { background: var(--emerald-deep); color: var(--cream); padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+    .top img { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); }
+    .top h1 { font: 600 22px/1.1 var(--serif); margin: 0; letter-spacing: .02em; }
+    .top .tag { margin-left: auto; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #e8d6a8; border: 1px solid rgba(232,214,168,.5); padding: 3px 9px; border-radius: 99px; white-space: nowrap; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px 16px 48px; display: grid; gap: 20px; }
+    .panel { background: var(--white); border: 1px solid var(--gold-line); border-radius: 20px; padding: 18px; box-shadow: 0 10px 30px rgba(38,70,56,.08); }
+    label, .lbl { display: block; font-weight: 600; font-size: 14px; color: var(--emerald-deep); margin-bottom: 6px; }
+    .field { margin-bottom: 16px; }
+    input[type=date], select, textarea { width: 100%; font: inherit; font-size: 16px; /* 16px stops iOS zooming */ color: var(--ink); background: var(--cream); border: 1px solid var(--gold-line); border-radius: 12px; padding: 11px 12px; min-height: 46px; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid rgba(47,122,95,.45); outline-offset: 2px; }
+    textarea { min-height: 120px; resize: vertical; font-family: var(--sans); }
+    .row { display: flex; gap: 8px; align-items: stretch; }
+    .row input { flex: 1; min-width: 0; }
+    .row .btn { flex: 0 0 auto; }
+    .hint { font-size: 13px; color: var(--muted); margin: 6px 0 0; display: flex; justify-content: space-between; gap: 10px; }
+    .btn { font: 600 16px var(--sans); min-height: 48px; padding: 0 20px; border-radius: 99px; border: 1px solid var(--emerald-deep); background: var(--emerald); color: #fff; cursor: pointer; }
+    .btn:hover { background: var(--emerald-deep); }
+    .btn.ghost { background: transparent; color: var(--emerald-deep); border-color: var(--gold); }
+    .btn.ghost:hover { background: var(--emerald-mist); }
+    .btn.small { min-height: 46px; padding: 0 14px; }
+    .btn[disabled] { opacity: .5; cursor: not-allowed; }
+    .actions { display: grid; gap: 10px; }
+    .preview { display: grid; justify-items: center; gap: 12px; }
+    .frame { width: 100%; max-width: 540px; background: var(--emerald-deep); padding: 0; border-radius: 10px; box-shadow: 0 12px 34px rgba(38,70,56,.2); line-height: 0; overflow: hidden; }
+    canvas { width: 100%; height: auto; display: block; aspect-ratio: 1080 / 1350; }
+    .status { font-size: 13px; color: var(--muted); min-height: 20px; text-align: center; margin: 0; }
+    .err { color: #9a3b2e; }
+    @media (min-width: 860px) {
+      main { grid-template-columns: 340px 1fr; align-items: start; }
+      .preview { position: sticky; top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <img src="../../images/logo.jpg" alt="" width="34" height="34">
+    <h1>Transit Card Studio</h1>
+    <span class="tag">Private</span>
+  </header>
+
+  <main>
+    <form class="panel" id="form" autocomplete="off" onsubmit="return false">
+      <div class="field">
+        <label for="date">Date</label>
+        <div class="row">
+          <button class="btn ghost small" type="button" id="prev" aria-label="Previous day">&#8249;</button>
+          <input id="date" type="date" required>
+          <button class="btn ghost small" type="button" id="next" aria-label="Next day">&#8250;</button>
+        </div>
+        <p class="hint">The week on the card runs 7 days from this date.</p>
+      </div>
+
+      <div class="field">
+        <label for="tz">Time zone for times on the card</label>
+        <select id="tz">
+          <option value="390" selected>Myanmar (UTC+6:30)</option>
+          <option value="420">Thailand / Vietnam (UTC+7)</option>
+          <option value="480">Singapore / China (UTC+8)</option>
+          <option value="0">UTC</option>
+          <option value="330">India (UTC+5:30)</option>
+          <option value="-300">US Eastern (UTC-5)</option>
+          <option value="-480">US Pacific (UTC-8)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="msg">Your message <span lang="my" style="font-weight:500">(မြန်မာလို ရေးလို့ရပါတယ်)</span></label>
+        <textarea id="msg" maxlength="260" placeholder="A short message for today… / ဒီနေ့အတွက် စာတို…"></textarea>
+        <p class="hint"><span>Burmese and English both work.</span><span id="count">0 / 260</span></p>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="button" id="download">Download PNG</button>
+        <button class="btn ghost" type="button" id="share" hidden>Share / save to Photos</button>
+      </div>
+    </form>
+
+    <section class="preview" aria-label="Card preview">
+      <div class="frame"><canvas id="card" width="1080" height="1350" role="img" aria-label="Preview of the daily transit card"></canvas></div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="../../soulprint-chart/js/vendor/astronomy.browser.min.js"></script>
+  <script src="transit.js"></script>
+  <script src="card.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

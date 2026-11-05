@@ -69,3 +69,13 @@ visitor's device and saves nothing.
 ## Client intake form
 
 `intake.html` (+ `intake.css`, `intake.js`) is the post-payment intake form. Setup steps: see `SETUP-INTAKE.md`.
+
+## Private studio: daily transit card
+
+`studio/transit-card/` is a private tool (not in the menu, `noindex`; open it at `/studio/transit-card/`). Pick a date, add a short
+message (Burmese or English) and download a 1080×1350 PNG in the emerald, cream and gold style. It shows the Moon's sign and phase,
+planets changing sign or stationing retrograde/direct in the 7 days from that date, and which planets are retrograde.
+
+- Calculations: `transit.js`, using the same astronomy library as the Human Design chart. Card drawing: `card.js`. Page: `index.html`, `app.js`.
+- Times on the card use the chosen time zone (default Myanmar, UTC+6:30); the Moon is read at local noon.
+- Tests: `node --test tests/*.test.js`.
