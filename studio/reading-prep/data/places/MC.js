@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["MC"]={"tz":["Europe/Paris"],"c":[["Monaco","",43.73,7.42,0,""],["Monte-Carlo","",43.74,7.43,0,""],["La Condamine","",43.73,7.42,0,""]]};

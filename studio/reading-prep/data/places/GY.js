@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["GY"]={"tz":["America/Guyana"],"c":[["Georgetown","",6.8,-58.16,0,""],["Linden","",6.01,-58.31,0,""],["New Amsterdam","",6.25,-57.52,0,""],["Anna Regina","",7.26,-58.51,0,""],["Bartica","",6.41,-58.62,0,""]]};

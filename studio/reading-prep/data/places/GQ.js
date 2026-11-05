@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["GQ"]={"tz":["Africa/Lagos"],"c":[["Bata","",1.86,9.77,0,""],["Malabo","",3.76,8.78,0,""],["Ebebiyin","",2.15,11.34,0,""],["Aconibe","",1.3,10.94,0,""],["Añisoc","",1.87,10.77,0,""]]};

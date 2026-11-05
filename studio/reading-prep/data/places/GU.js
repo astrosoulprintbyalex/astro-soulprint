@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["GU"]={"tz":["Pacific/Guam"],"c":[["Dededo Village","DD",13.52,144.84,0,""],["Yigo Village","YG",13.54,144.89,0,""],["Tamuning-Tumon-Harmon Village","TM",13.49,144.78,0,""],["Tamuning","TM",13.49,144.78,0,""],["Mangilao Village","MA",13.45,144.8,0,""]]};

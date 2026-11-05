@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["NC"]={"tz":["Pacific/Noumea"],"c":[["Nouméa","",-22.27,166.45,0,""],["Mont-Dore","",-22.26,166.57,0,""],["Dumbéa","",-22.16,166.46,0,""],["Païta","",-22.13,166.36,0,""],["Wé","",-20.92,167.26,0,""]]};

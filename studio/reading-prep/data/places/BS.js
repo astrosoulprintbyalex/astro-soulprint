@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["BS"]={"tz":["America/Toronto"],"c":[["Nassau","",25.06,-77.34,0,""],["Lucaya","",26.53,-78.67,0,""],["Freeport","",26.53,-78.7,0,""],["West End","",26.69,-78.98,0,""]]};

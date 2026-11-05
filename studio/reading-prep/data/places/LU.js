@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["LU"]={"tz":["Europe/Brussels"],"c":[["Luxembourg","LU",49.61,6.13,0,""],["Esch-sur-Alzette","ES",49.5,5.98,0,""],["Dudelange","ES",49.48,6.09,0,""]]};
