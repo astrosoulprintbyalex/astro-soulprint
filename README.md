@@ -69,3 +69,10 @@ visitor's device and saves nothing.
 ## Client intake form
 
 `intake.html` (+ `intake.css`, `intake.js`) is the post-payment intake form. Setup steps: see `SETUP-INTAKE.md`.
+
+## Testimonial frame maker (private)
+
+`studio/testimonials/index.html` is a private tool at `/studio/testimonials/`. It is not in the menu, is `noindex`, and works
+entirely on your device (nothing is uploaded). Upload a client chat screenshot, add an optional title and package name, drag
+boxes over names to blur or cover them, and download a 1080×1350 PNG. On a phone, turn "drawing" on to drag the hide boxes,
+then off to scroll again. The logo is `images/logo.jpg`; colours and layout are at the top of the page's script.
