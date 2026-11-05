@@ -1,0 +1,64 @@
+---
+layout: default
+title: "Cosmic Weather — This Week's Sky | Astro Soulprint by Alex"
+description: "This week's Moon phases, the Moon's signs, planets changing sign and retrogrades, in simple, warm words. Updated automatically, in Burmese and English."
+og_title: "Cosmic Weather: this week's sky"
+active: weather
+root: "../"
+share_image: cosmic-weather
+---
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="../">Home</a> &rsaquo; Cosmic Weather</p>
+        <p class="label">Free weekly guide &middot; Updates itself</p>
+        <h1>Cosmic Weather</h1>
+        <p class="note">This week&rsquo;s Moon, planet changes and retrogrades, explained in simple, gentle words.</p>
+        <p class="note" lang="my">ဒီအပတ်ရဲ့ Moon၊ Planet တွေရဲ့ ပြောင်းလဲမှုတွေနဲ့ Retrograde တွေကို ရိုးရိုးလေး၊ ပျော့ပျော့လေး ရှင်းပြထားပါတယ်နော်။ 🤍</p>
+        <div class="cw-week" id="cwWeek" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section cw-section">
+      <div class="wrap narrow">
+
+{%- assign note = site.data["cosmic-note"] -%}
+{%- assign note_my = note.my | strip -%}
+{%- assign note_en = note.en | strip -%}
+{%- if note_my != "" or note_en != "" %}
+        <aside class="cw-note" aria-labelledby="cwNoteTitle">
+          <p class="label" id="cwNoteTitle">Note from Alex{% if note.week_of and note.week_of != "" %} &middot; {{ note.week_of | escape }}{% endif %}</p>
+          <p class="cw-note-title" lang="my">Alex ဆီက စာလေး 🤍</p>
+          {%- if note_my != "" %}
+          <p class="cw-note-my" lang="my">{{ note_my | escape | newline_to_br }}</p>
+          {%- endif %}
+          {%- if note_en != "" %}
+          <p class="cw-note-en">{{ note_en | escape | newline_to_br }}</p>
+          {%- endif %}
+        </aside>
+{%- endif %}
+
+        <div id="cwApp" class="cw-app">
+          <noscript><p class="cw-error">This page works out the sky on your device, so it needs JavaScript turned on.<span lang="my">ဒီ Page က ကိုယ့်ဖုန်းထဲမှာ တွက်ချက်တာဖြစ်လို့ JavaScript ဖွင့်ထားဖို့ လိုပါတယ်။</span></p></noscript>
+          <p class="cw-loading">Reading the sky&hellip;<span lang="my">Sky ကို ဖတ်နေပါတယ်…</span></p>
+        </div>
+
+        <div class="featured cw-promo" id="readingsPromo">
+          <p class="label">Want it personal?</p>
+          <h2>See what this sky means for <em>your</em> chart</h2>
+          <p>The sky above is the same for everyone. Where it lands in your own birth chart is what makes it personal. A reading with Alex shows you which part of your life is being touched, and when.</p>
+          <p lang="my" class="lead-my">ဒီ Sky က လူတိုင်းအတွက် အတူတူပါပဲ။ ဒါပေမယ့် ကိုယ့်ရဲ့ Birth Chart ထဲက ဘယ်နေရာကို ထိတွေ့နေလဲဆိုတာက ကိုယ်ပိုင်ဖြစ်စေတာပါ။ Reading လေးမှာ ကိုယ့်ဘဝရဲ့ ဘယ်အပိုင်းကို၊ ဘယ်အချိန်မှာ ထိတွေ့မလဲဆိုတာ အတူတူ ကြည့်သွားပါမယ်နော်။ 🤍✨</p>
+          <div class="actions">
+            <a class="btn" href="../#packages">See my packages<small lang="my">Package တွေကို ကြည့်ရန်</small></a>
+            <a class="btn btn-ghost" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message Alex on Messenger<small lang="my">Messenger မှာ စာပို့ရန်</small></a>
+          </div>
+          <p class="cw-chartlink">Not sure where to start? <a href="../soulprint-chart/">Try my free chart page</a>
+            <span lang="my">ဘယ်ကစရမလဲ မသေချာဘူးလား? <a href="../soulprint-chart/">Free Chart Page</a> လေးကို အရင် ကြည့်ကြည့်နိုင်ပါတယ်။</span></p>
+        </div>
+
+      </div>
+    </section>
+
+    <script src="../soulprint-chart/js/vendor/astronomy.browser.min.js?v=18"></script>
+    <script src="sky.js"></script>
+    <script src="words.js"></script>
+    <script src="page.js"></script>

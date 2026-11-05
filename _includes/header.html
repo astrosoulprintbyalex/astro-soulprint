@@ -9,6 +9,7 @@
             <ul class="sub">{% for c in site.data.categories %}<li><a href="{{ root }}{{ c.url }}"{% if page.active == c.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ul>
           </li>
           <li><a href="{{ root }}2027-lord-of-the-year/"{% if page.active == 'lord' %} aria-current="page"{% endif %}>2027 Lord of the Year</a></li>
+          <li><a href="{{ root }}cosmic-weather/"{% if page.active == 'weather' %} aria-current="page"{% endif %}>Cosmic Weather</a></li>
           <li><a href="{{ home }}#about">About</a></li>
           <li><a href="{{ home }}#contact">Contact</a></li>
         </ul>
