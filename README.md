@@ -78,3 +78,16 @@ visitor's device and saves nothing.
 entirely on your device (nothing is uploaded). Upload a client chat screenshot, add an optional title and package name, drag
 boxes over names to blur or cover them, and download a 1080×1350 PNG. On a phone, turn "drawing" on to drag the hide boxes,
 then off to scroll again. The logo is `images/logo.jpg`; colours and layout are at the top of the page's script.
+
+## Sales Tracker (private)
+
+`studio/sales/` (`/studio/sales/`) is a private page for logging sales: date, client, package, amount in THB and payment status.
+It is not in the menu and has `noindex`, so search engines are asked to skip it. Anyone who knows the link can open it,
+but it holds no data: everything you log is saved only in the browser you use (localStorage), so each device has its own list.
+
+- Use **Export backup** now and then; it downloads a `.json` file. **Import backup** replaces the list in this browser with that file,
+  which is also how you move your sales to another phone or computer. Clearing the browser's site data deletes the list, so keep backups.
+- The package list and default THB prices are at the top of `studio/sales/sales.js` (`PACKAGES`). The monthly goal (50,000 THB)
+  can be changed on the page under "Change monthly goal".
+- "This month's total" counts every sale logged that month, paid or not; "Paid" and "Not fully paid" show the split.
+- Tests: `node --test tests/*.test.js`.

@@ -1,9 +1,9 @@
 name: Human Design Chart tests
 on:
   push:
-    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'tests/**']
+    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'studio/sales/**', 'tests/**']
   pull_request:
-    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'tests/**']
+    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'studio/sales/**', 'tests/**']
 jobs:
   test:
     runs-on: ubuntu-latest
