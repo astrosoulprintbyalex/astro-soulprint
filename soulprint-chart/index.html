@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,29 +9,35 @@
   <meta name="description" content="Free Human Design Chart calculator. Enter your birth details to see your Type, Strategy, Authority, Profile and energy map.">
   <meta name="theme-color" content="#faf6ee">
 
-  <!-- Facebook / Messenger link preview. Add an absolute og:image URL once the site is live if you want a preview picture. -->
+  <!-- Facebook / Messenger link preview. The picture is images/share/human-design-chart.png (1200 x 630). -->
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Your Human Design Chart · Free">
-  <meta property="og:description" content="Free and private. See your Type, Strategy, Authority, Profile and energy map in one minute.">
+  <meta property="og:site_name" content="Astro Soulprint by Alex">
+  <meta property="og:title" content="Free Human Design Chart · Astro Soulprint by Alex">
+  <meta property="og:description" content="Free and private. In 1 minute, see your Type, Strategy, Authority and Profile.">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/share/human-design-chart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Free Human Design Chart by Astro Soulprint by Alex">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Human Design Chart · Astro Soulprint by Alex">
+  <meta name="twitter:description" content="Free and private. In 1 minute, see your Type, Strategy, Authority and Profile.">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/images/share/human-design-chart.png">
 
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&family=Noto+Serif+Myanmar:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=18">
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="../" aria-label="Astro Soulprint by Alex, main website">
-        <img class="brand-logo" src="assets/logo.png" alt="" width="36" height="36" onerror="this.remove()">
-        <span class="brand-text">Astro Soulprint <em>by Alex</em></span>
-      </a>
-    </div>
-  </header>
+  <!-- HEADER: the same menu as the main website (shared file _includes/header.html) -->
+  {%- assign root = '../' -%}
+  {%- assign home = '../' -%}
+  {% include header.html %}
 
   <main>
     <!-- 1. INTRO + FORM -->
@@ -37,32 +45,37 @@
       <div class="wrap narrow center">
         <p class="eyebrow">Free Chart Calculator <span class="handle">(@astrosoulprintbyalex)</span></p>
         <h1>Your Human Design Chart</h1>
-        <div class="hero-note" lang="my">
-          <p><span class="nowrap">Human Design Reading ယူချင်ပါက</span></p>
-          <p><span class="nowrap"><a href="https://m.me/astrosoulprintbyalex" id="heroMessenger" target="_blank" rel="noopener">Page Messenger</a> ကို</span></p>
-          <p><span class="nowrap">" <strong>HD</strong> " လို့ စာလေးပို့လိုက်ပါရှင်</span></p>
-          <p class="signoff">Love, Alex 🌹</p>
+        <div class="welcome">
+          <p class="welcome-en">Welcome, love. Add your birth details and meet your own energy map.</p>
+          <p class="welcome-my" lang="my">ကြိုဆိုပါတယ်ရှင် 🤎 မွေးသက္ကရာဇ်အချက်အလက်လေး ဖြည့်ပြီး ကိုယ့်ရဲ့ Energy Map ကို ကြည့်လိုက်ပါ။</p>
+          <p class="teaser">In 1 minute, see your <strong>Type</strong>, <strong>Strategy</strong>, <strong>Authority</strong> and <strong>Profile</strong>.</p>
+          <p class="teaser-my" lang="my">၁ မိနစ်အတွင်း ကိုယ့်ရဲ့ Type, Strategy, Authority နဲ့ Profile ကို ကြည့်နိုင်ပါပြီ။</p>
+          <ul class="pills" aria-label="Free, private, one minute">
+            <li>Free<span lang="my">အခမဲ့</span></li>
+            <li>Private<span lang="my">လုံခြုံ</span></li>
+            <li>1 minute<span lang="my">၁ မိနစ်</span></li>
+          </ul>
         </div>
       </div>
 
       <div class="wrap narrow">
         <form class="card form-card" id="chartForm" novalidate autocomplete="off">
           <div class="field">
-            <label for="name">Your name</label>
-            <input id="name" name="name" type="text" maxlength="60" placeholder="Your first name" autocapitalize="words" required>
+            <label for="name"><span class="en">Your name</span><span class="my" lang="my">ကိုယ့်နာမည်</span></label>
+            <input id="name" name="name" type="text" maxlength="60" placeholder="Your first name · နာမည်" autocapitalize="words" required>
           </div>
 
           <fieldset class="field">
-            <legend>Birth date</legend>
+            <legend><span class="en">Birth date</span><span class="my" lang="my">မွေးသက္ကရာဇ်</span></legend>
             <div class="row3">
               <select id="day" aria-label="Day" required></select>
               <select id="month" aria-label="Month" required></select>
-              <input id="year" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="Year" aria-label="Year" required>
+              <input id="year" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="Year · နှစ်" aria-label="Year" required>
             </div>
           </fieldset>
 
           <fieldset class="field">
-            <legend>Exact birth time</legend>
+            <legend><span class="en">Exact birth time</span><span class="my" lang="my">မွေးချိန် (အတိအကျ)</span></legend>
             <div class="row3">
               <select id="hour" aria-label="Hour" required></select>
               <select id="minute" aria-label="Minute" required></select>
@@ -72,29 +85,31 @@
               </select>
             </div>
             <p class="hint">Don&rsquo;t know your exact time? Use your best estimate. <span class="hint-soft">(12:00 AM is midnight and 12:00 PM is noon.)</span></p>
+            <p class="hint hint-my" lang="my">မွေးချိန် အတိအကျ မသိရင် ခန့်မှန်းချိန်နဲ့ပဲ ထည့်နိုင်ပါတယ်။ (12:00 AM က သန်းခေါင်ယံ၊ 12:00 PM က မွန်းတည့်ချိန်ပါ။)</p>
           </fieldset>
 
           <div class="field">
-            <label for="country">Birth country</label>
+            <label for="country"><span class="en">Birth country</span><span class="my" lang="my">မွေးဖွားရာ နိုင်ငံ</span></label>
             <select id="country" required></select>
           </div>
 
           <div class="field combo">
-            <label for="city">Birth city or town</label>
+            <label for="city"><span class="en">Birth city or town</span><span class="my" lang="my">မွေးဖွားရာ မြို့</span></label>
             <input id="city" type="text" maxlength="80" placeholder="e.g. Yangon" autocomplete="off" autocapitalize="words" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="citySuggest" required>
             <ul id="citySuggest" class="suggest" role="listbox" hidden></ul>
           </div>
 
           <div class="field" id="zoneField" hidden>
-            <label for="zone">Time zone</label>
+            <label for="zone"><span class="en">Time zone</span><span class="my" lang="my">အချိန်ဇုန်</span></label>
             <select id="zone"></select>
             <p class="hint" id="zoneHint">This country has more than one time zone. Pick your city above and we will fill this in, or choose the closest one.</p>
           </div>
 
           <p class="form-error" id="formError" role="alert" hidden></p>
 
-          <button class="btn btn-block" type="submit" id="submitBtn">Show my Human Design Chart</button>
+          <button class="btn btn-block btn-bi" type="submit" id="submitBtn"><span>Show my Human Design Chart</span><small lang="my">ကိုယ့် Human Design Chart ကို ကြည့်မယ်</small></button>
           <p class="privacy">&#10022; Calculated privately on your phone. Your details are never saved or sent anywhere.</p>
+          <p class="privacy privacy-my" lang="my">ကိုယ့်ဖုန်းထဲမှာပဲ သီးသန့်တွက်ချက်တာဖြစ်ပြီး ကိုယ့်အချက်အလက်တွေကို ဘယ်နေရာမှာမှ သိမ်းဆည်းခြင်း၊ ပို့ခြင်း မလုပ်ပါဘူး။</p>
         </form>
       </div>
     </section>
@@ -134,13 +149,52 @@
 
         <!-- 3. SOFT INVITATION TO A READING -->
         <div class="invite" id="invite">
-          <p class="eyebrow light">Next step</p>
-          <h2 lang="my"><span class="nowrap">Human Design ကို</span> <span class="nowrap">Personalised Reading</span> <span class="nowrap">ယူချင်ပါတယ်</span></h2>
-          <p class="invite-my" lang="my" id="inviteMy" hidden></p>
-          <div class="invite-actions" id="inviteActions"></div>
+          <p class="eyebrow">Next step</p>
+          <h2>Your chart shows your energy map. A reading shows you how to live it.</h2>
+          <p class="invite-my" lang="my">ကိုယ့် Chart က ကိုယ့်ရဲ့ Energy Map ကို ပြပေးပါတယ်။ Reading ကတော့ အဲဒါကို ဘယ်လိုနေထိုင်ရမလဲဆိုတာ ပြပေးပါတယ်။</p>
+          <div class="invite-note" lang="my">
+            <p>Human Design Reading ယူချင်ပါက <a href="https://m.me/astrosoulprintbyalex" id="inviteMessenger" target="_blank" rel="noopener">Page Messenger</a> ကို " <strong>HD</strong> " လို့ စာလေးပို့လိုက်ပါရှင်</p>
+            <p class="signoff">Love, Alex 🌹</p>
+          </div>
+          <div class="invite-actions">
+            <a class="btn btn-bi" id="inviteReadings" href="../human-design/"><span>See Human Design Readings</span><small lang="my">Human Design Reading များ ကြည့်ရန်</small></a>
+            <a class="btn btn-ghost btn-bi" id="inviteHD" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener"><span>Message &ldquo;HD&rdquo; on Messenger</span><small lang="my">Messenger မှာ &ldquo;HD&rdquo; လို့ စာပို့ရန်</small></a>
+          </div>
         </div>
 
-        <p class="center"><a class="btn btn-ghost" href="#top" id="againBtn">Calculate another chart</a></p>
+        <p class="center"><a class="btn btn-ghost btn-bi" href="#top" id="againBtn"><span>Calculate another chart</span><small lang="my">Chart တစ်ခု ထပ်တွက်မယ်</small></a></p>
+      </div>
+    </section>
+
+    <!-- 2b. FAQ -->
+    <section class="faq" id="faq">
+      <div class="wrap narrow">
+        <p class="eyebrow center">Good to know</p>
+        <h2 class="center faq-title"><span class="en">Quick questions</span><span class="my" lang="my">မေးလေ့ရှိတဲ့ မေးခွန်းလေးတွေ</span></h2>
+
+        <details class="faq-item">
+          <summary><span class="en">What is Human Design?</span><span class="my" lang="my">Human Design ဆိုတာ ဘာလဲ?</span></summary>
+          <div class="faq-body">
+            <p>Human Design is a way of looking at how you are built. Your birth date, time and place are turned into a chart that shows where your energy flows steadily, where you are open to the people around you, and how you tend to decide, act and connect. Many people use it as a gentle guide for understanding themselves, not as a prediction of what will happen.</p>
+            <p lang="my">Human Design ဆိုတာ ကိုယ့်ကိုယ်ကို ဘယ်လို ဖွဲ့စည်းထားလဲဆိုတာ ကြည့်တဲ့ စနစ်တစ်ခုပါ။ မွေးသက္ကရာဇ်၊ မွေးချိန်နဲ့ မွေးရပ်ဒေသကနေ Chart တစ်ခုထွက်လာပြီး ကိုယ့် Energy က ဘယ်နေရာမှာ တည်ငြိမ်လဲ၊ ဘယ်နေရာမှာ ပတ်ဝန်းကျင်ကို ခံယူလွယ်လဲ၊ ဘယ်လို ဆုံးဖြတ်၊ လုပ်ဆောင်၊ ချိတ်ဆက်တတ်လဲဆိုတာ ပြပေးပါတယ်။ ဟောကိန်းမဟုတ်ဘဲ ကိုယ့်ကိုယ်ကို နားလည်ဖို့ ကူညီတဲ့ လမ်းညွှန်တစ်ခုအနေနဲ့ သုံးကြပါတယ်။</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="en">I don&rsquo;t know my birth time. What do I do?</span><span class="my" lang="my">မွေးချိန် မသိရင် ဘယ်လိုလုပ်မလဲ?</span></summary>
+          <div class="faq-body">
+            <p>Use your best guess for now and treat the result as a first look. Even a few minutes&rsquo; difference can change fine details, mostly your Moon, your lines, your Profile and your 4 Arrows. If you can, check your birth certificate or ask someone who was there. Still stuck? Feel free to message Alex.</p>
+            <p lang="my">ခန့်မှန်းချိန်လေးနဲ့ အရင်ကြည့်ကြည့်ပြီး ပထမဆုံး အကြည့်အဖြစ် သဘောထားလိုက်ပါ။ မိနစ်အနည်းငယ် ကွာသွားရင်တောင် အသေးစိတ်တချို့ ပြောင်းနိုင်ပါတယ်၊ အထူးသဖြင့် Moon၊ Lines၊ Profile နဲ့ 4 Arrows တွေပါ။ ဖြစ်နိုင်ရင် မွေးစာရင်း/မွေးစာချုပ်ကို ပြန်ကြည့်ပါ၊ ဒါမှမဟုတ် မွေးတုန်းက ရှိခဲ့သူကို မေးကြည့်ပါ။ ဆက်ရှာမတွေ့ရင် Alex ကို စာပို့မေးနိုင်ပါတယ်။</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="en">Is it accurate?</span><span class="my" lang="my">တိကျပါသလား?</span></summary>
+          <div class="faq-body">
+            <p>The planet positions are worked out with an open-source astronomy library, so the sky maths is solid. How exact your chart is depends on the birth details you enter, especially the time. Human Design is a system for reflection, so take what resonates and use it gently. Everything is calculated on your own phone, and nothing you type is saved or sent anywhere.</p>
+            <p lang="my">Planet တွေရဲ့ တည်နေရာကို Astronomy Library (Open-source) နဲ့ တွက်ထားတာဖြစ်လို့ တွက်ချက်မှုပိုင်းမှာ စိတ်ချနိုင်ပါတယ်။ Chart ဘယ်လောက်တိကျလဲဆိုတာကတော့ ထည့်လိုက်တဲ့ မွေးချိန်စတဲ့ အချက်အလက်တွေပေါ် မူတည်ပါတယ်။ Human Design က ကိုယ့်ကိုယ်ကို ပြန်ကြည့်ဖို့ စနစ်တစ်ခုဖြစ်လို့ ကိုယ်နဲ့ကိုက်ညီတာကို ယူပြီး နူးညံ့စွာ သုံးပါ။ တွက်ချက်မှုအားလုံးကို ကိုယ့်ဖုန်းထဲမှာပဲ လုပ်တာဖြစ်ပြီး ထည့်လိုက်တာတွေကို ဘယ်နေရာမှာမှ သိမ်းဆည်းခြင်း၊ ပို့ခြင်း မလုပ်ပါဘူး။</p>
+          </div>
+        </details>
       </div>
     </section>
   </main>
@@ -157,21 +211,43 @@
       <p class="footer-brand">Astro Soulprint <span>by Alex</span></p>
       <p class="footer-tag">Not a prediction. A map back to who you are.</p>
       <div class="footer-actions">
-        <a class="btn btn-light" id="footMessenger" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message on Messenger</a>
-        <a class="btn btn-outline-light" id="footFacebook" href="https://www.facebook.com/profile.php?id=61561494154512" target="_blank" rel="noopener">Facebook Page</a>
+        <a class="btn btn-light btn-bi" id="footMessenger" href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener"><span>Message on Messenger</span><small lang="my">Messenger မှာ စာပို့မယ်</small></a>
+        <a class="btn btn-outline-light btn-bi" id="footFacebook" href="https://www.facebook.com/profile.php?id=61561494154512" target="_blank" rel="noopener"><span>Facebook Page</span><small lang="my">Facebook Page ကို ကြည့်မယ်</small></a>
       </div>
       <p class="small">The Human Design system was originated by Ra Uru Hu.</p>
       <p class="tiny">&copy; <span id="footYear">2026</span> Astro Soulprint by Alex &middot; Planet positions by astronomy-engine (MIT) &middot; City data from GeoNames (CC BY 4.0)</p>
     </div>
   </footer>
 
-  <script src="js/config.js?v=17"></script>
-  <script src="data/countries.js?v=17"></script>
-  <script src="js/vendor/astronomy.browser.min.js?v=17"></script>
-  <script src="js/hd-data.js?v=17"></script>
-  <script src="js/hd-calc.js?v=17"></script>
-  <script src="js/content.js?v=17"></script>
-  <script src="js/bodygraph.js?v=17"></script>
-  <script src="js/app.js?v=17"></script>
+  <script>
+    // Same menu behaviour as the main website
+    document.documentElement.classList.add('js');
+    (function () {
+      var nav = document.getElementById('site-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var sub = document.querySelector('.sub-toggle');
+      if (!nav || !toggle) return;
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      if (sub) sub.addEventListener('click', function () {
+        var open = sub.parentNode.classList.toggle('open');
+        sub.setAttribute('aria-expanded', open);
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }
+      });
+    }());
+  </script>
+  <script src="js/config.js?v=18"></script>
+  <script src="data/countries.js?v=18"></script>
+  <script src="js/vendor/astronomy.browser.min.js?v=18"></script>
+  <script src="js/hd-data.js?v=18"></script>
+  <script src="js/hd-calc.js?v=18"></script>
+  <script src="js/content.js?v=18"></script>
+  <script src="js/bodygraph.js?v=18"></script>
+  <script src="js/app.js?v=18"></script>
 </body>
 </html>
