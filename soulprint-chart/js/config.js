@@ -5,11 +5,8 @@ window.Soulprint.config = {
   // If you ever move this page to its own website, put the full address here, e.g. "https://yourname.github.io/astro-soulprint/"
   websiteUrl: '../',
 
-  // Buttons in the "A reading shows you how to live it" card. Each link opens a page of your main site.
-  packageLinks: [
-    { label: 'See Human Design readings', href: '../human-design/', primary: true },
-    { label: 'Human Design Full Chart reading', href: '../soulprint-core/' }
-  ],
+  // The "A reading shows you how to live it" card under the results. "See Human Design Readings" opens this page of your main site.
+  readingsUrl: '../human-design/',
 
   // The "Your 4 Arrows" card. Change the label/link to your 4 Arrows package.
   arrowsLink: { label: 'Get my HD 4 Arrows reading', href: '../human-design/' },

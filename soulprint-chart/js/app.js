@@ -358,13 +358,6 @@
       '<table class="gates"><thead><tr><th></th><th scope="col"><span class="dot dot-p"></span>Personality</th><th scope="col"><span class="dot dot-d"></span>Design</th></tr></thead><tbody>' + rows + '</tbody></table>';
   }
 
-  function renderInvite() {
-    var links = CFG.packageLinks || [];
-    $('inviteActions').innerHTML = links.map(function (l) {
-      return '<a class="btn ' + (l.primary ? 'btn-light' : 'btn-outline-light') + '" href="' + esc(l.href) + '">' + esc(l.label) + '</a>';
-    }).join('');
-  }
-
   function showResults(inputs, chart) {
     $('resultsSub').textContent = 'For ' + inputs.name + ' · born ' + fmtDate(inputs.year, inputs.month, inputs.day) + ', ' +
       fmtTimeParts(inputs.h12, inputs.minute, inputs.ampm) + ' · ' + inputs.city + ', ' + inputs.countryName + ' (' + chart.timeInfo.offsetLabel + ')';
@@ -384,7 +377,6 @@
     renderCenters(chart);
     renderChannels(chart);
     renderGates(chart, inputs.timeZone);
-    renderInvite();
 
     var res = $('results');
     res.hidden = false;
@@ -439,7 +431,11 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('bgZoom').hidden) closeZoom(); });
     $('footMessenger').href = CFG.messengerUrl || $('footMessenger').href;
     $('footFacebook').href = CFG.facebookUrl || $('footFacebook').href;
-    if (CFG.messengerUrl) $('heroMessenger').href = CFG.messengerUrl;
+    if (CFG.messengerUrl) {
+      $('inviteMessenger').href = CFG.messengerUrl;
+      $('inviteHD').href = CFG.messengerUrl;
+    }
+    if (CFG.readingsUrl) $('inviteReadings').href = CFG.readingsUrl;
     $('footYear').textContent = new Date().getFullYear();
   }
 
