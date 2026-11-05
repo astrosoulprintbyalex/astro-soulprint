@@ -358,3 +358,73 @@ small[lang="my"] { display: block; font-size: 0.78rem; font-weight: 400; opacity
 .about-my { text-align: left; }
 .about-my h2, .about-my .label { text-align: center; }
 .about-my .sparkles { margin: 4px 0 14px; }
+
+/* ---------- 2027 Lord of the Year ---------- */
+.lord-form { padding: 26px 20px 22px; }
+.lord-field { border: 0; padding: 0; margin: 0 0 20px; min-width: 0; }
+.lord-field legend, .lord-field label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; padding: 0; color: var(--emerald-deep); }
+.lord-field small[lang="my"] { display: inline; margin-left: 6px; font-weight: 400; color: var(--muted); }
+.lord-row3 { display: grid; grid-template-columns: 1fr 1.6fr 1.1fr; gap: 10px; }
+.lord-form select, .lord-form input[type="text"] {
+  width: 100%; height: 50px; padding: 0 14px; font: inherit; font-size: 16px; color: var(--ink);
+  background: var(--white); border: 1.5px solid var(--gold-line); border-radius: 14px; appearance: none; -webkit-appearance: none;
+}
+.lord-form select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--emerald) 50%), linear-gradient(135deg, var(--emerald) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 22px, calc(100% - 15px) 22px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 34px;
+}
+.lord-form select:focus, .lord-form input:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 4px rgba(47, 122, 95, 0.16); }
+.lord-hint { color: var(--muted); font-size: 0.88rem; margin: 8px 2px 0; }
+.lord-hint a { color: var(--emerald-deep); font-weight: 600; }
+.lord-error { background: #fbeeea; color: #a4402f; border: 1px solid #efc9c0; border-radius: 14px; padding: 12px 16px; font-size: 0.93rem; margin: 0 0 16px; }
+.lord-error span { display: block; }
+.lord-privacy { text-align: center; color: var(--muted); font-size: 0.82rem; margin: 12px 0 0; }
+.lord-privacy + .lord-privacy { margin-top: 0; }
+.lord-how { margin: 20px 0 0; }
+.lord-how p { font-size: 0.92rem; color: var(--muted); margin: 10px 0 0; }
+
+.lord-result { margin-top: 26px; scroll-margin-top: 80px; }
+.lord-card {
+  background: linear-gradient(165deg, #2b6f58 0%, var(--emerald-deep) 45%, #1b4a39 100%);
+  color: var(--cream); border: 1.5px solid var(--gold); border-radius: 28px; padding: 28px 18px 22px;
+  box-shadow: 0 18px 44px rgba(27, 74, 57, 0.28); outline: none; position: relative; overflow: hidden;
+}
+.lord-card::before { content: ""; position: absolute; right: -90px; top: -110px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(232, 211, 162, 0.2), rgba(232, 211, 162, 0) 68%); pointer-events: none; }
+.lord-kicker { position: relative; text-align: center; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #e8d3a2; font-weight: 600; margin: 0 0 18px; }
+.lord-kicker span { display: block; margin-top: 4px; letter-spacing: 0.04em; text-transform: none; font-size: 0.9rem; font-weight: 500; color: var(--cream); opacity: 0.92; }
+.lord-grid { position: relative; display: grid; gap: 20px; justify-items: center; align-items: center; }
+.lord-wheel-wrap { width: 100%; max-width: 270px; }
+.lord-wheel { display: block; width: 100%; height: auto; }
+.lord-wedge { fill: rgba(250, 247, 240, 0.07); stroke: rgba(232, 211, 162, 0.5); stroke-width: 1; }
+.lord-wedge.on { fill: #d9bd82; stroke: #f3e3b8; stroke-width: 1.5; }
+.lord-wnum { font-family: var(--serif); font-size: 17px; font-weight: 600; fill: var(--cream); }
+.lord-wnum.on { fill: #2a2f22; }
+.lord-wsign { font-family: var(--sans); font-size: 8.5px; font-weight: 600; letter-spacing: 0.08em; fill: #cfdcd5; }
+.lord-wsign.on { fill: #3d3624; }
+.lord-hub { fill: rgba(27, 74, 57, 0.92); stroke: rgba(232, 211, 162, 0.6); stroke-width: 1; }
+.lord-hub-year { font-family: var(--serif); font-size: 24px; font-weight: 600; fill: #f3e3b8; }
+.lord-hub-sub { font-family: var(--sans); font-size: 6.5px; font-weight: 600; letter-spacing: 0.22em; fill: #cfdcd5; }
+.lord-facts { text-align: center; width: 100%; }
+.lord-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #e8d3a2; font-weight: 600; margin: 0 0 2px; }
+.lord-label small[lang="my"] { display: block; letter-spacing: 0; text-transform: none; font-size: 0.8rem; font-weight: 400; color: #cfdcd5; opacity: 1; }
+.lord-big { font-family: var(--serif); font-size: clamp(2.6rem, 11vw, 3.4rem); font-weight: 600; line-height: 1.05; margin: 4px 0 4px; color: var(--cream); }
+.lord-big.gold { color: #f0dba5; }
+.lord-sub { margin: 0; color: #dfe9e3; font-size: 0.98rem; }
+.lord-sub span { display: block; font-size: 0.9rem; color: #bcd0c6; }
+.lord-rule { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0; color: #e8d3a2; }
+.lord-rule::before, .lord-rule::after { content: ""; flex: 0 1 70px; height: 1px; background: linear-gradient(90deg, rgba(232, 211, 162, 0), rgba(232, 211, 162, 0.8)); }
+.lord-rule::after { transform: scaleX(-1); }
+.lord-text { position: relative; margin-top: 22px; padding: 18px 18px 14px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(232, 211, 162, 0.28); border-radius: 20px; text-align: left; }
+.lord-text p { margin: 0 0 12px; }
+.lord-text p[lang="my"] { color: var(--cream); font-size: 0.98rem; }
+.lord-text p.en { color: #d4e2da; font-size: 0.92rem; padding-top: 12px; border-top: 1px dashed rgba(232, 211, 162, 0.35); margin-bottom: 4px; }
+.lord-foot { position: relative; text-align: center; margin: 16px 0 0; font-size: 0.82rem; color: #bcd0c6; }
+.lord-promo { margin-top: 28px; }
+.lord-promo > p:not(.label):not(.season-range) { max-width: 520px; margin-left: auto; margin-right: auto; }
+@media (min-width: 700px) {
+  .lord-card { padding: 34px 34px 26px; }
+  .lord-grid { grid-template-columns: 270px 1fr; gap: 30px; }
+  .lord-facts { text-align: left; }
+  .lord-rule { justify-content: flex-start; }
+  .lord-rule::before { display: none; }
+}
