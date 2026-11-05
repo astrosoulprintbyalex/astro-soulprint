@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carousel Studio · Astro Soulprint</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#245f4a">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+  <header class="bar">
+    <div>
+      <p class="eyebrow">Astro Soulprint <span>by Alex</span></p>
+      <h1>Carousel Studio</h1>
+    </div>
+    <p class="saved" id="saved" role="status" aria-live="polite">Draft ready</p>
+  </header>
+
+  <main class="layout">
+    <section class="stage" aria-label="Live preview">
+      <div class="frame"><canvas id="preview" width="1080" height="1350"></canvas></div>
+      <div class="nav">
+        <button type="button" id="prev" aria-label="Previous slide">‹</button>
+        <span id="counter">1 / 1</span>
+        <button type="button" id="next" aria-label="Next slide">›</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="primary" id="downloadAll">Download all slides</button>
+        <button type="button" id="downloadOne">This slide only</button>
+      </div>
+      <p class="hint" id="dlHint">PNG, 1080 × 1350. On a phone, choose “Save Image” to add them to your photos.</p>
+    </section>
+
+    <section class="editor" aria-label="Slide editor">
+      <div class="strip" id="strip" role="tablist" aria-label="Slides"></div>
+      <div class="row">
+        <button type="button" id="addSlide">+ Add slide</button>
+        <span class="muted" id="limit">0 / 10</span>
+      </div>
+
+      <div class="card">
+        <div class="row between">
+          <h2 id="slideTitle">Slide 1</h2>
+          <div class="tools">
+            <button type="button" id="moveUp" aria-label="Move slide earlier">↑</button>
+            <button type="button" id="moveDown" aria-label="Move slide later">↓</button>
+            <button type="button" id="dupSlide" aria-label="Duplicate slide">⧉</button>
+            <button type="button" class="danger" id="delSlide" aria-label="Delete slide">✕</button>
+          </div>
+        </div>
+
+        <div class="two">
+          <label>Layout
+            <select id="layout">
+              <option value="cover">Cover</option>
+              <option value="content">Content</option>
+              <option value="quote">Quote</option>
+              <option value="cta">CTA (keyword DM)</option>
+            </select>
+          </label>
+          <label>Background
+            <select id="theme">
+              <option value="emerald">Emerald</option>
+              <option value="cream">Cream</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="fields"></div>
+      </div>
+
+      <div class="row foot">
+        <button type="button" id="resetAll" class="danger-link">Start a new carousel</button>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="work" width="1080" height="1350" hidden></canvas>
+  <script src="carousel.js"></script>
+</body>
+</html>
