@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Tracker · Astro Soulprint</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#245f4a">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sales.css">
+</head>
+<body>
+  <header class="bar">
+    <div>
+      <p class="eyebrow">Astro Soulprint <span>by Alex</span></p>
+      <h1>Sales Tracker</h1>
+    </div>
+    <p class="month-name" id="monthName"></p>
+  </header>
+
+  <main class="page">
+    <p class="notice" id="storageWarn" hidden>This browser is blocking saved data, so entries will be lost when you close the page. Export a backup before you leave.</p>
+
+    <section class="card hero" aria-labelledby="ringTitle">
+      <h2 id="ringTitle" class="sr">This month</h2>
+      <div class="ring" role="img" id="ringLabel">
+        <svg viewBox="0 0 140 140" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b8975a"/>
+              <stop offset="1" stop-color="#2f7a5f"/>
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="70" cy="70" r="58"/>
+          <circle class="prog" id="ringProg" cx="70" cy="70" r="58" transform="rotate(-90 70 70)"/>
+        </svg>
+        <div class="ring-text">
+          <span class="big" id="monthTotal">0</span>
+          <span class="small">THB this month</span>
+        </div>
+      </div>
+      <p class="goal-line" id="goalLine"></p>
+      <div class="chips">
+        <div class="chip"><span>Paid</span><strong id="paidTotal">0</strong></div>
+        <div class="chip"><span>Not fully paid</span><strong id="openTotal">0</strong></div>
+        <div class="chip"><span>Sales</span><strong id="saleCount">0</strong></div>
+      </div>
+      <details class="goal-edit">
+        <summary>Change monthly goal</summary>
+        <label>Goal (THB)
+          <input id="goalInput" type="number" inputmode="numeric" min="1" step="1">
+        </label>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle">Log a sale</h2>
+      <form id="form" novalidate>
+        <div class="two">
+          <label>Date
+            <input id="fDate" type="date" required>
+          </label>
+          <label>Amount (THB)
+            <input id="fAmount" type="number" inputmode="numeric" min="0" step="1" placeholder="0" required>
+          </label>
+        </div>
+        <label>Client name
+          <input id="fClient" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Khin Khin" required>
+        </label>
+        <label>Package
+          <select id="fPackage"></select>
+        </label>
+        <label>Payment status
+          <select id="fStatus">
+            <option value="paid">Paid</option>
+            <option value="deposit">Deposit paid</option>
+            <option value="pending">Not paid yet</option>
+          </select>
+        </label>
+        <p class="error" id="formError" role="alert" hidden></p>
+        <div class="actions">
+          <button type="submit" class="primary" id="saveBtn">Add sale</button>
+          <button type="button" id="cancelEdit" hidden>Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="pkgTitle">
+      <h2 id="pkgTitle">Sales by package</h2>
+      <p class="muted" id="pkgSub"></p>
+      <ul class="bars" id="pkgBars"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="histTitle">
+      <h2 id="histTitle">Monthly history</h2>
+      <p class="muted">Gold line marks the monthly goal. <span class="star">✦</span> means you reached it.</p>
+      <ul class="bars hist" id="histBars"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="logTitle">
+      <div class="row between">
+        <h2 id="logTitle">Sales log</h2>
+        <div class="seg" role="group" aria-label="Which sales to show">
+          <button type="button" id="viewMonth" aria-pressed="true">This month</button>
+          <button type="button" id="viewAll" aria-pressed="false">All</button>
+        </div>
+      </div>
+      <ul class="log" id="log"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="bkTitle">
+      <h2 id="bkTitle">Backup</h2>
+      <p class="muted">Your sales live only in this browser on this device. Export a backup file now and then, and import it to restore or to move to another device.</p>
+      <p class="muted" id="lastBackup"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="exportBtn">Export backup</button>
+        <button type="button" id="importBtn">Import backup</button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+      <p class="status" id="backupMsg" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="sales.js"></script>
+</body>
+</html>

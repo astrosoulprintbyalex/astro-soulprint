@@ -1,0 +1,308 @@
+---
+layout: default
+title: "Which reading is right for me? — Astro Soulprint by Alex"
+description: "Six gentle questions to find the Astro Soulprint reading that fits you best. Western Astrology and Human Design readings for love, career, healing and timing."
+active: quiz
+root: "../"
+share_image: find-my-reading
+---
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="../">Home</a> &rsaquo; <a href="../#packages">Packages</a></p>
+        <p class="label">A gentle little quiz</p>
+        <h1>Which reading is right for me?</h1>
+        <p class="note">Six gentle questions. There are no right or wrong answers, so follow whatever feels true today.</p>
+        <p class="note" lang="my">မေးခွန်း ၆ ခုပဲ ရှိပါတယ်။ အဖြေမှန်၊ အဖြေမှားဆိုတာ မရှိပါဘူး။ ဒီနေ့ ကိုယ့်စိတ်ထဲ အမှန်ဆုံး ခံစားရတာကို ရွေးလိုက်ပါ။</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <div class="quiz" id="quiz" data-state="loading">
+          <noscript>
+            <p>This quiz needs JavaScript. You can still browse every reading, or message Alex and we’ll find the right one together.</p>
+            <p lang="my">ဒီ Quiz ကို သုံးဖို့ JavaScript လိုပါတယ်။ Reading အားလုံးကို ကြည့်နိုင်ပါတယ်၊ ဒါမှမဟုတ် Alex ကို Message ပို့ပြီး အတူတူ ရှာကြည့်နိုင်ပါတယ်။</p>
+            <div class="actions" style="flex-wrap:wrap">{% for c in site.data.categories %}<a class="btn btn-ghost btn-sm" href="../{{ c.url }}">{{ c.title }}</a>{% endfor %}</div>
+          </noscript>
+        </div>
+        <p class="center sub" style="margin-top:28px">Prefer to talk it through? <a href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message Alex</a> and we’ll find it together.</p>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      var BOOK = 'https://m.me/astrosoulprintbyalex';
+      var box = document.getElementById('quiz');
+      var MYN = ['၁', '၂', '၃', '၄', '၅', '၆'];
+
+      // ---- The six questions (English + Burmese) ----
+      var Q = [
+        { id: 'focus',
+          en: 'What is on your heart most these days?',
+          my: 'ဒီရက်ပိုင်း စိတ်ထဲမှာ အရင်ဆုံး ပေါ်နေတာက ဘာလဲ?',
+          opts: [
+            { v: 'love',    en: 'Love and relationships',            my: 'အချစ်၊ Relationship အကြောင်း' },
+            { v: 'wealth',  en: 'Money, work and my path',           my: 'ငွေကြေး၊ အလုပ်အကိုင်နဲ့ ကိုယ့်လမ်းကြောင်း' },
+            { v: 'healing', en: 'Old patterns I’m ready to heal',    my: 'ပြန်ကုစားချင်တဲ့ အရင်ကပုံစံတွေ' },
+            { v: 'timing',  en: 'What is coming, and when',          my: 'ရှေ့မှာ ဘာတွေလာမလဲ၊ ဘယ်အချိန်လဲ' },
+            { v: 'self',    en: 'Understanding who I truly am',      my: 'ကိုယ့်ကိုယ်ကို ပိုနားလည်ချင်တယ်' }
+          ] },
+        { id: 'mood',
+          en: 'How are you feeling in this season of life?',
+          my: 'လက်ရှိ ဘဝအပိုင်းအခြားမှာ ဘယ်လို ခံစားနေရလဲ?',
+          opts: [
+            { v: 'love',    en: 'Longing for deeper connection',             my: 'ပိုနက်ရှိုင်းတဲ့ Connection ကို တောင့်တနေတယ်' },
+            { v: 'wealth',  en: 'Restless. I want a clearer direction',      my: 'စိတ်မငြိမ်ဘူး၊ ပိုရှင်းတဲ့ လမ်းကြောင်း လိုချင်တယ်' },
+            { v: 'healing', en: 'Tired, carrying something heavy',           my: 'ပင်ပန်းနေတယ်၊ ရင်ထဲမှာ လေးလံတာတစ်ခု သယ်ထားရသလိုပဲ' },
+            { v: 'timing',  en: 'Curious, and a little unsure what’s next',  my: 'နောက်ဘာဖြစ်မလဲ သိချင်တယ်၊ နည်းနည်း မသေချာဘူး' },
+            { v: 'self',    en: 'Quietly searching for myself',              my: 'ကိုယ့်ကိုယ်ကို တိတ်တိတ်လေး ရှာဖွေနေတယ်' }
+          ] },
+        { id: 'lens',
+          en: 'Which way of looking feels closest to you?',
+          my: 'ဘယ်လို အမြင်နဲ့ ကြည့်တာ ကိုယ်နဲ့ အနီးစပ်ဆုံးလဲ?',
+          opts: [
+            { v: 'astro', en: 'The stars and planets: Western Astrology',  my: 'ကြယ်တွေ၊ ဂြိုဟ်တွေနဲ့ — Western Astrology' },
+            { v: 'hd',    en: 'My energy and design: Human Design',        my: 'ကိုယ့် Energy နဲ့ Design — Human Design' },
+            { v: 'any',   en: 'I’m not sure. Alex, you choose',            my: 'မသေချာဘူး — Alex ရွေးပေးပါ' }
+          ] },
+        { id: 'depth',
+          en: 'How much would you like to explore?',
+          my: 'ဘယ်လောက် နက်နက်ရှိုင်းရှိုင်း ကြည့်ချင်လဲ?',
+          opts: [
+            { v: 'gentle', en: 'A gentle, focused first step',      my: 'တစ်ခုတည်းကို အာရုံစိုက်ပြီး အသာလေး စတင်ကြည့်ချင်တယ်' },
+            { v: 'full',   en: 'The whole picture, all of me',      my: 'ကိုယ့်ကိုယ်ကို အပြည့်အစုံ ကြည့်ချင်တယ်' }
+          ] },
+        { id: 'time',
+          en: 'How far ahead are you looking?',
+          my: 'ဘယ်လောက်ကြာကြာ ရှေ့ကို ကြည့်ချင်လဲ?',
+          opts: [
+            { v: 't3',   en: 'The next few months',               my: 'လာမယ့် ၃ လလောက်' },
+            { v: 't6',   en: 'The next six months',               my: 'လာမယ့် ၆ လလောက်' },
+            { v: 'ch',   en: 'A whole new chapter of life',       my: 'ဘဝအခန်းအသစ်တစ်ခုလုံး' },
+            { v: 'none', en: 'It isn’t about time for me',        my: 'အချိန်ကာလနဲ့ မဆိုင်ပါဘူး' }
+          ] },
+        { id: 'other',
+          en: 'Is another person part of your question?',
+          my: 'ကိုယ့်မေးခွန်းထဲမှာ တခြားလူတစ်ယောက် ပါနေလား?',
+          opts: [
+            { v: 'yes', en: 'Yes, someone special',        my: 'ပါတယ် — ကိုယ့်အတွက် အရေးကြီးတဲ့သူ တစ်ယောက်' },
+            { v: 'no',  en: 'No, this is about me',        my: 'မပါဘူး — ကိုယ့်အကြောင်းပဲ' }
+          ] }
+      ];
+
+      // ---- The readings it can recommend (same names, prices and Burmese lines as the package pages) ----
+      var CAT = {
+        love:   { name: 'Aligned Love',                      url: '../aligned-love/' },
+        wealth: { name: 'Aligned Wealth & Career',           url: '../aligned-wealth-career/' },
+        karmic: { name: 'Karmic Healing & Aura Protection',  url: '../karmic-healing/' },
+        timing: { name: 'Cosmic Timing',                     url: '../cosmic-timing/' },
+        core:   { name: 'Soulprint Core',                    url: '../soulprint-core/' },
+        hd:     { name: 'Human Design Readings',             url: '../human-design/' }
+      };
+      var R = {
+        'love': { cat: 'love', pill: 'Mini Reading', title: 'Aligned Love — Mini', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'Venus, Moon, Juno, your 5th & 7th House and your Human Design love placement, to show how you love and what you truly need.',
+          my: 'Venus, Moon, Juno, 5th & 7th House နဲ့ HD Love Placement ကို ကြည့်ပြီး ကိုယ်ဘယ်လိုချစ်တတ်လဲ၊ ဘာကို တကယ်လိုအပ်လဲဆိုတာ ရှင်းပြပေးပါတယ်။' },
+        'synastry': { cat: 'love', pill: 'Two charts', title: 'Synastry Chart Package', mmk: '99,999 MMK', alt: '800 THB · 55 SGD',
+          en: 'Your chart and your partner’s chart side by side: connection, compatibility, attraction, emotional bond and long-term potential.',
+          my: 'ကိုယ်နဲ့ Partner ကြားက Connection, Compatibility, Attraction, Emotional Bond နဲ့ Long-term Potential တွေကို ပိုပြီး Deeply နားလည်ချင်သူတွေအတွက်။',
+          noteEn: 'Both of your birth details are needed.', noteMy: 'နှစ်ယောက်ရဲ့ Birth Information လိုအပ်ပါမယ်ရှင်။' },
+        'wealth': { cat: 'wealth', pill: 'Mini Reading', title: 'Aligned Wealth & Career — Mini', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'Jupiter, your 2nd & 8th House, Midheaven, Energy Type and Profile Lines, to show the path that is natural for you.',
+          my: 'Jupiter, 2nd & 8th House, Midheaven နဲ့ Energy Type & Profile Lines ကို ကြည့်ပြီး ကိုယ့်အတွက် သဘာဝကျတဲ့ လမ်းကြောင်းကို ရှင်းပြပေးပါတယ်။' },
+        'karmic': { cat: 'karmic', pill: 'Mini Reading', title: 'Karmic Healing & Aura Protection — Mini', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'Saturn, Pluto, your 12th House, Incarnation Cross and Open / Undefined Centers, to read the parts of you ready to heal.',
+          my: 'Saturn, Pluto, 12th House နဲ့ Incarnation Cross, Open/Undefined Centers ကို ကြည့်ပြီး ပြန်လည်ကုစားရမယ့် အပိုင်းတွေကို ဖတ်ပေးပါတယ်။' },
+        'transit3': { cat: 'timing', pill: 'Transit', title: 'Transit — 3 Months', mmk: '55,555 MMK', alt: '444 THB · 30 SGD',
+          en: 'The major transits of the next 3 months and how they touch your Birth Chart.',
+          my: 'လာမယ့် ၃ လအတွင်း Major Transits တွေက ကိုယ့် Birth Chart ကို ဘယ်လိုထိတွေ့မလဲဆိုတာ ကြည့်ပေးပါတယ်။' },
+        'transit6': { cat: 'timing', pill: 'Transit', title: 'Transit — 6 Months', mmk: '88,888 MMK', alt: '666 THB · 66 SGD',
+          en: 'A 6-month transit reading, for planning with a longer view.',
+          my: '၆ လစာ Transit Reading — ပိုရှည်ရှည်ကြည့်ပြီး စီစဉ်ချင်သူတွေအတွက်ပါ။' },
+        'progressed': { cat: 'timing', pill: 'Inner growth', title: 'Progressed Chart', mmk: '166,666 MMK', alt: '1,222 THB · 55 SGD',
+          en: 'Your inner growth and the new chapters of your life, read through your Progressed Chart.',
+          my: 'ကိုယ့်ရဲ့ အတွင်းပိုင်း ကြီးထွားမှုနဲ့ Life Chapter အသစ်တွေကို Progressed Chart နဲ့ ဖတ်ပေးပါတယ်။' },
+        'birth-chart': { cat: 'core', pill: 'Western Astrology', title: 'Birth Chart — Full Chart', mmk: '166,666 MMK', alt: '1,222 THB · 55 SGD',
+          en: 'Your whole Birth Chart, read in full through its planets, houses and aspects.',
+          my: 'Birth Chart တစ်ခုလုံးကို Planets, Houses, Aspects အလိုက် အပြည့်အစုံ ဖတ်ပေးပါတယ်။' },
+        'hd-full': { cat: 'hd', pill: 'Human Design', title: 'Human Design — Full Chart', mmk: '166,666 MMK', alt: '1,222 THB · 55 SGD',
+          en: 'Your whole Human Design chart, including Type, Strategy, Authority, Profile, Centers and Incarnation Cross.',
+          my: 'Type, Strategy, Authority, Profile, Centers နဲ့ Incarnation Cross အပါအဝင် Human Design Chart တစ်ခုလုံးကို ရှင်းပြပေးပါတယ်။' },
+        'hd-arrows': { cat: 'hd', pill: 'Human Design', title: 'HD 4 Arrows', mmk: '99,999 MMK', alt: '800 THB · 55 SGD',
+          en: 'Your 4 Arrows (Variables): your natural way of living and deciding.',
+          my: 'Human Design ရဲ့ 4 Arrows (Variables) ကို အသေးစိတ်ဖတ်ပြီး ကိုယ့်အတွက် သဘာဝကျတဲ့ နေထိုင်ပုံနဲ့ ဆုံးဖြတ်ပုံကို ရှင်းပြပေးပါတယ်။' },
+        'hd-love': { cat: 'hd', pill: 'Human Design only', title: 'HD Love', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'A Human Design Mini Reading on love, seen through your design.',
+          my: 'Human Design တစ်ခုတည်းနဲ့ ကြည့်တဲ့ Mini Reading — ချစ်ခြင်းမေတ္တာအပိုင်းကို Human Design အမြင်ကနေ ရှင်းပြပေးပါတယ်။' },
+        'hd-wealth': { cat: 'hd', pill: 'Human Design only', title: 'HD Wealth & Career', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'A Human Design Mini Reading on money and career, seen through your design.',
+          my: 'Human Design တစ်ခုတည်းနဲ့ ကြည့်တဲ့ Mini Reading — ငွေကြေးနဲ့ အလုပ်အကိုင်အပိုင်းကို Human Design အမြင်ကနေ ရှင်းပြပေးပါတယ်။' },
+        'hd-healing': { cat: 'hd', pill: 'Human Design only', title: 'HD Healing', mmk: '66,666 MMK', alt: '444 THB · 28 SGD',
+          en: 'A Human Design Mini Reading on healing, seen through your design.',
+          my: 'Human Design တစ်ခုတည်းနဲ့ ကြည့်တဲ့ Mini Reading — ပြန်လည်ကုစားရမယ့် အပိုင်းတွေကို Human Design အမြင်ကနေ ရှင်းပြပေးပါတယ်။' },
+        'bundle': { cat: 'core', pill: 'Flagship offer', title: 'Ultimate Soulprint Bundle', mmk: '333,333 MMK', alt: '2,000 THB · 88 SGD',
+          en: 'Astro Full Chart, Human Design Full Chart and HD 4 Arrows together: your whole blueprint at once.',
+          my: 'ကိုယ့်ရဲ့ Blueprint တစ်ခုလုံးကို တစ်ပြိုင်နက် နားလည်ချင်သူတွေအတွက် ပြင်ဆင်ထားတဲ့ Offer ပါ။' }
+      };
+      var WHY = {
+        love:    { en: 'Your answers point to the heart: how you love and what you need.',
+                   my: 'ရလဒ်တွေအရ ကိုယ့်နှလုံးသားအပိုင်း — ကိုယ်ဘယ်လိုချစ်တတ်လဲ၊ ဘာကို လိုအပ်လဲ — ဆီကို ညွှန်နေပါတယ်။' },
+        wealth:  { en: 'Your answers point toward money, work and finding your natural path.',
+                   my: 'ရလဒ်တွေအရ ငွေကြေး၊ အလုပ်အကိုင်နဲ့ ကိုယ့်အတွက် သဘာဝကျတဲ့ လမ်းကြောင်းဆီကို ညွှန်နေပါတယ်။' },
+        healing: { en: 'Your answers point toward gently healing what you have been carrying.',
+                   my: 'ရလဒ်တွေအရ ကိုယ်သယ်လာခဲ့တာတွေကို အသာလေး ပြန်ကုစားဖို့ ညွှန်နေပါတယ်။' },
+        timing:  { en: 'Your answers point toward timing: what is coming and how to meet it.',
+                   my: 'ရလဒ်တွေအရ အချိန်ကာလ — ဘာတွေလာမလဲ၊ ဘယ်လိုကြိုဆိုမလဲ — ဆီကို ညွှန်နေပါတယ်။' },
+        self:    { en: 'Your answers point toward knowing yourself more fully.',
+                   my: 'ရလဒ်တွေအရ ကိုယ့်ကိုယ်ကို ပိုပြည့်ပြည့်စုံစုံ နားလည်ဖို့ ညွှန်နေပါတယ်။' }
+      };
+
+      // ---- Picking the reading ----
+      function pick(a) {
+        var score = { love: 0, wealth: 0, healing: 0, timing: 0, self: 0 };
+        score[a.focus] += 3;
+        score[a.mood] += 2;
+        if (a.time !== 'none') score.timing += 1;
+        if (a.other === 'yes') score.love += 2;
+        // on a tie, the first answer wins, then the second
+        var order = [a.focus, a.mood].concat(Object.keys(score));
+        var topic = a.focus;
+        order.forEach(function (k) { if (score[k] > score[topic]) topic = k; });
+
+        var hd = a.lens === 'hd', full = a.depth === 'full', id;
+        if (topic === 'love')         id = a.other === 'yes' ? 'synastry' : (hd ? 'hd-love' : 'love');
+        else if (topic === 'wealth')  id = hd ? 'hd-wealth' : 'wealth';
+        else if (topic === 'healing') id = hd ? 'hd-healing' : 'karmic';
+        else if (topic === 'timing')  id = a.time === 't6' ? 'transit6' : (a.time === 'ch' ? 'progressed' : 'transit3');
+        else if (a.lens === 'astro')  id = 'birth-chart';
+        else if (hd)                  id = full ? 'hd-full' : 'hd-arrows';
+        else                          id = full ? 'bundle' : 'hd-arrows';
+        return { id: id, topic: topic };
+      }
+
+      // ---- Small helpers ----
+      function el(tag, cls, text, lang) {
+        var n = document.createElement(tag);
+        if (cls) n.className = cls;
+        if (text) n.textContent = text;
+        if (lang) n.setAttribute('lang', lang);
+        return n;
+      }
+      function btn(cls, en, my, tag) {
+        var b = el(tag || 'button', 'btn ' + cls);
+        b.appendChild(document.createTextNode(en));
+        b.appendChild(el('small', '', my, 'my'));
+        return b;
+      }
+      function reset() { while (box.firstChild) box.removeChild(box.firstChild); }
+
+      var answers = {}, step = 0, started = false;
+
+      // ---- One question at a time ----
+      function showQuestion() {
+        var q = Q[step];
+        reset();
+        box.setAttribute('data-state', 'question');
+
+        var prog = el('p', 'quiz-progress', 'Question ' + (step + 1) + ' of ' + Q.length);
+        prog.appendChild(el('span', '', 'မေးခွန်း ' + MYN[step] + ' / ၆', 'my'));
+        var bar = el('div', 'quiz-bar');
+        bar.setAttribute('aria-hidden', 'true');
+        var fill = el('span');
+        fill.style.width = ((step + 1) / Q.length * 100) + '%';
+        bar.appendChild(fill);
+
+        var form = el('form', 'quiz-form');
+        var fs = el('fieldset');
+        var lg = el('legend', '', q.en);
+        lg.setAttribute('tabindex', '-1');
+        lg.appendChild(el('small', '', q.my, 'my'));
+        fs.appendChild(lg);
+
+        var opts = el('div', 'q-opts');
+        var next;
+        q.opts.forEach(function (o, i) {
+          var lab = el('label', 'q-opt');
+          var inp = document.createElement('input');
+          inp.type = 'radio'; inp.name = q.id; inp.value = o.v;
+          if (answers[q.id] === o.v) inp.checked = true;
+          inp.addEventListener('change', function () { answers[q.id] = o.v; next.disabled = false; });
+          var t = el('span', 'q-text', o.en);
+          t.appendChild(el('small', '', o.my, 'my'));
+          lab.appendChild(inp); lab.appendChild(t);
+          opts.appendChild(lab);
+        });
+        fs.appendChild(opts);
+        form.appendChild(fs);
+
+        var nav = el('div', 'quiz-nav');
+        if (step > 0) {
+          var back = btn('btn-ghost', 'Back', 'နောက်သို့');
+          back.type = 'button';
+          back.addEventListener('click', function () { step--; showQuestion(); });
+          nav.appendChild(back);
+        }
+        var last = step === Q.length - 1;
+        next = last ? btn('', 'Show my reading', 'ကိုယ့်အတွက် Reading ကို ကြည့်ရန်') : btn('', 'Next', 'ရှေ့ဆက်ရန်');
+        next.type = 'submit';
+        next.disabled = !answers[q.id];
+        nav.appendChild(next);
+        form.appendChild(nav);
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!answers[q.id]) return;
+          if (last) showResult(); else { step++; showQuestion(); }
+        });
+
+        box.appendChild(prog); box.appendChild(bar); box.appendChild(form);
+        if (started) lg.focus();
+        started = true;
+      }
+
+      // ---- The result ----
+      function showResult() {
+        var p = pick(answers), r = R[p.id], c = CAT[r.cat];
+        reset();
+        box.setAttribute('data-state', 'result');
+
+        var card = el('div', 'featured q-result');
+        card.appendChild(el('p', 'label', 'Your reading · သင့်အတွက် Reading'));
+        card.appendChild(el('span', 'pill gold', r.pill));
+        var h = el('h2', '', r.title);
+        h.setAttribute('tabindex', '-1');
+        card.appendChild(h);
+        card.appendChild(el('p', 'q-why', WHY[p.topic].en));
+        card.appendChild(el('p', 'q-why my', WHY[p.topic].my, 'my'));
+        card.appendChild(el('p', 'q-desc', r.en));
+        card.appendChild(el('p', 'q-desc my', r.my, 'my'));
+        if (r.noteEn) {
+          var n = el('p', 'q-note', r.noteEn + ' ');
+          n.appendChild(el('span', '', r.noteMy, 'my'));
+          card.appendChild(n);
+        }
+        var price = el('p', 'price');
+        price.appendChild(el('span', 'mmk', r.mmk));
+        price.appendChild(el('span', 'alt', r.alt));
+        card.appendChild(price);
+
+        var book = btn('', 'Book this reading', 'ဒီ Reading ကို Book လုပ်ရန်', 'a');
+        book.href = BOOK; book.target = '_blank'; book.rel = 'noopener';
+        var see = btn('btn-ghost', 'See ' + c.name, 'အသေးစိတ် ကြည့်ရန်', 'a');
+        see.href = c.url;
+        var again = btn('btn-ghost', 'Start again', 'ပြန်စရန်');
+        again.type = 'button';
+        again.addEventListener('click', function () { answers = {}; step = 0; showQuestion(); });
+
+        var acts = el('div', 'actions');
+        acts.appendChild(book); acts.appendChild(see);
+        card.appendChild(acts);
+        box.appendChild(card);
+        box.appendChild(again);
+        again.className += ' quiz-again';
+        started = true;
+        h.focus();
+      }
+
+      showQuestion();
+    })();
+    </script>
