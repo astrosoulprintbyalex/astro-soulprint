@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["VI"]={"tz":["America/Puerto_Rico"],"c":[["Saint Croix","",17.73,-64.75,0,""],["Charlotte Amalie","",18.34,-64.93,0,""]]};

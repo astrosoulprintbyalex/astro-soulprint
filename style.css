@@ -433,6 +433,78 @@ small[lang="my"] { display: block; font-size: 0.78rem; font-weight: 400; opacity
   .lord-rule { justify-content: flex-start; }
   .lord-rule::before { display: none; }
 }
+
+/* ---------- Cosmic Weather ---------- */
+.cw-week { margin-top: 18px; }
+.cw-weekchip { display: inline-block; background: var(--white); border: 1px solid var(--gold); border-radius: 999px; padding: 6px 18px; font-weight: 500; color: var(--emerald-deep); font-size: 0.95rem; }
+.cw-weekchip b { font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.72rem; color: var(--gold-text); margin-right: 6px; }
+.cw-weekchip-my { display: block; margin-top: 6px; color: var(--muted); font-size: 0.92rem; }
+.cw-moonnow { color: var(--muted); font-size: 0.88rem; margin: 10px 0 0; }
+.cw-moonnow + .cw-moonnow { margin-top: 0; }
+.cw-section .wrap { display: block; }
+
+/* note from Alex */
+.cw-note { position: relative; background: linear-gradient(160deg, #fffaf0 0%, var(--white) 70%); border: 1.5px solid var(--gold); border-radius: 28px; padding: 26px 22px 22px; box-shadow: var(--shadow); margin-bottom: 34px; }
+.cw-note::before { content: "✦"; position: absolute; top: 14px; right: 20px; color: var(--gold); font-size: 1.1rem; }
+.cw-note .label { margin-bottom: 4px; }
+.cw-note-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; margin: 0 0 12px; color: var(--emerald-deep); line-height: 1.5; }
+.cw-note-my { margin: 0 0 14px; font-size: 1rem; overflow-wrap: anywhere; }
+.cw-note-en { margin: 0; padding-top: 12px; border-top: 1px dashed var(--gold-line); color: var(--muted); font-size: 0.92rem; overflow-wrap: anywhere; }
+
+/* headings and the list of cards */
+.cw-h { font-size: clamp(1.5rem, 5.5vw, 1.9rem); margin: 6px 0 16px; text-align: center; }
+.cw-h small { display: block; font-family: var(--sans); font-size: 0.88rem; font-weight: 400; color: var(--muted); margin-top: 4px; }
+.cw-list { display: grid; gap: 14px; grid-template-columns: 1fr; margin-bottom: 34px; }
+.cw-loading, .cw-error { text-align: center; color: var(--muted); padding: 30px 0; }
+.cw-loading span, .cw-error span { display: block; }
+
+.cw-card { display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--gold-line); border-radius: 22px; padding: 18px 16px; box-shadow: var(--shadow); min-width: 0; }
+.cw-ico { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: var(--emerald-soft); display: flex; align-items: center; justify-content: center; color: var(--emerald-deep); }
+.cw-glyph { font-family: "Noto Sans Symbols", "Segoe UI Symbol", "DejaVu Sans", var(--sans); font-size: 1.45rem; line-height: 1; }
+.cw-ico svg { display: block; }
+.m-dark { fill: #2c4a3d; }
+.m-lit { fill: #f3e3b8; }
+.m-ring { fill: none; stroke: var(--gold); stroke-width: 1.2; }
+.cw-body { flex: 1; min-width: 0; }
+.cw-kind { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; margin: 0 0 2px; line-height: 1.5; }
+.cw-card h3 { font-size: 1.4rem; margin: 0; overflow-wrap: anywhere; }
+.cw-title-my { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.cw-when { margin: 8px 0 10px; font-size: 0.92rem; font-weight: 600; color: var(--emerald-deep); line-height: 1.5; }
+.cw-when span { display: block; font-weight: 400; color: var(--muted); font-size: 0.86rem; }
+.cw-my { margin: 0 0 10px; font-size: 0.98rem; overflow-wrap: anywhere; }
+.cw-en { margin: 0; padding-top: 10px; border-top: 1px dashed var(--gold-line); color: var(--muted); font-size: 0.9rem; }
+
+.cw-phase { border-color: var(--gold); background: linear-gradient(160deg, var(--white), #fbf5e6); }
+.cw-phase .cw-ico { background: #2c4a3d; }
+.cw-rx .cw-ico { background: #f6ecd6; color: var(--gold-text); }
+.cw-rx { border-left: 4px solid var(--gold); }
+.cw-direct { border-left: 4px solid var(--emerald); }
+.cw-moon .cw-ico { background: var(--emerald-mist); }
+.cw-quiet { text-align: left; }
+
+.cw-rxnow { background: var(--emerald-mist); border: 1px solid var(--gold-line); border-radius: 22px; padding: 18px 16px; margin: -8px 0 38px; text-align: center; }
+.cw-rxnow-title { font-weight: 600; color: var(--emerald-deep); margin: 0 0 10px; line-height: 1.5; }
+.cw-rxnow-title span, .cw-rxnone span { display: block; font-weight: 400; color: var(--muted); font-size: 0.88rem; }
+.cw-rxnone { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.cw-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0; }
+.cw-chip { background: var(--white); border: 1px solid var(--gold); border-radius: 999px; padding: 4px 14px; font-size: 0.9rem; color: var(--emerald-deep); }
+.cw-chip .cw-glyph { font-size: 1rem; margin-right: 2px; color: var(--gold-text); }
+
+.cw-foot { text-align: center; color: var(--muted); font-size: 0.8rem; margin: -10px auto 34px; max-width: 520px; }
+.cw-foot span { display: block; }
+.cw-promo { margin-top: 10px; }
+.cw-promo h2 em { color: var(--emerald-deep); font-style: italic; font-weight: 500; }
+.cw-promo > p:not(.label):not(.cw-chartlink) { max-width: 520px; margin-left: auto; margin-right: auto; }
+.cw-chartlink { margin: 22px 0 0; font-size: 0.92rem; color: var(--muted); }
+.cw-chartlink a { color: var(--emerald-deep); font-weight: 600; }
+.cw-chartlink span { display: block; margin-top: 2px; }
+
+@media (min-width: 700px) {
+  .cw-note { padding: 32px 34px 26px; }
+  .cw-moons { grid-template-columns: 1fr 1fr; }
+  .cw-card { padding: 20px 20px; }
+}
+
 /* ---------- Find my reading quiz ---------- */
 .quiz { background: var(--white); border: 1px solid var(--gold-line); border-radius: 28px; padding: 24px 18px; box-shadow: var(--shadow); }
 .quiz[data-state="result"] { background: none; border: 0; box-shadow: none; padding: 0; }
@@ -465,3 +537,13 @@ small[lang="my"] { display: block; font-size: 0.78rem; font-weight: 400; opacity
 .q-result .price { margin-top: 18px; }
 .quiz-again { display: block; margin: 18px auto 0; }
 @media (min-width: 700px) { .quiz { padding: 34px 38px; } .quiz-nav .btn { flex: 0 1 auto; min-width: 180px; } .quiz-nav { justify-content: space-between; } }
+
+/* Seven menu items: keep each on one line and tighten the spacing on mid-width screens. */
+@media (min-width: 960px) {
+  .site-nav > ul > li > a, .has-sub > a, .brand-link { white-space: nowrap; }
+}
+@media (min-width: 960px) and (max-width: 1179px) {
+  .site-nav > ul { gap: 0; }
+  .site-nav > ul > li > a, .has-sub > a { padding: 10px 9px; font-size: 0.9rem; }
+  .brand-link { font-size: 1.2rem; }
+}

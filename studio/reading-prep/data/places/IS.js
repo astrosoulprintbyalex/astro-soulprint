@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["IS"]={"tz":["Africa/Abidjan"],"c":[["Reykjavík","",64.14,-21.9,0,""],["Kópavogur","",64.11,-21.91,0,""],["Hafnarfjörður","",64.07,-21.94,0,""],["Akureyri","",65.68,-18.09,0,""],["Garðabær","",64.09,-21.92,0,""]]};

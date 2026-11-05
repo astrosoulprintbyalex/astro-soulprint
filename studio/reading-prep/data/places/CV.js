@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["CV"]={"tz":["Atlantic/Cape_Verde"],"c":[["Praia","",14.93,-23.51,0,""],["Mindelo","",16.89,-24.98,0,""],["Santa Maria","",16.6,-22.91,0,""],["Cova Figueira","",14.89,-24.29,0,""]]};

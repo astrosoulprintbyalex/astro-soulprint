@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["SR"]={"tz":["America/Paramaribo"],"c":[["Paramaribo","",5.87,-55.17,0,""],["Lelydorp","",5.7,-55.23,0,""],["Brokopondo","",5.06,-54.98,0,""],["Nieuw Nickerie","",5.93,-56.97,0,""]]};

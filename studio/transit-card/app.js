@@ -46,6 +46,7 @@
   function shift(n) {
     var p = parseDate() || (function () { var t = new Date(); return { y: t.getFullYear(), m: t.getMonth() + 1, d: t.getDate() }; })();
     var d = new Date(Date.UTC(p.y, p.m - 1, p.d + n));
+    voiceIdx = 0;
     dateEl.value = d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0') + '-' + String(d.getUTCDate()).padStart(2, '0');
     schedule(0);
   }
@@ -76,10 +77,22 @@
     }).catch(function (e) { if (e && e.name !== 'AbortError') setStatus(e.message, true); });
   });
 
+  // "Write in my style": cycle through voice.js options for the chosen date; the user can edit the text afterwards.
+  var voiceIdx = 0;
+  $('write').addEventListener('click', function () {
+    var p = parseDate();
+    if (!p) { setStatus('Pick a date first.', true); return; }
+    var opts = Voice.candidates(Transit.dailyCard(p.y, p.m, p.d, +tzEl.value));
+    msgEl.value = opts[voiceIdx % opts.length];
+    $('writeHint').textContent = 'Version ' + (voiceIdx % opts.length + 1) + ' of ' + opts.length + '. Press again for another, or edit the text.';
+    voiceIdx++;
+    msgEl.dispatchEvent(new Event('input'));
+  });
+
   $('prev').addEventListener('click', function () { shift(-1); });
   $('next').addEventListener('click', function () { shift(1); });
-  dateEl.addEventListener('input', function () { schedule(0); });
-  tzEl.addEventListener('change', function () { store('tc-tz', tzEl.value); schedule(0); });
+  dateEl.addEventListener('input', function () { voiceIdx = 0; schedule(0); });
+  tzEl.addEventListener('change', function () { store('tc-tz', tzEl.value); voiceIdx = 0; schedule(0); });
   msgEl.addEventListener('input', function () {
     $('count').textContent = msgEl.value.length + ' / ' + msgEl.maxLength;
     store('tc-msg', msgEl.value); schedule(250);

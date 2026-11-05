@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["BT"]={"tz":["Asia/Thimphu"],"c":[["Thimphu","",27.47,89.64,0,""],["Punākha","",27.59,89.88,0,""],["Tsirang","",27.02,90.12,0,""],["Phuntsholing","",26.85,89.39,0,""],["Pemagatshel","",27.04,91.4,0,""],["Sarpang","",26.86,90.27,0,""]]};

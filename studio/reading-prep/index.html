@@ -1,0 +1,183 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reading Prep · Studio · Astro Soulprint by Alex</title>
+  <meta name="description" content="Private reading prep for Alex.">
+  <!-- Private page: not in the menu, not in any list, and asks search engines to skip it. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#faf6ee">
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&family=Noto+Serif+Myanmar:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Same look as the Human Design chart page: its stylesheet first, then the few studio additions. -->
+  <link rel="stylesheet" href="../../soulprint-chart/css/style.css?v=18">
+  <link rel="stylesheet" href="prep.css?v=1">
+</head>
+<body class="studio">
+
+  <header class="studio-bar">
+    <div class="wrap bar">
+      <span class="brand"><img src="../../soulprint-chart/assets/logo.png" alt="" width="34" height="34">Astro Soulprint <em>Studio</em></span>
+      <span class="private-pill">Private</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. CLIENT DETAILS -->
+    <section class="prep-hero" id="top">
+      <div class="wrap narrow">
+        <p class="eyebrow">Reading prep</p>
+        <h1>Prepare a reading</h1>
+        <p class="lede">Add the client&rsquo;s birth details to see their chart and a reading outline with room for your notes.</p>
+
+        <div class="card saved-card" id="savedCard" hidden>
+          <div class="saved-row">
+            <div class="field">
+              <label for="savedPick">Saved clients</label>
+              <select id="savedPick"></select>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" id="newBtn">New client</button>
+          </div>
+        </div>
+
+        <noscript><p class="form-error">This tool needs JavaScript switched on.</p></noscript>
+
+        <form class="card form-card" id="prepForm" novalidate autocomplete="off">
+          <p class="edit-hint" id="editHint" hidden></p>
+
+          <div class="field">
+            <label for="name">Client&rsquo;s name</label>
+            <input id="name" type="text" maxlength="80" placeholder="Full or first name" autocapitalize="words" required>
+          </div>
+
+          <div class="field">
+            <label for="birthDate">Birth date</label>
+            <input id="birthDate" type="date" min="1900-01-01" required>
+          </div>
+
+          <div class="field">
+            <label for="birthTime">Birth time</label>
+            <input id="birthTime" type="time" required>
+            <label class="check" for="timeUnknown"><input id="timeUnknown" type="checkbox"> <span>Time unknown (use 12:00 noon)</span></label>
+          </div>
+
+          <div class="field">
+            <label for="country">Birth country</label>
+            <select id="country" required></select>
+          </div>
+
+          <div class="field combo">
+            <label for="place">Birth city or town</label>
+            <input id="place" type="text" maxlength="80" placeholder="e.g. Yangon" autocomplete="off" autocapitalize="words" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="placeSuggest" required>
+            <ul id="placeSuggest" class="suggest" role="listbox" hidden></ul>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="coordLabel">Latitude and longitude</span>
+            <div class="row2" role="group" aria-labelledby="coordLabel">
+              <input id="lat" type="text" inputmode="text" autocomplete="off" placeholder="Latitude" aria-label="Latitude" required>
+              <input id="lon" type="text" inputmode="text" autocomplete="off" placeholder="Longitude" aria-label="Longitude" required>
+            </div>
+            <p class="hint" id="coordHint">Picked from the place list when you choose a suggestion. Town not listed? Type its coordinates (for example 16.81 and 96.16; add S or W for south or west, e.g. 33.87 S). The Rising sign depends on them.</p>
+          </div>
+
+          <div class="field">
+            <label for="zone">Time zone</label>
+            <select id="zone" required></select>
+            <p class="hint" id="zoneHint">Filled in from the place. Daylight saving and historical changes are handled automatically.</p>
+          </div>
+
+          <p class="form-error" id="formError" role="alert" hidden></p>
+
+          <button class="btn btn-block" type="submit" id="submitBtn">Prepare reading</button>
+          <p class="privacy">&#10022; Calculated and saved on this device only. Nothing is sent anywhere.</p>
+          <p class="privacy warn" id="storageWarn" hidden>This browser is not allowing saved notes (private window?). Notes will last only until you close this page, so use &ldquo;Copy all notes&rdquo; before leaving.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 2. RESULTS (hidden until a client is prepared) -->
+    <section class="results" id="results" hidden>
+      <div class="wrap narrow">
+        <nav class="jump" aria-label="Jump to">
+          <a href="#chartSec">Chart</a>
+          <a href="#outlineSec">Outline</a>
+          <button class="btn btn-sm" type="button" data-copy>Copy all notes</button>
+        </nav>
+
+        <div class="client-head center">
+          <p class="eyebrow">Preparing for</p>
+          <h2 id="resultsTitle" tabindex="-1"></h2>
+          <p class="sub" id="birthLine"></p>
+          <div id="notices"></div>
+        </div>
+
+        <div id="chartSec">
+          <div class="card glance" id="glanceCard"></div>
+          <div class="card glance" id="astroCard"></div>
+
+          <div class="card bodygraph-card">
+            <div id="bodygraph" class="bodygraph-wrap"></div>
+            <p class="tap-hint">&#10022; Tap the chart to enlarge</p>
+            <ul class="legend" aria-label="Chart key">
+              <li><span class="swatch sw-p"></span>Personality (conscious)</li>
+              <li><span class="swatch sw-d"></span>Design (unconscious)</li>
+              <li><span class="swatch sw-def"></span>Defined center</li>
+              <li><span class="swatch sw-open"></span>Open center</li>
+            </ul>
+          </div>
+
+          <div class="card" id="centersCard"></div>
+          <div class="card" id="channelsCard"></div>
+          <div class="card" id="gatesCard"></div>
+        </div>
+
+        <div id="outlineSec" class="outline">
+          <div class="outline-head">
+            <p class="eyebrow">Reading outline</p>
+            <h2>Your notes</h2>
+            <p class="sub">Type as you go. Notes save automatically in this browser, for this client only.</p>
+            <p class="save-status" id="saveStatus" role="status" aria-live="polite"></p>
+          </div>
+          <div id="outline"></div>
+
+          <div class="outline-actions">
+            <button class="btn btn-block" type="button" data-copy>Copy all notes</button>
+            <button class="btn btn-ghost btn-block" type="button" id="deleteBtn">Delete this client</button>
+          </div>
+          <div class="copy-fallback" id="copyFallback" hidden>
+            <p class="hint">Your browser would not copy automatically. The text below is selected: copy it by hand.</p>
+            <textarea id="copyText" readonly rows="10" aria-label="All notes as text"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full-screen view of the chart -->
+  <div class="bg-zoom" id="bgZoom" hidden role="dialog" aria-label="Human Design chart, enlarged">
+    <button type="button" class="bg-zoom-close" id="bgZoomClose" aria-label="Close">&times;</button>
+    <div class="bg-zoom-body" id="bgZoomBody"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="../../soulprint-chart/data/countries.js?v=18"></script>
+  <script src="../../soulprint-chart/js/vendor/astronomy.browser.min.js?v=18"></script>
+  <script src="../../soulprint-chart/js/hd-data.js?v=18"></script>
+  <script src="../../soulprint-chart/js/hd-calc.js?v=18"></script>
+  <script src="../../soulprint-chart/js/content.js?v=18"></script>
+  <script src="../../soulprint-chart/js/bodygraph.js?v=18"></script>
+  <script src="astro.js?v=1"></script>
+  <script src="store.js?v=1"></script>
+  <script src="outline.js?v=1"></script>
+  <script src="prep.js?v=1"></script>
+</body>
+</html>

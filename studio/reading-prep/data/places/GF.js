@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["GF"]={"tz":["America/Cayenne"],"c":[["Cayenne","GF",4.93,-52.33,0,""],["Matoury","GF",4.85,-52.32,0,""],["Saint-Laurent-du-Maroni","GF",5.5,-54.03,0,""],["Kourou","GF",5.16,-52.64,0,""],["Rémire-Montjoly","GF",4.92,-52.27,0,""]]};
