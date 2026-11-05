@@ -123,4 +123,6 @@ planets changing sign or stationing retrograde/direct in the 7 days from that da
 
 - Calculations: `transit.js`, using the same astronomy library as the Human Design chart. Card drawing: `card.js`. Page: `index.html`, `app.js`.
 - Times on the card use the chosen time zone (default Myanmar, UTC+6:30); the Moon is read at local noon.
+- "Write in my style" (`voice.js`) fills the message box with a short Burmese-English line in Alex's voice, built from that date's real
+  transits. These are hand-written templates, not AI; edit the wording in `voice.js` (one pair of versions per topic).
 - Tests: `node --test tests/*.test.js`.

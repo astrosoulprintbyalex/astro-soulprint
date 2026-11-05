@@ -91,6 +91,8 @@
         <label for="msg">Your message <span lang="my" style="font-weight:500">(မြန်မာလို ရေးလို့ရပါတယ်)</span></label>
         <textarea id="msg" maxlength="260" placeholder="A short message for today… / ဒီနေ့အတွက် စာတို…"></textarea>
         <p class="hint"><span>Burmese and English both work.</span><span id="count">0 / 260</span></p>
+        <button class="btn ghost" type="button" id="write" style="margin-top:10px;width:100%">&#10024; Write in my style</button>
+        <p class="hint" id="writeHint">Uses this date&rsquo;s real transits. Press again for another version, then edit freely.</p>
       </div>
 
       <div class="actions">
@@ -107,6 +109,7 @@
 
   <script src="../../soulprint-chart/js/vendor/astronomy.browser.min.js"></script>
   <script src="transit.js"></script>
+  <script src="voice.js"></script>
   <script src="card.js"></script>
   <script src="app.js"></script>
 </body>
