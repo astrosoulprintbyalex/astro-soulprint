@@ -90,4 +90,13 @@ but it holds no data: everything you log is saved only in the browser you use (l
 - The package list and default THB prices are at the top of `studio/sales/sales.js` (`PACKAGES`). The monthly goal (50,000 THB)
   can be changed on the page under "Change monthly goal".
 - "This month's total" counts every sale logged that month, paid or not; "Paid" and "Not fully paid" show the split.
+
+## Transit card maker (private)
+
+`studio/transit-card/` is a private tool (not in the menu, `noindex`; open it at `/studio/transit-card/`). Pick a date, add a short
+message (Burmese or English) and download a 1080×1350 PNG in the emerald, cream and gold style. It shows the Moon's sign and phase,
+planets changing sign or stationing retrograde/direct in the 7 days from that date, and which planets are retrograde.
+
+- Calculations: `transit.js`, using the same astronomy library as the Human Design chart. Card drawing: `card.js`. Page: `index.html`, `app.js`.
+- Times on the card use the chosen time zone (default Myanmar, UTC+6:30); the Moon is read at local noon.
 - Tests: `node --test tests/*.test.js`.
