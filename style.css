@@ -428,3 +428,35 @@ small[lang="my"] { display: block; font-size: 0.78rem; font-weight: 400; opacity
   .lord-rule { justify-content: flex-start; }
   .lord-rule::before { display: none; }
 }
+/* ---------- Find my reading quiz ---------- */
+.quiz { background: var(--white); border: 1px solid var(--gold-line); border-radius: 28px; padding: 24px 18px; box-shadow: var(--shadow); }
+.quiz[data-state="result"] { background: none; border: 0; box-shadow: none; padding: 0; }
+.quiz-progress { color: var(--gold-text); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0; display: flex; flex-wrap: wrap; gap: 2px 12px; }
+.quiz-progress span { letter-spacing: 0; text-transform: none; font-weight: 500; }
+.quiz-bar { height: 4px; border-radius: 4px; background: var(--emerald-soft); overflow: hidden; margin: 10px 0 22px; }
+.quiz-bar span { display: block; height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.3s; }
+.quiz fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.quiz legend { padding: 0; font-family: var(--serif); font-size: 1.65rem; line-height: 1.2; font-weight: 600; color: var(--ink); }
+.quiz legend:focus { outline: none; }
+.quiz legend small { display: block; margin-top: 8px; font-family: var(--sans); font-size: 0.95rem; font-weight: 400; line-height: 1.8; color: var(--muted); }
+.q-opts { display: grid; gap: 10px; margin-top: 18px; }
+.q-opt { position: relative; display: block; cursor: pointer; }
+.q-opt input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.q-text { display: block; position: relative; padding: 14px 16px 14px 48px; border: 1.5px solid var(--gold-line); border-radius: 18px; background: var(--cream); font-weight: 500; line-height: 1.4; transition: background 0.2s, border-color 0.2s; }
+.q-text::before { content: ""; position: absolute; left: 16px; top: 17px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--gold); background: var(--white); }
+.q-text small { display: block; margin-top: 3px; font-weight: 400; font-size: 0.9rem; line-height: 1.75; color: var(--muted); }
+.q-opt:hover .q-text { border-color: var(--gold); }
+.q-opt input:checked + .q-text { background: var(--emerald-soft); border-color: var(--emerald); }
+.q-opt input:checked + .q-text::before { background: var(--emerald); border-color: var(--emerald); box-shadow: inset 0 0 0 3px var(--emerald-soft); }
+.q-opt input:focus-visible + .q-text { outline: 3px solid var(--gold); outline-offset: 2px; }
+.quiz-nav { display: flex; gap: 12px; margin-top: 22px; }
+.quiz-nav .btn { flex: 1; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn:disabled:hover { background: var(--emerald); border-color: var(--emerald); transform: none; box-shadow: none; }
+.q-result .q-why { color: var(--gold-text); font-weight: 500; margin: 14px auto 0; max-width: 520px; }
+.q-result .q-desc { max-width: 520px; margin: 14px auto 0; }
+.q-result .my { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-top: 6px; }
+.q-result .q-note { color: var(--gold-text); font-size: 0.9rem; margin: 12px auto 0; }
+.q-result .price { margin-top: 18px; }
+.quiz-again { display: block; margin: 18px auto 0; }
+@media (min-width: 700px) { .quiz { padding: 34px 38px; } .quiz-nav .btn { flex: 0 1 auto; min-width: 180px; } .quiz-nav { justify-content: space-between; } }
