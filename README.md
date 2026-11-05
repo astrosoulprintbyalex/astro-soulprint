@@ -15,6 +15,7 @@ Every reading page is a folder with an `index.html` inside, so the link has no `
 | Cosmic Timing | `cosmic-timing/` | `/cosmic-timing/` |
 | Soulprint Core | `soulprint-core/` | `/soulprint-core/` |
 | Human Design Readings (all HD readings) | `human-design/` | `/human-design/` |
+| 2027 Lord of the Year (free annual profection tool) | `2027-lord-of-the-year/` | `/2027-lord-of-the-year/` |
 | 2027 Cosmic Roadmap | `roadmap.html` | `/roadmap.html` |
 | Free Human Design Chart calculator | `soulprint-chart/` | `/soulprint-chart/` |
 
@@ -52,6 +53,18 @@ The old `.html` addresses (for example `aligned-love.html`) still work: they sen
 - The full links Facebook needs are built from `url` and `baseurl` in `_config.yml`. If you ever connect your own domain
   (for example `https://astrosoulprint.com`), change those two lines.
 - Pages only render correctly once published (or built with Jekyll), not by double-clicking the file.
+
+## 2027 Lord of the Year
+
+`2027-lord-of-the-year/` is a free tool: the visitor enters a birth date and rising sign and sees which house is activated in
+their 2027 birthday year and which planet is their Lord of the Year (whole-sign houses, traditional rulers). It runs on the
+visitor's device and saves nothing.
+
+- The calculation and every sentence (English and Burmese) are in `2027-lord-of-the-year/lord.js`. To change a house or planet
+  text, edit the `en` (English) or `mm` (Burmese) line there.
+- The reading promo card at the bottom is in `2027-lord-of-the-year/index.html`. The Messenger button opens
+  `https://m.me/astrosoulprintbyalex?ref=2027` (Messenger cannot pre-fill a message, so the button text asks people to send "2027").
+- Tests: `node --test tests/*.test.js` (they also run on GitHub when you save a change).
 
 ## Client intake form
 
