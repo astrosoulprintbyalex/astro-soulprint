@@ -1,9 +1,9 @@
 name: Human Design Chart tests
 on:
   push:
-    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'studio/**', 'tests/**']
+    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'cosmic-weather/**', 'studio/**', 'tests/**']
   pull_request:
-    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'studio/**', 'tests/**']
+    paths: ['soulprint-chart/**', '2027-lord-of-the-year/**', 'cosmic-weather/**', 'studio/**', 'tests/**']
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -19,6 +19,6 @@ jobs:
           cache-dependency-path: soulprint-chart/package-lock.json
       - run: npm ci
       - run: npm test
-      - name: Root tests (2027 Lord of the Year, Reading Prep)
+      - name: Lord of the Year and Cosmic Weather tests
         working-directory: .
         run: node --test tests/*.test.js
