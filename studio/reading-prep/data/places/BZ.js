@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["BZ"]={"tz":["America/Belize"],"c":[["Belize City","",17.5,-88.2,0,""],["San Ignacio","",17.16,-89.07,0,""],["Orange Walk","",18.08,-88.56,0,""],["Belmopan","",17.25,-88.77,0,""],["Dangriga","",16.97,-88.23,0,""]]};

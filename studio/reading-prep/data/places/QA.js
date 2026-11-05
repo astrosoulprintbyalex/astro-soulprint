@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["QA"]={"tz":["Asia/Qatar"],"c":[["Doha","",25.29,51.53,0,""],["Ar Rayyān","",25.29,51.42,0,""],["Umm Şalāl Muḩammad","",25.42,51.41,0,""],["Al Wakrah","",25.17,51.6,0,""],["Al Khawr","",25.68,51.51,0,""]]};

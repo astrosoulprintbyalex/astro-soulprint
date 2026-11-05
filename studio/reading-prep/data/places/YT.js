@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["YT"]={"tz":["Africa/Nairobi"],"c":[["Mamoudzou","",-12.78,45.23,0,""],["Koungou","",-12.73,45.2,0,""],["Dzaoudzi","",-12.78,45.26,0,""],["Dembeni","",-12.84,45.18,0,""]]};

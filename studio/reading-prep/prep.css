@@ -1,0 +1,110 @@
+/* Reading Prep (private). Builds on soulprint-chart/css/style.css, which supplies the emerald / cream / gold colours,
+   cards, form fields, buttons and the chart. Only what is new for this tool lives here. */
+
+.studio { background: var(--cream); }
+
+/* ---------- Top bar (no site menu: this page is private) ---------- */
+.studio-bar { background: var(--cream); border-bottom: 1px solid var(--linen); }
+.studio-bar .bar { display: flex; align-items: center; justify-content: space-between; min-height: 58px; }
+.studio-bar .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--emerald-deep); }
+.studio-bar .brand img { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold); object-fit: cover; }
+.studio-bar .brand em { font-weight: 500; color: var(--gold-deep); }
+.private-pill { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--emerald-deep); background: var(--gold-soft); border-radius: 999px; padding: 4px 12px; }
+
+/* ---------- Intro + form ---------- */
+.prep-hero { padding: 30px 0 40px; background: radial-gradient(ellipse at 50% 0%, var(--emerald-tint) 0%, rgba(232, 235, 217, 0) 62%), var(--cream); }
+.prep-hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.prep-hero .eyebrow { margin-bottom: 8px; }
+.lede { color: var(--ink-soft); margin-bottom: 22px; }
+.field-label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; color: var(--emerald-deep); }
+.studio input[type="date"], .studio input[type="time"] {
+  display: block; width: 100%; min-width: 0; height: 50px; padding: 0 14px; font: inherit; font-size: 16px; color: var(--ink);
+  background: var(--white); border: 1.5px solid #d9cfb4; border-radius: 14px; appearance: none; -webkit-appearance: none;
+}
+.studio input[type="date"]:focus, .studio input[type="time"]:focus { outline: none; border-color: var(--emerald-soft); box-shadow: 0 0 0 4px rgba(47, 143, 114, 0.18); }
+.studio input:disabled { background: var(--cream-deep); color: var(--ink-soft); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.check { display: flex !important; align-items: center; gap: 12px; margin: 12px 0 0 !important; font-weight: 400 !important; font-size: 0.93rem !important; color: var(--ink) !important; min-height: 44px; cursor: pointer; }
+.check input { width: 22px; height: 22px; flex: none; margin: 0; accent-color: var(--emerald); }
+.combo .suggest { top: 84px; }
+.privacy.warn { color: var(--danger); margin-top: 10px; }
+.edit-hint { background: var(--emerald-tint); border-radius: 14px; padding: 10px 14px; font-size: 0.9rem; margin: 0 0 18px; color: var(--emerald-deep); }
+.btn-sm { padding: 10px 18px; font-size: 0.9rem; }
+.saved-card { padding: 16px 18px 6px; margin-bottom: 16px; }
+.saved-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+.saved-row .btn { margin-bottom: 20px; height: 50px; }
+
+/* ---------- Results ---------- */
+.results { padding-top: 0; }
+.jump {
+  position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 6px; margin: 0 calc(var(--gutter) * -1) 24px;
+  padding: 8px var(--gutter); background: rgba(243, 236, 224, 0.95); border-bottom: 1px solid var(--linen);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.jump a { text-decoration: none; font-weight: 600; font-size: 0.9rem; color: var(--emerald-deep); padding: 10px 12px; border-radius: 999px; }
+.jump a:hover, .jump a:focus-visible { background: var(--emerald-tint); }
+.jump .btn { margin-left: auto; }
+.client-head { margin-bottom: 22px; }
+.client-head h2 { font-size: 2.3rem; outline: none; overflow-wrap: anywhere; }
+.client-head .sub { margin-bottom: 4px; }
+#notices .notice { margin: 10px auto 0; }
+
+#glanceCard, #astroCard, .bodygraph-card, #centersCard, #channelsCard, #gatesCard { margin-bottom: 16px; }
+.glance { padding: 20px 20px 8px; }
+.glance h3 { font-size: 1.5rem; margin-bottom: 4px; }
+.glance .row { padding: 12px 0; border-bottom: 1px dashed var(--linen); }
+.glance .row:last-child { border-bottom: 0; }
+.glance dt { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); margin-bottom: 2px; }
+.glance dd { margin: 0; font-variant-numeric: lining-nums; font-family: var(--serif); font-size: 1.45rem; line-height: 1.2; font-weight: 600; color: var(--emerald-deep); overflow-wrap: anywhere; }
+.glance dd small { display: block; margin-top: 3px; font-family: var(--sans); font-size: 0.85rem; font-weight: 400; line-height: 1.5; color: var(--ink-soft); }
+.glance dl { margin: 8px 0 0; }
+.glance .astro-note { color: var(--danger); font-size: 0.85rem; padding-bottom: 12px; }
+
+/* ---------- Outline ---------- */
+.outline { margin-top: 36px; }
+.outline-head { text-align: center; margin-bottom: 14px; }
+.outline-head h2 { font-size: 2.2rem; margin-bottom: 6px; }
+.save-status { min-height: 1.6em; font-size: 0.85rem; color: var(--ink-soft); margin: 4px 0 0; }
+.save-status.bad { color: var(--danger); }
+.group-title { margin: 26px 0 10px; display: flex; align-items: center; gap: 12px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--emerald-soft); font-family: var(--sans); font-weight: 600; }
+.group-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold-soft), transparent); }
+.note-card { background: var(--white); border: 1px solid var(--linen); border-radius: 20px; padding: 18px 16px 16px; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(52, 55, 36, 0.05); }
+.note-card:focus-within { border-color: var(--gold); box-shadow: 0 4px 18px rgba(201, 162, 75, 0.2); }
+.note-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.note-num { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--emerald); color: var(--cream); font-size: 0.85rem; font-weight: 600; }
+.note-head h4 { font-size: 1.5rem; margin: 0; overflow-wrap: anywhere; }
+.cue { font-weight: 500; font-size: 0.93rem; line-height: 1.5; color: var(--emerald-deep); background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 7px 12px; margin: 8px 0 6px; overflow-wrap: anywhere; }
+.prompt { font-size: 0.85rem; font-style: italic; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.5; }
+textarea.note {
+  display: block; width: 100%; min-height: 112px; padding: 12px 14px; font: inherit; font-size: 16px; line-height: 1.55; color: var(--ink);
+  background: var(--white); border: 1.5px solid #d9cfb4; border-radius: 14px; resize: vertical; overflow: hidden;
+}
+textarea.note:focus { outline: none; border-color: var(--emerald-soft); box-shadow: 0 0 0 4px rgba(47, 143, 114, 0.18); }
+.outline-actions { display: grid; gap: 12px; margin: 26px 0 8px; }
+.copy-fallback { margin-top: 16px; }
+.copy-fallback textarea { width: 100%; font: inherit; font-size: 14px; padding: 12px; border: 1.5px solid #d9cfb4; border-radius: 14px; background: var(--white); }
+
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 120; max-width: calc(100vw - 32px); background: var(--emerald-deep); color: var(--cream); border: 1px solid var(--gold); border-radius: 999px; padding: 12px 22px; font-size: 0.93rem; box-shadow: 0 10px 30px rgba(52, 55, 36, 0.3); text-align: center; }
+
+@media (min-width: 700px) {
+  .prep-hero h1 { font-size: 3.2rem; }
+  .glance .row { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: baseline; }
+  .glance dt { margin: 0; }
+  .outline-actions { grid-template-columns: 1fr 1fr; }
+  .jump { margin-left: 0; margin-right: 0; border-radius: 0 0 18px 18px; border: 1px solid var(--linen); border-top: 0; }
+}
+@media (max-width: 360px) {
+  .row2 { gap: 6px; }
+  .prep-hero h1 { font-size: 2.2rem; }
+  .client-head h2 { font-size: 2rem; }
+  .jump a { padding: 10px 8px; }
+  .btn-sm { padding: 10px 14px; }
+}
+
+/* Printing the outline and notes (the chart page's own print rule would blank this page). */
+@media print {
+  .studio-bar, .prep-hero, .jump, .outline-actions, .toast, .bg-zoom, .tap-hint { display: none !important; }
+  .results:not([hidden]) { display: block !important; background: none; }
+  body::before { content: none !important; }
+  .card, .note-card { box-shadow: none; break-inside: avoid; }
+}

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["DJ"]={"tz":["Africa/Nairobi"],"c":[["Djibouti","",11.59,43.15,0,""],["'Ali Sabieh","",11.16,42.71,0,""],["Tadjourah","",11.79,42.88,0,""],["Obock","",11.97,43.29,0,""],["Dikhil","",11.1,42.37,0,""]]};

@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["EH"]={"tz":["Africa/El_Aaiun"],"c":[["Laayoune","",27.14,-13.19,0,"MA"],["Dakhla","CE",23.68,-15.96,0,"MA"],["Laayoune Plage","",27.1,-13.42,0,""]]};

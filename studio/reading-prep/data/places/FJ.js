@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["FJ"]={"tz":["Pacific/Fiji"],"c":[["Suva","",-18.14,178.44,0,""],["Lautoka","",-17.62,177.45,0,""],["Nadi","",-17.8,177.42,0,""],["Labasa","",-16.43,179.36,0,""],["Ba","",-17.53,177.67,0,""]]};

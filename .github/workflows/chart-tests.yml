@@ -19,6 +19,6 @@ jobs:
           cache-dependency-path: soulprint-chart/package-lock.json
       - run: npm ci
       - run: npm test
-      - name: 2027 Lord of the Year tests
+      - name: Root tests (2027 Lord of the Year, Reading Prep)
         working-directory: .
         run: node --test tests/*.test.js

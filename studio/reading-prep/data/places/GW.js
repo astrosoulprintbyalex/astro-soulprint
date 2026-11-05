@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["GW"]={"tz":["Africa/Bissau"],"c":[["Bissau","",11.86,-15.6,0,""],["Bafatá","",12.17,-14.66,0,""],["Gabú","",12.28,-14.22,0,""],["Bissorã","",12.22,-15.45,0,""],["Bolama","",11.58,-15.48,0,""],["Cacheu","",12.27,-16.17,0,""]]};

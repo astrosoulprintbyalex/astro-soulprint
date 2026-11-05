@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["SZ"]={"tz":["Africa/Johannesburg"],"c":[["Manzini","",-26.5,31.38,0,""],["Mbabane","",-26.32,31.13,0,""],["Big Bend","",-26.82,31.93,0,""]]};

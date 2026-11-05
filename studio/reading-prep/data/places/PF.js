@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["PF"]={"tz":["Pacific/Tahiti"],"c":[["Faaa","",-17.55,-149.6,0,""],["Papeete","",-17.54,-149.57,0,""],["Punaauia","",-17.63,-149.6,0,""],["Pirae","",-17.52,-149.53,0,""],["Mahina","",-17.51,-149.49,0,""],["Paea","",-17.68,-149.58,0,""],["Papao","",-17.75,-149.55,0,""]]};

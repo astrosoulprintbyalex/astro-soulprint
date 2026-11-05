@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["AD"]={"tz":["Europe/Andorra"],"c":[["Andorra la Vella","",42.51,1.52,0,""],["les Escaldes","",42.51,1.53,0,""],["Encamp","",42.53,1.58,0,""]]};

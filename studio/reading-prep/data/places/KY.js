@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["KY"]={"tz":["America/Panama"],"c":[["George Town","",19.29,-81.37,0,""],["West Bay","",19.37,-81.42,0,""],["Bodden Town","",19.28,-81.25,0,""]]};

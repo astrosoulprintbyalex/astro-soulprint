@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["BN"]={"tz":["Asia/Kuching"],"c":[["Bandar Seri Begawan","",4.89,114.94,0,""],["Kuala Belait","",4.58,114.23,0,""],["Seria","",4.61,114.32,0,""],["Tutong","",4.8,114.65,0,""]]};

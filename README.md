@@ -68,6 +68,22 @@ visitor's device and saves nothing.
   `https://m.me/astrosoulprintbyalex?ref=2027` (Messenger cannot pre-fill a message, so the button text asks people to send "2027").
 - Tests: `node --test tests/*.test.js` (they also run on GitHub when you save a change).
 
+## Reading Prep (private studio tool)
+
+`studio/reading-prep/` is your private prep page, at `/studio/reading-prep/`. It is not in the menu, not in any list, and has a
+`noindex` tag so search engines skip it. (It is unlisted, not locked: anyone who knows the address can open the tool, but it
+saves nothing on the website. Client details and notes stay in your own browser.)
+
+- Enter name, birth date, time and place. It reuses the chart engine in `soulprint-chart/` (nothing there was changed) and shows
+  Type, Strategy, Authority, Profile, Definition, Incarnation Cross, centers, channels, gates, the chart, plus astrology Sun, Moon and Rising.
+- Below is a reading outline with a note box per section. Notes save automatically per client in this browser only
+  (clearing browser data deletes them). **Copy all notes** copies everything as plain text; use it as your backup.
+- Edit the sections or their prompts in `studio/reading-prep/outline.js` (`SECTIONS`). Keep each `id` as it is, because notes are saved under it.
+- Rising needs latitude and longitude, which the chart's city lists do not have. `studio/reading-prep/data/places/` holds a list of
+  places with coordinates and time zones (built from GeoNames, towns of 10,000+ people, all Myanmar places we have). If a town is
+  not listed, type its coordinates. To rebuild the list: `cd soulprint-chart && npm ci && cd .. && node studio/reading-prep/tools/build-places.js`.
+- Tests: `node --test tests/*.test.js` (Sun, Moon and Rising are checked against the Swiss Ephemeris).
+
 ## Client intake form
 
 `intake.html` (+ `intake.css`, `intake.js`) is the post-payment intake form. Setup steps: see `SETUP-INTAKE.md`.

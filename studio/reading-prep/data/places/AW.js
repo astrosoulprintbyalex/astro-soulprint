@@ -1,0 +1,1 @@
+window.Soulprint=window.Soulprint||{};(Soulprint.places=Soulprint.places||{})["AW"]={"tz":["America/Puerto_Rico"],"c":[["Oranjestad","",12.52,-70.03,0,""],["Tanki Leendert","",12.54,-70.02,0,""],["San Nicolas","",12.44,-69.91,0,""],["Santa Cruz","",12.51,-69.98,0,""],["Paradera","",12.54,-70.01,0,""],["Savaneta","",12.45,-69.94,0,""]]};
