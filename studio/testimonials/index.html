@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testimonial Frame Maker · Astro Soulprint Studio</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="theme-color" content="#faf7f0">
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500;600&family=Noto+Serif+Myanmar:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --emerald: #2f7a5f; --emerald-deep: #245f4a; --emerald-soft: #e3efe8;
+      --cream: #faf7f0; --cream-deep: #f3efe4; --white: #fffefb;
+      --gold: #b8975a; --gold-line: rgba(184,151,90,.38); --gold-text: #8a6b2f;
+      --ink: #26352e; --muted: #5d6e65;
+      --serif: "Cormorant Garamond", "Noto Serif Myanmar", Georgia, serif;
+      --sans: "DM Sans", "Noto Sans Myanmar", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 18px 16px 48px; }
+    header { text-align: center; padding: 8px 0 18px; }
+    .eyebrow { margin: 0; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+    h1 { margin: 4px 0 6px; font: 600 32px/1.15 var(--serif); color: var(--emerald-deep); }
+    .lead { margin: 0 auto; max-width: 460px; color: var(--muted); font-size: 15px; }
+
+    .layout { display: grid; gap: 16px; grid-template-columns: minmax(0,1fr); grid-template-areas: "upload" "preview" "controls"; }
+    .upload { grid-area: upload; } .preview { grid-area: preview; } .controls { grid-area: controls; }
+    @media (min-width: 860px) {
+      .layout { grid-template-columns: minmax(0,420px) minmax(0,1fr); grid-template-areas: "preview upload" "preview controls"; align-items: start; gap: 22px; }
+      .preview { position: sticky; top: 16px; }
+    }
+
+    .card { background: var(--white); border: 1px solid var(--gold-line); border-radius: 20px; padding: 16px; box-shadow: 0 10px 30px rgba(38,70,56,.07); }
+    .card h2 { margin: 0 0 10px; font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); }
+    .card + .card { margin-top: 14px; }
+
+    .btn { appearance: none; border: 1px solid var(--emerald); background: var(--emerald); color: #fff; font: 600 16px/1 var(--sans);
+           min-height: 50px; padding: 0 20px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+           text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    .btn:active { transform: translateY(1px); }
+    .btn.ghost { background: transparent; color: var(--emerald-deep); border-color: var(--gold-line); }
+    .btn.ghost[aria-pressed="true"] { background: var(--emerald-soft); border-color: var(--emerald); }
+    .btn.gold { background: var(--gold); border-color: var(--gold); color: #1b2b23; }
+    .btn[disabled] { opacity: .45; pointer-events: none; }
+    .btn.block { width: 100%; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .row > .btn { flex: 1 1 140px; }
+
+    label { display: block; font-weight: 600; font-size: 14px; margin: 12px 0 6px; }
+    label:first-of-type { margin-top: 0; }
+    input[type=text] { width: 100%; min-height: 50px; padding: 0 14px; border: 1px solid var(--gold-line); border-radius: 14px; background: #fff;
+                       font: 16px var(--sans); color: var(--ink); }  /* 16px stops iOS zoom-on-focus */
+    input[type=text]:focus-visible, .btn:focus-visible, canvas:focus-visible { outline: 3px solid rgba(47,122,95,.35); outline-offset: 2px; }
+    input[type=range] { width: 100%; min-height: 44px; accent-color: var(--emerald); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chip { appearance: none; border: 1px solid var(--gold-line); background: var(--cream); color: var(--emerald-deep); font: 500 14px var(--sans);
+            min-height: 38px; padding: 0 14px; border-radius: 999px; cursor: pointer; }
+    .hint { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+    .seg { display: flex; gap: 8px; }
+    .seg .btn { flex: 1; min-height: 44px; font-size: 15px; }
+
+    .stage { background: var(--cream-deep); border: 1px solid var(--gold-line); border-radius: 20px; padding: 10px; }
+    .stage canvas { display: block; width: 100%; height: auto; border-radius: 12px; background: #1f5a45; touch-action: pan-y; }
+    .stage.drawing canvas { touch-action: none; cursor: crosshair; outline: 3px solid var(--gold); outline-offset: -3px; }
+    .status { margin: 10px 2px 0; font-size: 13px; color: var(--muted); min-height: 20px; text-align: center; }
+    .dl { margin-top: 12px; display: grid; gap: 10px; }
+    .drop-on .upload .card { border-color: var(--emerald); background: var(--emerald-soft); }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Astro Soulprint Studio · Private</p>
+    <h1>Testimonial Frame Maker</h1>
+    <p class="lead">Drop in a client chat screenshot and get a branded 1080×1350 post, ready to save as PNG.</p>
+  </header>
+
+  <div class="layout" id="layout">
+    <section class="upload" aria-label="Upload">
+      <div class="card">
+        <h2>1 · Screenshot</h2>
+        <input id="file" class="sr" type="file" accept="image/*">
+        <div class="row">
+          <button class="btn" id="pick" type="button">Choose screenshot</button>
+          <button class="btn ghost" id="remove" type="button" disabled>Remove</button>
+        </div>
+        <p class="hint">Photos stay on your device; nothing is uploaded anywhere. You can also drag a file in or paste one.</p>
+      </div>
+    </section>
+
+    <section class="preview" aria-label="Preview">
+      <div class="stage" id="stage">
+        <canvas id="cv" width="1080" height="1350" tabindex="0" role="img" aria-label="Preview of the framed testimonial"></canvas>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="controls" aria-label="Options">
+      <div class="card">
+        <h2>2 · Text</h2>
+        <label for="title">Title (optional)</label>
+        <input id="title" type="text" value="Client Love 🤎" maxlength="60" autocomplete="off" enterkeyhint="done">
+        <div class="chips" id="chips">
+          <button class="chip" type="button">Client Love 🤎</button>
+          <button class="chip" type="button">Kind Words ✨</button>
+          <button class="chip" type="button">Reading Feedback 🌿</button>
+        </div>
+        <label for="pkg">Package name (optional)</label>
+        <input id="pkg" type="text" placeholder="e.g. Aligned Love Reading" maxlength="60" autocomplete="off" enterkeyhint="done">
+      </div>
+
+      <div class="card">
+        <h2>3 · Hide names</h2>
+        <div class="row">
+          <button class="btn ghost block" id="drawToggle" type="button" aria-pressed="false" disabled>✋ Scrolling · tap to draw hide boxes</button>
+        </div>
+        <p class="hint" id="drawHint">Upload a screenshot first. Then turn drawing on and drag over the names or details to hide.</p>
+        <label>Style</label>
+        <div class="seg" id="styleSeg">
+          <button class="btn ghost" type="button" data-style="blur" aria-pressed="true">Blur</button>
+          <button class="btn ghost" type="button" data-style="cover" aria-pressed="false">Solid cover</button>
+        </div>
+        <label for="strength">Blur strength</label>
+        <input id="strength" type="range" min="15" max="60" value="30">
+        <div class="row" style="margin-top:6px">
+          <button class="btn ghost" id="undo" type="button" disabled>Undo last</button>
+          <button class="btn ghost" id="clear" type="button" disabled>Clear all</button>
+        </div>
+        <p class="hint">Dashed outlines show only while drawing and are not in the download. For total privacy choose Solid cover.</p>
+      </div>
+
+      <div class="card">
+        <h2>4 · Save</h2>
+        <div class="dl">
+          <button class="btn gold block" id="download" type="button">Download PNG</button>
+          <button class="btn ghost block" id="share" type="button" hidden>Share / Save to Photos</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var W = 1080, H = 1350;
+  var C = { emerald: '#2f7a5f', deep: '#245f4a', deeper: '#163f31', cream: '#faf7f0', creamDeep: '#f3efe4', gold: '#b8975a', goldLight: '#dcc189', ink: '#1b2b23' };
+  var SERIF = '"Cormorant Garamond","Noto Serif Myanmar",Georgia,serif';
+  var SANS = '"DM Sans","Noto Sans Myanmar",system-ui,-apple-system,"Segoe UI",sans-serif';
+  var MAX_SRC = 2600; // longest side kept in memory
+
+  var $ = function (id) { return document.getElementById(id); };
+  var cv = $('cv'), ctx = cv.getContext('2d');
+  var state = { src: null, rects: [], draft: null, drawMode: false, style: 'blur', strength: 30, imgRect: null, cache: null };
+  var logo = new Image();
+  var logoReady = false;
+  logo.onload = function () { logoReady = true; render(); };
+  logo.src = '../../images/logo.jpg';
+
+  /* ---------- persistence (optional, never required) ---------- */
+  function store(k, v) { try { localStorage.setItem('tfm.' + k, v); } catch (e) {} }
+  function recall(k) { try { return localStorage.getItem('tfm.' + k); } catch (e) { return null; } }
+  var savedPkg = recall('pkg'); if (savedPkg) $('pkg').value = savedPkg;
+  var savedTitle = recall('title'); if (savedTitle !== null) $('title').value = savedTitle;
+
+  /* ---------- helpers ---------- */
+  function rrect(c, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r);
+    c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath();
+  }
+  function setStatus(t) { $('status').textContent = t || ''; }
+  function wrapLines(c, text, maxW, maxLines) {
+    var words = text.split(/\s+/).filter(Boolean), lines = [], cur = '';
+    words.forEach(function (w) {
+      var t = cur ? cur + ' ' + w : w;
+      if (c.measureText(t).width <= maxW || !cur) cur = t; else { lines.push(cur); cur = w; }
+    });
+    if (cur) lines.push(cur);
+    if (lines.length > maxLines) return null;
+    return lines;
+  }
+
+  /* ---------- the blurred / covered copy of the screenshot ---------- */
+  function buildProcessed() {
+    var s = state.src; if (!s) return null;
+    var key = state.style + '|' + state.strength + '|' + JSON.stringify(state.rects);
+    if (state.cache && state.cache.key === key) return state.cache.canvas;
+    var out = document.createElement('canvas'); out.width = s.width; out.height = s.height;
+    var o = out.getContext('2d'); o.drawImage(s, 0, 0);
+    var cell = Math.max(8, s.width * state.strength / 1000); // strength 30 → 3% of width
+    state.rects.forEach(function (r) {
+      var x = Math.floor(r.x * s.width), y = Math.floor(r.y * s.height);
+      var w = Math.max(1, Math.ceil(r.w * s.width)), h = Math.max(1, Math.ceil(r.h * s.height));
+      if (state.style === 'cover') {
+        o.fillStyle = C.deep; o.fillRect(x, y, w, h);
+        o.strokeStyle = 'rgba(220,193,137,.55)'; o.lineWidth = Math.max(1, s.width / 540); o.strokeRect(x + .5, y + .5, w - 1, h - 1);
+        return;
+      }
+      // blur = repeated halving, then a smooth upscale (works on every browser, no ctx.filter needed)
+      var tw = Math.max(1, Math.round(w / cell)), th = Math.max(1, Math.round(h / cell));
+      var cur = document.createElement('canvas'); cur.width = w; cur.height = h;
+      var cc = cur.getContext('2d'); cc.drawImage(out, x, y, w, h, 0, 0, w, h);
+      while (cur.width / 2 >= tw && cur.height / 2 >= th) {
+        var n = document.createElement('canvas'); n.width = Math.max(1, Math.floor(cur.width / 2)); n.height = Math.max(1, Math.floor(cur.height / 2));
+        var nc = n.getContext('2d'); nc.imageSmoothingEnabled = true; nc.imageSmoothingQuality = 'high';
+        nc.drawImage(cur, 0, 0, cur.width, cur.height, 0, 0, n.width, n.height); cur = n;
+      }
+      var f = document.createElement('canvas'); f.width = tw; f.height = th;
+      var fc = f.getContext('2d'); fc.imageSmoothingEnabled = true; fc.imageSmoothingQuality = 'high';
+      fc.drawImage(cur, 0, 0, cur.width, cur.height, 0, 0, tw, th);
+      o.save(); o.beginPath(); o.rect(x, y, w, h); o.clip();
+      o.imageSmoothingEnabled = true; o.imageSmoothingQuality = 'high';
+      o.drawImage(f, 0, 0, tw, th, x, y, w, h);
+      o.fillStyle = 'rgba(250,247,240,.12)'; o.fillRect(x, y, w, h);
+      o.restore();
+    });
+    state.cache = { key: key, canvas: out };
+    return out;
+  }
+
+  /* ---------- the frame ---------- */
+  function drawFrame(c, guides) {
+    // background
+    var g = c.createLinearGradient(0, 0, W * .35, H);
+    g.addColorStop(0, '#2c7459'); g.addColorStop(.55, '#215f49'); g.addColorStop(1, '#163f31');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    var rg = c.createRadialGradient(W / 2, 120, 20, W / 2, 120, 760);
+    rg.addColorStop(0, 'rgba(220,193,137,.22)'); rg.addColorStop(1, 'rgba(220,193,137,0)');
+    c.fillStyle = rg; c.fillRect(0, 0, W, H);
+    var rg2 = c.createRadialGradient(W / 2, H + 40, 20, W / 2, H + 40, 640);
+    rg2.addColorStop(0, 'rgba(240,246,242,.14)'); rg2.addColorStop(1, 'rgba(240,246,242,0)');
+    c.fillStyle = rg2; c.fillRect(0, 0, W, H);
+
+    // gold hairline border
+    c.strokeStyle = 'rgba(220,193,137,.7)'; c.lineWidth = 2; rrect(c, 26, 26, W - 52, H - 52, 38); c.stroke();
+    c.strokeStyle = 'rgba(220,193,137,.28)'; c.lineWidth = 1; rrect(c, 38, 38, W - 76, H - 76, 28); c.stroke();
+
+    var y = 66;
+    // logo medallion
+    var d = 104, cx = W / 2, cy = y + d / 2;
+    c.save(); c.shadowColor = 'rgba(0,0,0,.35)'; c.shadowBlur = 22; c.shadowOffsetY = 8;
+    c.beginPath(); c.arc(cx, cy, d / 2 + 4, 0, Math.PI * 2); c.fillStyle = C.goldLight; c.fill(); c.restore();
+    c.save(); c.beginPath(); c.arc(cx, cy, d / 2, 0, Math.PI * 2); c.clip();
+    if (logoReady) c.drawImage(logo, cx - d / 2, cy - d / 2, d, d); else { c.fillStyle = '#2c2f1e'; c.fillRect(cx - d / 2, cy - d / 2, d, d); }
+    c.restore();
+    y += d + 8 + 22;
+
+    c.textAlign = 'center'; c.textBaseline = 'alphabetic';
+    // title
+    var title = $('title').value.trim();
+    if (title) {
+      var size = 88, lines;
+      while (size >= 40) {
+        c.font = '600 ' + size + 'px ' + SERIF;
+        lines = wrapLines(c, title, W - 200, 2);
+        if (lines) break; size -= 4;
+      }
+      if (!lines) lines = [title];
+      var lh = size * 1.08;
+      c.fillStyle = C.cream; c.save(); c.shadowColor = 'rgba(0,0,0,.25)'; c.shadowBlur = 10; c.shadowOffsetY = 3;
+      lines.forEach(function (ln, i) { c.fillText(ln, W / 2, y + size * .82 + i * lh); });
+      c.restore();
+      y += lines.length * lh + 10;
+    }
+    // package pill
+    var pkg = $('pkg').value.trim();
+    if (pkg) {
+      var ps = 30; c.font = '600 ' + ps + 'px ' + SANS;
+      while (c.measureText(pkg).width > W - 260 && ps > 20) { ps -= 2; c.font = '600 ' + ps + 'px ' + SANS; }
+      var tw = c.measureText(pkg).width, pw = tw + 64, ph = 58, px = (W - pw) / 2, py = y + 4;
+      var pg = c.createLinearGradient(px, py, px + pw, py + ph); pg.addColorStop(0, '#d3b87c'); pg.addColorStop(1, '#b8975a');
+      c.save(); c.shadowColor = 'rgba(0,0,0,.25)'; c.shadowBlur = 14; c.shadowOffsetY = 5;
+      rrect(c, px, py, pw, ph, ph / 2); c.fillStyle = pg; c.fill(); c.restore();
+      c.fillStyle = C.ink; c.fillText(pkg, W / 2, py + ph / 2 + ps * .35);
+      y += ph + 12;
+    }
+
+    // footer
+    var fy = H - 78;
+    c.font = '600 22px ' + SANS; c.fillStyle = C.goldLight;
+    var brand = 'ASTRO SOULPRINT BY ALEX';
+    c.save(); if ('letterSpacing' in c) c.letterSpacing = '4px';
+    c.fillText(brand, W / 2 + 2, fy); var bw = c.measureText(brand).width; c.restore();
+    c.strokeStyle = 'rgba(220,193,137,.5)'; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(70, fy - 8); c.lineTo(W / 2 - bw / 2 - 22, fy - 8); c.moveTo(W / 2 + bw / 2 + 22, fy - 8); c.lineTo(W - 70, fy - 8); c.stroke();
+
+    // screenshot card
+    var top = y + 22, bottom = fy - 52, pad = 16;
+    var availW = W - 2 * 84 - 2 * pad, availH = bottom - top - 2 * pad;
+    var src = state.src ? buildProcessed() : null;
+    var iw, ih;
+    if (src) {
+      var sc = Math.min(availW / src.width, availH / src.height, 2);
+      iw = Math.round(src.width * sc); ih = Math.round(src.height * sc);
+    } else { iw = availW; ih = Math.min(availH, Math.round(availW * 1.1)); }
+    var cw = iw + 2 * pad, chh = ih + 2 * pad;
+    var cxp = Math.round((W - cw) / 2), cyp = Math.round(top + (bottom - top - chh) / 2);
+    c.save(); c.shadowColor = 'rgba(8,24,17,.5)'; c.shadowBlur = 56; c.shadowOffsetY = 22;
+    rrect(c, cxp, cyp, cw, chh, 34); c.fillStyle = C.cream; c.fill(); c.restore();
+    c.strokeStyle = 'rgba(184,151,90,.8)'; c.lineWidth = 2; rrect(c, cxp + 1, cyp + 1, cw - 2, chh - 2, 33); c.stroke();
+    var ix = cxp + pad, iy = cyp + pad;
+    state.imgRect = src ? { x: ix, y: iy, w: iw, h: ih } : null;
+    c.save(); rrect(c, ix, iy, iw, ih, 22); c.clip();
+    if (src) { c.imageSmoothingEnabled = true; c.imageSmoothingQuality = 'high'; c.drawImage(src, ix, iy, iw, ih); }
+    else {
+      c.fillStyle = C.creamDeep; c.fillRect(ix, iy, iw, ih);
+      c.fillStyle = '#7d8f85'; c.font = '500 34px ' + SANS; c.fillText('Your screenshot goes here', W / 2, iy + ih / 2 + 10);
+    }
+    c.restore();
+
+    if (guides && src) {
+      c.save(); c.lineWidth = 3; c.setLineDash([12, 8]);
+      var all = state.rects.concat(state.draft ? [state.draft] : []);
+      all.forEach(function (r, i) {
+        var rx = ix + r.x * iw, ry = iy + r.y * ih, rw = r.w * iw, rh = r.h * ih;
+        var isDraft = state.draft && i === all.length - 1;
+        c.strokeStyle = isDraft ? '#fff' : C.gold; c.strokeRect(rx, ry, rw, rh);
+        if (isDraft) { c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(rx, ry, rw, rh); }
+      });
+      c.restore();
+    }
+  }
+
+  function render() { drawFrame(ctx, state.drawMode); updateUi(); }
+
+  function updateUi() {
+    var has = !!state.src;
+    $('remove').disabled = !has;
+    $('drawToggle').disabled = !has;
+    $('undo').disabled = !state.rects.length;
+    $('clear').disabled = !state.rects.length;
+    $('strength').disabled = state.style !== 'blur';
+    $('drawHint').textContent = !has ? 'Upload a screenshot first. Then turn drawing on and drag over the names or details to hide.'
+      : state.drawMode ? 'Drawing is on: drag a box over a name. The page won\'t scroll while you draw, so turn it off when finished.'
+      : (state.rects.length ? state.rects.length + ' hidden area' + (state.rects.length > 1 ? 's' : '') + '. Turn drawing on to add more.' : 'Turn drawing on, then drag over names or details you want hidden.');
+    var b = $('drawToggle');
+    b.setAttribute('aria-pressed', state.drawMode ? 'true' : 'false');
+    b.textContent = state.drawMode ? '🖌 Drawing on · tap when done' : '✋ Scrolling · tap to draw hide boxes';
+    $('stage').classList.toggle('drawing', state.drawMode);
+    Array.prototype.forEach.call(document.querySelectorAll('#styleSeg .btn'), function (el) {
+      el.setAttribute('aria-pressed', el.getAttribute('data-style') === state.style ? 'true' : 'false');
+    });
+  }
+
+  /* ---------- loading an image ---------- */
+  function loadFile(file) {
+    if (!file || !/^image\//.test(file.type)) { setStatus('That file is not an image.'); return; }
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () {
+      var sc = Math.min(1, MAX_SRC / Math.max(img.naturalWidth, img.naturalHeight));
+      var s = document.createElement('canvas'); s.width = Math.round(img.naturalWidth * sc); s.height = Math.round(img.naturalHeight * sc);
+      var sctx = s.getContext('2d'); sctx.imageSmoothingQuality = 'high'; sctx.drawImage(img, 0, 0, s.width, s.height);
+      URL.revokeObjectURL(url);
+      state.src = s; state.rects = []; state.draft = null; state.cache = null; state.drawMode = false;
+      setStatus('Screenshot added.'); render();
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); setStatus('Could not read that image. Try a PNG or JPG.'); };
+    img.src = url;
+  }
+
+  $('pick').addEventListener('click', function () { $('file').click(); });
+  $('file').addEventListener('change', function () { if (this.files && this.files[0]) loadFile(this.files[0]); this.value = ''; });
+  $('remove').addEventListener('click', function () { state.src = null; state.rects = []; state.cache = null; state.drawMode = false; setStatus(''); render(); });
+  document.addEventListener('paste', function (e) {
+    var items = (e.clipboardData && e.clipboardData.items) || [];
+    for (var i = 0; i < items.length; i++) if (items[i].type.indexOf('image') === 0) { loadFile(items[i].getAsFile()); e.preventDefault(); return; }
+  });
+  ['dragenter', 'dragover'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); document.body.classList.add('drop-on'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); document.body.classList.remove('drop-on'); }); });
+  document.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
+
+  /* ---------- text + options ---------- */
+  var raf = 0;
+  function later() { cancelAnimationFrame(raf); raf = requestAnimationFrame(render); }
+  $('title').addEventListener('input', function () { store('title', this.value); later(); });
+  $('pkg').addEventListener('input', function () { store('pkg', this.value); later(); });
+  Array.prototype.forEach.call(document.querySelectorAll('#chips .chip'), function (b) {
+    b.addEventListener('click', function () { $('title').value = b.textContent; store('title', b.textContent); render(); });
+  });
+  $('strength').addEventListener('input', function () { state.strength = +this.value; later(); });
+  Array.prototype.forEach.call(document.querySelectorAll('#styleSeg .btn'), function (b) {
+    b.addEventListener('click', function () { state.style = b.getAttribute('data-style'); render(); });
+  });
+  $('drawToggle').addEventListener('click', function () { state.drawMode = !state.drawMode; state.draft = null; render(); });
+  $('undo').addEventListener('click', function () { state.rects.pop(); render(); });
+  $('clear').addEventListener('click', function () { state.rects = []; render(); });
+
+  /* ---------- drawing hide boxes ---------- */
+  var start = null, activeId = null;
+  function toNorm(e) {
+    var r = cv.getBoundingClientRect(), ir = state.imgRect;
+    var x = (e.clientX - r.left) * W / r.width, y = (e.clientY - r.top) * H / r.height;
+    return { x: Math.min(1, Math.max(0, (x - ir.x) / ir.w)), y: Math.min(1, Math.max(0, (y - ir.y) / ir.h)) };
+  }
+  cv.addEventListener('pointerdown', function (e) {
+    if (!state.drawMode || !state.imgRect) return;
+    e.preventDefault(); activeId = e.pointerId; try { cv.setPointerCapture(e.pointerId); } catch (x) {}
+    start = toNorm(e); state.draft = { x: start.x, y: start.y, w: 0, h: 0 }; render();
+  });
+  cv.addEventListener('pointermove', function (e) {
+    if (!start || e.pointerId !== activeId) return;
+    e.preventDefault();
+    var p = toNorm(e);
+    state.draft = { x: Math.min(start.x, p.x), y: Math.min(start.y, p.y), w: Math.abs(p.x - start.x), h: Math.abs(p.y - start.y) };
+    later();
+  });
+  function endDraw(e, cancel) {
+    if (!start || e.pointerId !== activeId) return;
+    var d = state.draft; start = null; activeId = null; state.draft = null;
+    if (!cancel && d && d.w * state.src.width > 12 && d.h * state.src.height > 12) state.rects.push(d);
+    render();
+  }
+  cv.addEventListener('pointerup', function (e) { endDraw(e, false); });
+  cv.addEventListener('pointercancel', function (e) { endDraw(e, true); });
+
+  /* ---------- export ---------- */
+  function exportBlob(cb) {
+    var out = document.createElement('canvas'); out.width = W; out.height = H;
+    drawFrame(out.getContext('2d'), false);
+    out.toBlob(cb, 'image/png');
+  }
+  function fileName() {
+    var t = ($('title').value || 'testimonial').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'testimonial';
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return t + '-' + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + '-' + p(d.getHours()) + p(d.getMinutes()) + '.png';
+  }
+  $('download').addEventListener('click', function () {
+    if (!state.src) { setStatus('Add a screenshot first.'); return; }
+    exportBlob(function (blob) {
+      if (!blob) { setStatus('Could not create the image. Try a smaller screenshot.'); return; }
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fileName();
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+      setStatus('Saved ' + a.download + ' (1080×1350).');
+    });
+  });
+  (function () {
+    var probe;
+    try { probe = new File([new Blob()], 't.png', { type: 'image/png' }); } catch (e) { return; }
+    if (!(navigator.canShare && navigator.share && navigator.canShare({ files: [probe] }))) return;
+    var b = $('share'); b.hidden = false;
+    b.addEventListener('click', function () {
+      if (!state.src) { setStatus('Add a screenshot first.'); return; }
+      exportBlob(function (blob) {
+        if (!blob) return;
+        navigator.share({ files: [new File([blob], fileName(), { type: 'image/png' })] }).catch(function () {});
+      });
+    });
+  })();
+
+  /* ---------- fonts: redraw once the web fonts are really loaded ---------- */
+  render();
+  if (document.fonts && document.fonts.load) {
+    Promise.all([
+      document.fonts.load('600 80px "Cormorant Garamond"'),
+      document.fonts.load('600 30px "DM Sans"'),
+      document.fonts.load('500 30px "DM Sans"'),
+      document.fonts.load('600 40px "Noto Serif Myanmar"', 'မြန်မာ')
+    ]).then(render, render);
+    document.fonts.ready.then(render);
+  }
+})();
+</script>
+</body>
+</html>
