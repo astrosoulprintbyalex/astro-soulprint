@@ -1,3 +1,9 @@
 title: Astro Soulprint by Alex
+
+# Used only for the full links Facebook needs in its share previews (og:url and the share picture).
+# If you ever connect your own domain, change these two lines (for example url: "https://astrosoulprint.com" and baseurl: "").
+url: "https://astrosoulprintbyalex.github.io"
+baseurl: "/astro-soulprint"
+
 exclude:
   - README.md

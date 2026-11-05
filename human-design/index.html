@@ -1,0 +1,31 @@
+---
+layout: default
+title: "Human Design Readings — Astro Soulprint by Alex"
+description: "Every Human Design reading by Astro Soulprint by Alex in one place: HD Full Chart, HD 4 Arrows, HD Love, HD Wealth & Career and HD Healing."
+active: hd
+root: "../"
+share_image: human-design
+---
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="../">Home</a> &rsaquo; <a href="../#packages">Packages</a></p>
+        <p class="label">All Human Design readings</p>
+        <h1>Human Design Readings</h1>
+        <p class="note">Every reading on this page is based on your Human Design chart.</p>
+        <p class="note" lang="my">Human Design တစ်ခုတည်းနဲ့ ကြည့်တဲ့ Reading များ အားလုံးကို တစ်နေရာတည်းမှာ ကြည့်နိုင်ပါတယ်။</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cards three">
+        {% include packages/hd-full-chart.html %}
+        {% include packages/hd-4-arrows.html %}
+        {% include packages/hd-love.html %}
+        {% include packages/hd-wealth-career.html %}
+        {% include packages/hd-healing.html %}
+        </div>
+        <p class="center sub" style="margin-top:34px">Not sure which one is right for you? <a href="https://m.me/astrosoulprintbyalex" target="_blank" rel="noopener">Message Alex</a> and we’ll find it together.</p>
+        <div class="actions" style="flex-wrap:wrap">{% for c in site.data.categories %}{% unless c.id == page.active %}<a class="btn btn-ghost btn-sm" href="../{{ c.url }}">{{ c.title }}</a>{% endunless %}{% endfor %}</div>
+      </div>
+    </section>
